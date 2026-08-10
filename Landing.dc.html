@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<template id="__bundler_thumbnail" data-bg-color="#0B0D10">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0B0D10"/>
+    <circle cx="600" cy="400" r="180" fill="none" stroke="#E8600A" stroke-width="24"/>
+    <text x="600" y="430" font-family="monospace" font-size="140" fill="#E8600A" text-anchor="middle" font-weight="bold">TI</text>
+  </svg>
+</template>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { margin: 0; background: #0B0D10; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #E8600A; text-decoration: none; }
+    a:hover { color: #ff7b2e; }
+    ::selection { background: #E8600A; color: white; }
+    input::placeholder { color: #6b7280; }
+    img { max-width: 100%; height: auto; }
+    input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; }
+    input[type="range"]::-webkit-slider-runnable-track { height: 6px; background: #22262B; border-radius: 3px; }
+    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; margin-top: -6px; border-radius: 50%; background: #E8600A; cursor: pointer; border: 2px solid #0B0D10; }
+    input[type="range"]::-moz-range-track { height: 6px; background: #22262B; border-radius: 3px; }
+    input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #E8600A; cursor: pointer; border: 2px solid #0B0D10; }
+    .platforms-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; row-gap: 24px; position: relative; }
+    .estimator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+    .hero-title { font-size: 48px; line-height: 1.08; letter-spacing: -0.025em; font-weight: 800; margin: 0 0 20px; color: white; }
+    .section-title { font-size: 42px; line-height: 1.2; font-weight: 800; margin: 0 0 20px; color: white; }
+    .total-amount { font-size: 64px; }
+    .hours-display { font-size: 48px; }
+    @media (max-width: 1024px) {
+      .platforms-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 720px) {
+      .platforms-grid { grid-template-columns: 1fr; }
+      .estimator-grid { grid-template-columns: 1fr; gap: 20px; }
+      .hero-title { font-size: 36px; }
+      .section-title { font-size: 30px; }
+      .total-amount { font-size: 44px; }
+      .hours-display { font-size: 36px; }
+      .nav-links { display: none !important; }
+      .hide-mobile { display: none !important; }
+      .estimator-total-card { padding: 24px !important; }
+      .card-taxa { font-size: 13px !important; }
+    }
+    @media (max-width: 480px) {
+      .footer-links { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+    }
+  </style>
+</helmet>
+
+<div style="background: #0B0D10; min-height: 100vh; color: #E7E7E7;">
+
+  <!-- NAV -->
+  <nav style="position: sticky; top: 0; z-index: 20; background: rgba(11,13,16,0.9); backdrop-filter: blur(8px); border-bottom: 1px solid #16191d;">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+      <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+        <img src="./assets/pfp-dollar.png" style="width: 30px; height: 30px; border-radius: 8px; object-fit: cover; flex-shrink: 0;" />
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.05em; color: #E7E7E7; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">TREINADORES DE IA</div>
+      </div>
+      <div class="nav-links" style="display: flex; gap: 24px; font-size: 14px;">
+        <a href="#plataformas" style="color: #c9cdd1;">Plataformas</a>
+        <a href="#estimativa" style="color: #c9cdd1;">Estimativa</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header style="max-width: 1180px; margin: 0 auto; padding: 40px 20px 32px;">
+    <div style="max-width: 720px;">
+      <h1 class="hero-title">Ganhe treinando IA.</h1>
+      <p style="font-size: 17px; line-height: 1.6; color: #9aa0a6; margin: 0 0 24px;">Curadoria pessoal de plataformas que pagam por treinamento de inteligência artificial — vídeo, anotação de dados, avaliação de respostas. Cada card tem minha nota, minha opinião e o link de indicação de quem eu realmente uso.</p>
+      <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 10px 22px; border-radius: 999px; font-weight: 700; font-size: 14px; text-decoration: none; white-space: nowrap;">
+        <svg width="18" height="18" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M16.004 3.2c-7.076 0-12.8 5.724-12.8 12.8 0 2.263.596 4.484 1.727 6.437L3.2 28.8l6.552-1.696c1.867 1.02 3.98 1.555 6.132 1.555h.005c7.075 0 12.8-5.724 12.8-12.8s-5.724-12.66-12.685-12.66zm7.475 18.09c-.313.883-1.55 1.62-2.146 1.706-.549.08-1.24.114-1.998-.126-.462-.147-1.058-.343-1.822-.671-3.207-1.385-5.298-4.596-5.457-4.808-.16-.212-1.303-1.735-1.303-3.309 0-1.574.826-2.35 1.117-2.671.29-.32.635-.4.847-.4.212 0 .424.002.61.011.196.01.457-.074.716.546.264.635.898 2.187.978 2.346.08.16.133.347.026.559-.107.212-.16.346-.32.532-.16.187-.336.417-.48.56-.16.16-.327.334-.14.653.186.32.828 1.363 1.777 2.208 1.222 1.09 2.253 1.427 2.63 1.585.283.117.62.1.827-.126.267-.29.601-.771.943-1.244.243-.339.55-.383.923-.246.373.137 2.359 1.112 2.762 1.315.402.202.67.303.767.472.098.169.098.981-.215 1.864z"/></svg>
+        Entrar na comunidade
+      </a>
+    </div>
+  </header>
+
+  <!-- CONTROLES -->
+  <div id="plataformas" style="max-width: 1180px; margin: 0 auto; padding: 0 20px 24px; position: sticky; top: 54px; z-index: 10; background: linear-gradient(#0B0D10 82%, transparent); scroll-margin-top: 60px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; background: #14171B; border: 1px solid #22262B; border-radius: 16px; padding: 12px 14px;">
+      <input value="{{ search }}" onChange="{{ onSearch }}" placeholder="Buscar plataforma..." style="flex: 1; min-width: 140px; background: #0B0D10; border: 1px solid #22262B; border-radius: 10px; padding: 10px 14px; color: white; font-size: 14px; outline: none;" />
+      <select value="{{ category }}" onChange="{{ onCategory }}" style="background: #0B0D10; border: 1px solid #22262B; border-radius: 10px; padding: 10px 12px; color: #E7E7E7; font-size: 13px; outline: none;">
+        <sc-for list="{{ categoryOptions }}" as="opt" hint-placeholder-count="5">
+          <option value="{{ opt }}">{{ opt }}</option>
+        </sc-for>
+      </select>
+      <select value="{{ sort }}" onChange="{{ onSort }}" style="background: #0B0D10; border: 1px solid #22262B; border-radius: 10px; padding: 10px 12px; color: #E7E7E7; font-size: 13px; outline: none;">
+        <option value="nota">Maior nota</option>
+        <option value="taxa">Maior taxa/h</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- GRID -->
+  <main style="max-width: 1180px; margin: 0 auto; padding: 0 20px 40px;">
+    <sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}">
+      <div class="platforms-grid">
+        <sc-for list="{{ platforms }}" as="p" hint-placeholder-count="8">
+          <div style="background: #14171B; border: {{ p.isHighlighted ? '2px solid #E8600A' : '1px solid ' + p.borderColor }}; border-radius: 18px; padding: 20px; transition: border-color .15s; box-shadow: {{ p.isHighlighted ? '0 0 16px rgba(232, 96, 10, 0.2)' : 'none' }}; position: relative; {{ p.posStyle }} {{ p.displayStyle }}">
+            <sc-if value="{{ p.isHighlighted }}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; top: -12px; left: 20px; background: #E8600A; color: #0B0D10; font-size: 10px; font-weight: 700; letter-spacing: 0.03em; padding: 4px 10px; border-radius: 999px; line-height: 1.4; white-space: nowrap; display: flex; align-items: center; justify-content: center; box-shadow: none; text-shadow: none; filter: none;">RECOMENDAÇÃO DO DOLLAR</div>
+            </sc-if>
+            <div onClick="{{ p.toggle }}" style="cursor: pointer; {{ p.isHighlighted ? 'margin-top: 8px;' : '' }}">
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+                <div style="width: 40px; height: 40px; border-radius: 10px; background: {{ p.avatarBg }}; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <sc-if value="{{ p.logo }}" hint-placeholder-val="{{ false }}">
+                    <img src="{{ p.logo }}" alt="{{ p.name }}" style="width: 100%; height: 100%; object-fit: cover;" />
+                  </sc-if>
+                  <sc-if value="{{ p.noLogo }}" hint-placeholder-val="{{ false }}">
+                    <span style="color: white; font-weight: 700; font-size: 16px;">{{ p.initial }}</span>
+                  </sc-if>
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-size: 16px; font-weight: 700; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ p.name }}</div>
+                  <div style="font-size: 12px; color: #9aa0a6;">{{ p.category }}</div>
+                </div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #6b7280; flex-shrink: 0;">{{ p.chevron }}</div>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <span style="color: #E8600A; font-size: 14px; letter-spacing: 1px;">{{ p.starsDisplay }}</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9aa0a6;">{{ p.notaDisplay }}</span>
+                </div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 700; color: white;">{{ p.taxaDisplay }}</div>
+              </div>
+              <div style="display: flex; gap: 6px; margin-top: 8px;">
+                <div style="display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; padding: 3px 10px; border-radius: 999px; background: {{ p.refBg }}; color: {{ p.refColor }};">{{ p.refLabel }}</div>
+                <div style="display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; padding: 3px 10px; border-radius: 999px; background: {{ p.bonusBg }}; color: {{ p.bonusColor }};">{{ p.bonusLabel }}</div>
+              </div>
+            </div>
+
+            <sc-if value="{{ p.expanded }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top: 18px; padding-top: 18px; border-top: 1px solid #22262B; display: flex; flex-direction: column; gap: 18px;">
+
+                <div>
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #E8600A; margin-bottom: 8px;">REVIEW</div>
+                  <p style="font-size: 13.5px; line-height: 1.6; color: #c9cdd1; margin: 0 0 14px;">{{ p.review }}</p>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <sc-if value="{{ p.hasReferral }}" hint-placeholder-val="{{ false }}">
+                      <a href="{{ p.refLink }}" target="_blank" style="background: #E8600A; color: #0B0D10; font-size: 13px; font-weight: 700; padding: 9px 16px; border-radius: 10px;">Acessar via meu link</a>
+                    </sc-if>
+                    <a href="{{ p.officialLink }}" target="_blank" style="background: {{ p.officialBg }}; border: 1px solid #22262B; color: {{ p.officialColor }}; font-size: 13px; font-weight: 700; padding: 9px 16px; border-radius: 10px;">Site oficial</a>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #E8600A; margin-bottom: 10px;">REQUISITOS TÉCNICOS</div>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px;">
+                    <div><div style="font-size: 11px; color: #6b7280; margin-bottom: 2px;">Duração do clipe</div><div style="font-size: 13px; color: #E7E7E7;">{{ p.duracao }}</div></div>
+                    <div><div style="font-size: 11px; color: #6b7280; margin-bottom: 2px;">Formato do vídeo</div><div style="font-size: 13px; color: #E7E7E7;">{{ p.formato }}</div></div>
+                    <div><div style="font-size: 11px; color: #6b7280; margin-bottom: 2px;">Visibilidade das mãos</div><div style="font-size: 13px; color: #E7E7E7;">{{ p.maos }}</div></div>
+                    <div><div style="font-size: 11px; color: #6b7280; margin-bottom: 2px;">Zoom / lente</div><div style="font-size: 13px; color: #E7E7E7;">{{ p.zoom }}</div></div>
+                  </div>
+                  <div style="margin-top: 10px;"><div style="font-size: 11px; color: #6b7280; margin-bottom: 2px;">Celulares compatíveis</div><div style="font-size: 13px; color: #E7E7E7;">{{ p.celulares }}</div></div>
+                </div>
+
+                <sc-if value="{{ p.bonus }}" hint-placeholder-val="{{ false }}">
+                <div>
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #E8600A; margin-bottom: 10px;">BÔNUS</div>
+                  <div style="display: flex; flex-direction: column; gap: 6px; max-height: 180px; overflow-y: auto; padding-right: 8px;">
+                    <sc-for list="{{ p.bonus }}" as="b" hint-placeholder-count="4">
+                      <div style="display: flex; justify-content: space-between; gap: 40px; font-size: 12.5px; padding: 5px 0; border-bottom: 1px solid #1a1d21;">
+                        <span style="color: #9aa0a6; flex-shrink: 0;">{{ b.req }}</span>
+                        <span style="color: #E7E7E7; flex-shrink: 0;">{{ b.reward }}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+                </sc-if>
+
+                <sc-if value="{{ p.referralInfo }}" hint-placeholder-val="{{ false }}">
+                <div>
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #E8600A; margin-bottom: 10px;">SISTEMA DE INDICAÇÃO</div>
+                  <p style="font-size: 13px; line-height: 1.6; color: #c9cdd1; margin: 0;">{{ p.referralInfo }}</p>
+                </div>
+                </sc-if>
+
+                <div>
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #E8600A; margin-bottom: 10px;">PAGAMENTO</div>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; margin-bottom: 10px;">
+                    <div><div style="font-size: 11px; color: #6b7280; margin-bottom: 2px;">Saque mínimo</div><div style="font-size: 13px; color: #E7E7E7;">{{ p.saqueMin }}</div></div>
+                    <div><div style="font-size: 11px; color: #6b7280; margin-bottom: 2px;">Tempo médio</div><div style="font-size: 13px; color: #E7E7E7;">{{ p.tempoPagamento }}</div></div>
+                  </div>
+                  <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                    <sc-for list="{{ p.metodos }}" as="m" hint-placeholder-count="2">
+                      <span style="font-size: 11px; font-weight: 600; background: #0B0D10; border: 1px solid #22262B; color: #c9cdd1; padding: 4px 10px; border-radius: 999px;">{{ m }}</span>
+                    </sc-for>
+                  </div>
+                </div>
+
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+      <div style="text-align: center; padding: 80px 20px; color: #6b7280;">
+        <div style="font-size: 32px; margin-bottom: 12px;">—</div>
+        <div style="font-size: 15px;">Nenhuma plataforma encontrada com esses filtros.</div>
+      </div>
+    </sc-if>
+  </main>
+
+  <!-- ESTIMATIVA -->
+  <section id="estimativa" style="max-width: 1180px; margin: 0 auto; padding: 48px 20px; scroll-margin-top: 60px;">
+    <div style="margin-bottom: 32px;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #E8600A; margin-bottom: 12px; font-weight: 600;">ESTIMATIVA</div>
+      <h2 class="section-title">Quanto você pode ganhar?</h2>
+      <p style="font-size: 16px; line-height: 1.6; color: #9aa0a6; margin: 0; max-width: 600px;">Você ganha pelas horas que grava e pelos bônus quando bate marcos. Arraste para estimar.</p>
+    </div>
+
+    <div style="display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap;">
+      <sc-for list="{{ estimatorPlatforms }}" as="ep" hint-placeholder-count="4">
+        <button onClick="{{ ep.select }}" style="display: flex; align-items: center; gap: 8px; background: {{ ep.bg }}; border: 1px solid {{ ep.border }}; border-radius: 999px; padding: 8px 16px 8px 8px; cursor: pointer;">
+          <sc-if value="{{ ep.noLogo }}" hint-placeholder-val="{{ false }}">
+            <div style="width: 24px; height: 24px; border-radius: 50%; background: {{ ep.avatarBg }}; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: white;">{{ ep.initial }}</div>
+          </sc-if>
+          <sc-if value="{{ ep.hasLogo }}" hint-placeholder-val="{{ false }}">
+            <img src="{{ ep.logo }}" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover;" />
+          </sc-if>
+          <span style="font-size: 13px; font-weight: 600; color: {{ ep.textColor }};">{{ ep.name }}</span>
+        </button>
+      </sc-for>
+    </div>
+
+    <div class="estimator-grid">
+      <!-- Lado esquerdo: Slider e breakdown -->
+      <div>
+        <div style="background: #14171B; border: 1px solid #22262B; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; font-size: 14px; color: #c9cdd1; margin-bottom: 16px; font-weight: 500;">Horas que você grava por dia</label>
+            <input type="range" min="0" max="12" step="0.5" value="{{ hoursPerDay }}" onChange="{{ onHoursChange }}" style="width: 100%; height: 6px; background: #22262B; border-radius: 3px; outline: none; -webkit-appearance: none; appearance: none;" />
+            <div style="display: flex; justify-content: space-between; margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6b7280;">
+              <span>0h</span>
+              <span>3h</span>
+              <span>6h</span>
+              <span>9h</span>
+              <span>12h</span>
+            </div>
+          </div>
+          <div class="hours-display" style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #E8600A; text-align: right;">{{ hoursPerDayDisplay }}/dia</div>
+        </div>
+
+        <div style="background: #14171B; border: 1px solid #22262B; border-radius: 16px; padding: 24px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #9aa0a6; text-transform: uppercase; margin-bottom: 20px; font-weight: 600;">Seu ganho na {{ estPlatformName }}</div>
+          
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #22262B;">
+              <span style="color: #c9cdd1;">Gravação · {{ hoursPerDayDisplay }}/dia × {{ estRateLabel }}</span>
+              <span style="color: #E7E7E7; font-family: 'JetBrains Mono', monospace; font-weight: 600;">{{ estCurrency }} {{ baseEarnings }}/dia</span>
+            </div>
+            <sc-if value="{{ hasBonusEarnings }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <sc-for list="{{ bonusBreakdown }}" as="bonus" hint-placeholder-count="2">
+                  <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+                    <span style="color: #9aa0a6;">Bônus {{ bonus.milestone }} (no mês)</span>
+                    <span style="color: #22c55e; font-family: 'JetBrains Mono', monospace; font-weight: 600;">+ {{ estCurrency }} {{ bonus.amountFormatted }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ hasLockedBonuses }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 8px; padding-top: 8px; border-top: 1px solid #22262B;">
+                <div style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">Próximos marcos (ainda não batidos)</div>
+                <sc-for list="{{ lockedBonuses }}" as="bonus" hint-placeholder-count="2">
+                  <div style="display: flex; justify-content: space-between; padding: 4px 0;">
+                    <span style="color: #6b7280;">Bônus {{ bonus.milestone }}</span>
+                    <span style="color: #6b7280; font-family: 'JetBrains Mono', monospace; font-weight: 600;">{{ estCurrency }} {{ bonus.amountFormatted }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ noBonusForPlatform }}" hint-placeholder-val="{{ false }}">
+              <div style="padding: 8px 0; font-size: 13px; color: #6b7280;">Esta plataforma não tem bônus por hora.</div>
+            </sc-if>
+            <sc-if value="{{ noBonusYet }}" hint-placeholder-val="{{ false }}">
+              <div style="padding: 8px 0; font-size: 13px; color: #6b7280;">{{ nextBonusHint }}</div>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lado direito: Total -->
+      <div class="estimator-total-card" style="background: #1a1d21; border-radius: 24px; padding: 40px; border: 1px solid #22262B;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; gap: 12px; flex-wrap: wrap;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #9aa0a6; text-transform: uppercase; font-weight: 600;">Estimativa mensal</div>
+          <button onClick="{{ onToggleCurrency }}" style="flex-shrink: 0; background: #14171B; border: 1px solid #22262B; border-radius: 999px; padding: 6px 14px; color: #E8600A; font-size: 12px; font-weight: 600; cursor: pointer; font-family: 'JetBrains Mono', monospace; white-space: nowrap;">{{ currencyToggleLabel }}</button>
+        </div>
+        <div class="total-amount" style="font-family: 'JetBrains Mono', monospace; font-weight: 800; color: white; margin-bottom: 24px; word-break: break-word;">{{ estCurrency }} {{ totalEarnings }}<span style="font-size: 0.4em; color: #6b7280; font-weight: 600;"> /mês</span></div>
+        <p style="font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 0;">{{ estFootnote }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-links" style="max-width: 1180px; margin: 0 auto; padding: 28px 20px 40px; border-top: 1px solid #16191d; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;">
+    <div style="font-size: 13px; color: #6b7280; max-width: 640px;">Alguns links são de indicação — se você se cadastrar por eles, eu posso ganhar uma comissão. Não custa nada mais pra você.</div>
+    <div style="display: flex; gap: 16px; font-size: 13px; flex-wrap: wrap;">
+      <a href="https://x.com/notaboutdollar" target="_blank" style="color: #9aa0a6;">X</a>
+      <a href="https://www.instagram.com/notaboutdollar" target="_blank" style="color: #9aa0a6;">Instagram</a>
+      <a href="https://www.youtube.com/@notaboutdollar" target="_blank" style="color: #9aa0a6;">YouTube</a>
+      <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank" style="color: #9aa0a6;">Comunidade</a>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  state = { openId: null, search: '', category: 'Todas', sort: 'nota', estimatorHoursPerDay: 3, estimatorPlatformId: 2, currencyMode: 'USD' };
+  DAYS_PER_MONTH = 30;
+  EXCHANGE_RATE = 5.08;
+
+  convertAmount(amount, fromCur, toCur) {
+    if (fromCur === toCur) return amount;
+    return fromCur === '$' ? Math.round(amount * this.EXCHANGE_RATE) : Math.round(amount / this.EXCHANGE_RATE);
+  }
+
+  getDisplayRate(platform, mode) {
+    const targetCur = mode === 'USD' ? '$' : 'R$';
+    if (platform.calcCurrency === targetCur) return { rate: platform.calcRate, currency: targetCur };
+    return { rate: this.convertAmount(platform.calcRate, platform.calcCurrency, targetCur), currency: targetCur };
+  }
+
+  data = [
+    { id: 1, name: 'Hub.xyz', category: 'Vídeo doméstico', temRef: true, nota: 4.8, taxa: 6, taxaLabel: '$5–6/h', hasReferralProgram: true, logo: './assets/logo-hub.png',
+      calcRate: 5, calcCurrency: '$', bonusCurrency: 'R$', calcBonuses: [
+        { threshold: 1, amount: 15, milestone: '1h' },
+        { threshold: 5, amount: 10, milestone: '5h' },
+        { threshold: 50, amount: 50, milestone: '50h' },
+      ],
+      bonus: [
+        { req: 'Tarefas turbinadas', reward: '$6/h (R$ 30/h)' },
+        { req: '1h', reward: 'Bônus de R$ 15' },
+        { req: '2h', reward: 'Bilhete de sorteio de R$ 2.500' },
+        { req: '5h', reward: 'Bônus de R$ 10' },
+        { req: '10h', reward: 'Bilhete de sorteio' },
+        { req: '20h', reward: 'Bilhete de sorteio de R$ 2.500' },
+        { req: '40h', reward: 'Status Premium Collector' },
+        { req: '50h', reward: 'Bônus de R$ 50' },
+        { req: '75h', reward: 'Bilhete mensal de sorteio de iPhone' },
+        { req: '100h', reward: 'Headstrap premium' },
+        { req: '200h', reward: 'Bilhete mensal de sorteio de iPhone' },
+      ],
+      referralInfo: 'Você ganha R$ 2,50 a cada hora do seu referido e R$ 1,25 a cada hora do referido do seu referido.',
+      review: 'É o que mais uso. Simples de usar, saca rápido e você pode sacar a hora que quiser. É a única que envia suporte de cabeça de graça (precisa entrar na whitelist). Sistema de indicação bem interessante — você ganha R$ 2,50 a cada hora do seu referido e R$ 1,25 a cada hora do referido do seu referido. Único que envia suporte de graça, mas precisa entrar na whitelist.',
+      duracao: 'Até 20 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis o tempo todo', zoom: '0.5x (grande angular)', celulares: 'iPhone 11+, Galaxy S20+, Pixel 5+',
+      saqueMin: 'R$ 25', tempoPagamento: '1 a 2 dias', metodos: ['Pix'],
+      refLink: 'https://ai.hub.xyz/r/DOLETA', officialLink: 'https://hub.xyz' },
+    { id: 2, name: 'Claru.ai', category: 'Vídeo doméstico', temRef: true, nota: 4.2, taxa: 6, taxaLabel: '$6/h', hasReferralProgram: true, logo: './assets/logo-claru.png',
+      calcRate: 6, calcCurrency: '$', calcBonuses: [
+        { threshold: 1, amount: 5, milestone: '1h' },
+        { threshold: 5, amount: 10, milestone: '5h' },
+        { threshold: 10, amount: 15, milestone: '10h' },
+        { threshold: 25, amount: 30, milestone: '25h' },
+        { threshold: 50, amount: 75, milestone: '50h' },
+        { threshold: 100, amount: 100, milestone: '100h' },
+        { threshold: 175, amount: 175, milestone: '175h' },
+        { threshold: 250, amount: 250, milestone: '250h' },
+        { threshold: 375, amount: 375, milestone: '375h' },
+        { threshold: 500, amount: 500, milestone: '500h' },
+        { threshold: 750, amount: 750, milestone: '750h' },
+        { threshold: 1000, amount: 1000, milestone: '1.000h' },
+      ],
+      bonus: [
+        { req: '1º clipe enviado', reward: '$5' },
+        { req: '1h', reward: '$5' },
+        { req: '5h', reward: '$10' },
+        { req: '10h', reward: '$15' },
+        { req: '25h', reward: '$30' },
+        { req: '50h', reward: '$75' },
+        { req: '100h', reward: '$100' },
+        { req: '175h', reward: '$175' },
+        { req: '250h', reward: '$250' },
+        { req: '375h', reward: '$375' },
+        { req: '500h', reward: '$500' },
+        { req: '750h', reward: '$750' },
+        { req: '1.000h', reward: '$1.000' },
+      ],
+      referralInfo: 'Você ganha $25 quando seu referido bate 5 horas.',
+      review: 'Tem o melhor bonus. Pagamento semanal. Pagamento por tarefa de anotação de texto, não por hora de vídeo. Boa quando tem tarefa disponível, mas a fila seca com frequência.',
+      duracao: 'Sessões de 15 a 45 min', formato: 'Baseado em texto, sem vídeo', maos: 'Não se aplica', zoom: 'Não se aplica', celulares: 'Funciona só via navegador desktop',
+      saqueMin: 'US$ 25', tempoPagamento: 'Semanal', metodos: ['PayPal'],
+      refLink: 'https://app.claru.ai/signup?ref=2d1cs845', officialLink: 'https://claru.ai' },
+    { id: 3, name: 'Crowtado', category: 'Vídeo doméstico', temRef: true, nota: 3.9, taxa: 8, taxaLabel: '$8/h', hasReferralProgram: true, logo: './assets/logo-crowtado.png',
+      calcRate: 8, calcCurrency: '$', calcBonuses: [],
+      bonus: [],
+      referralInfo: 'Você ganha $10 quando seu referido faz $50.',
+      review: 'O que paga mais por hora. Você avalia e compara respostas de modelos de IA — trabalho mais analítico. Análise dos vídeos e saque são um pouco lentos. Suporte não é bom.',
+      duracao: 'Sessões de 30 a 90 min', formato: 'Texto e áudio, via navegador', maos: 'Não se aplica', zoom: 'Não se aplica', celulares: 'Desktop recomendado, app mobile em beta',
+      saqueMin: 'US$ 30', tempoPagamento: 'Variável', metodos: ['Pix', 'Transferência internacional'],
+      refLink: 'https://www.crowtado.com/sign-up?ref=4T2L4ATC', officialLink: 'https://crowtado.com' },
+  ];
+
+  refMeta = {
+    com: { label: 'COM INDICAÇÃO', bg: 'rgba(34,197,94,0.12)', color: '#4ade80' },
+    sem: { label: 'SEM INDICAÇÃO', bg: 'rgba(148,163,184,0.1)', color: '#9aa0a6' },
+  };
+
+  avatarColors = { 'Vídeo doméstico': '#E8600A', 'Anotação de dados': '#2563eb', 'Avaliação de respostas': '#7c3aed', 'Expertise sob demanda': '#0d9488' };
+
+  getBonusBreakdown(platform, hours) {
+    return (platform.calcBonuses || []).filter(b => hours >= b.threshold);
+  }
+
+  stars(n) {
+    const full = Math.floor(n);
+    const half = n % 1 !== 0;
+    return '★'.repeat(full) + (half ? '⯪' : '') + '☆'.repeat(5 - full - (half ? 1 : 0));
+  }
+
+  renderVals() {
+    const s = this.state;
+    const hoursPerDay = s.estimatorHoursPerDay;
+    const monthlyHours = hoursPerDay * this.DAYS_PER_MONTH;
+    const estPlatform = this.data.find(p => p.id === s.estimatorPlatformId) || this.data[0];
+    const { rate: displayRate, currency: displayCurrency } = this.getDisplayRate(estPlatform, s.currencyMode);
+    const baseEarnings = Math.round(hoursPerDay * displayRate * 100) / 100;
+    const bonusCurrency = estPlatform.bonusCurrency || estPlatform.calcCurrency;
+    const bonusBreakdown = this.getBonusBreakdown(estPlatform, monthlyHours).map(b => {
+      const amount = this.convertAmount(b.amount, bonusCurrency, displayCurrency);
+      return { ...b, amount, amountFormatted: Math.round(amount).toLocaleString('pt-BR') };
+    });
+    const lockedBonuses = (estPlatform.calcBonuses || []).filter(b => monthlyHours < b.threshold).map(b => {
+      const amount = this.convertAmount(b.amount, bonusCurrency, displayCurrency);
+      return { ...b, amount, amountFormatted: Math.round(amount).toLocaleString('pt-BR') };
+    });
+    const bonusAmount = bonusBreakdown.reduce((sum, b) => sum + b.amount, 0);
+    const totalEarnings = Math.round((baseEarnings * this.DAYS_PER_MONTH + bonusAmount) * 100) / 100;
+
+    const q = s.search.trim().toLowerCase();
+    let list = this.data.filter(p => {
+      const matchQ = !q || p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q);
+      const matchCat = s.category === 'Todas' || p.category === s.category;
+      return matchQ && matchCat;
+    });
+    list = list.slice().sort((a, b) => s.sort === 'taxa' ? b.taxa - a.taxa : b.nota - a.nota);
+
+    const categoryOptions = ['Todas', ...new Set(this.data.map(p => p.category))];
+    const platformsRendered = list.map(p => ({ ...p, isHighlighted: p.id === 1 }));
+
+    return {
+      hoursPerDay,
+      hoursPerDayDisplay: `${hoursPerDay}h`,
+      baseEarnings: `${Math.round(baseEarnings * this.DAYS_PER_MONTH).toLocaleString('pt-BR')}`,
+      bonusBreakdown,
+      lockedBonuses,
+      hasLockedBonuses: lockedBonuses.length > 0,
+      hasBonusEarnings: bonusBreakdown.length > 0,
+      hasBonusSchedule: estPlatform.calcBonuses.length > 0,
+      noBonusForPlatform: estPlatform.calcBonuses.length === 0,
+      noBonusYet: estPlatform.calcBonuses.length > 0 && bonusBreakdown.length === 0,
+      nextBonusHint: estPlatform.calcBonuses.length > 0 && bonusBreakdown.length === 0 ? `Bata ${estPlatform.calcBonuses[0].milestone} no mês pra desbloquear o primeiro bônus.` : '',
+      totalEarnings: `${Math.round(totalEarnings).toLocaleString('pt-BR')}`,
+      formatAmount: (n) => Math.round(n).toLocaleString('pt-BR'),
+      estCurrency: displayCurrency,
+      estPlatformName: estPlatform.name,
+      estRateLabel: `${displayCurrency}${displayRate}/h`,
+      formatAmount: (n) => formatNumber(Math.round(n)),
+      estFootnote: bonusAmount > 0 ? `Estimativa baseada em gravar todos os dias do mês, incluindo ${displayCurrency} ${bonusAmount} em bônus desbloqueados nesse ritmo.` : (estPlatform.calcBonuses.length > 0 ? 'Aumente as horas por dia para desbloquear os bônus dessa plataforma no mês.' : 'Estimativa baseada em gravar todos os dias do mês, só na taxa por hora — essa plataforma não paga bônus.'),
+      currencyToggleLabel: s.currencyMode === 'USD' ? 'Ver em Dólares' : 'Ver em Reais',
+      onToggleCurrency: () => this.setState({ currencyMode: s.currencyMode === 'USD' ? 'BRL' : 'USD' }),
+      onHoursChange: (e) => this.setState({ estimatorHoursPerDay: parseFloat(e.target.value) }),
+      estimatorPlatforms: this.data.map(p => ({
+        id: p.id,
+        name: p.name,
+        logo: p.logo,
+        hasLogo: !!p.logo,
+        noLogo: !p.logo,
+        initial: p.name[0],
+        avatarBg: this.avatarColors[p.category] || '#E8600A',
+        select: () => this.setState({ estimatorPlatformId: p.id }),
+        bg: p.id === s.estimatorPlatformId ? 'rgba(232,96,10,0.12)' : '#14171B',
+        border: p.id === s.estimatorPlatformId ? '#E8600A' : '#22262B',
+        textColor: p.id === s.estimatorPlatformId ? '#E8600A' : '#c9cdd1',
+      })),
+      search: s.search,
+      onSearch: (e) => this.setState({ search: e.target.value }),
+      category: s.category,
+      onCategory: (e) => this.setState({ category: e.target.value }),
+      categoryOptions,
+      sort: s.sort,
+      onSort: (e) => this.setState({ sort: e.target.value }),
+      hasResults: platformsRendered.length > 0,
+      noResults: platformsRendered.length === 0,
+      platforms: platformsRendered.map(p => {
+        const expanded = s.openId === p.id;
+        const refMeta = this.refMeta[p.temRef ? 'com' : 'sem'];
+        return {
+          ...p,
+          initial: p.name[0],
+          noLogo: !p.logo,
+          avatarBg: p.logo ? '#0B0D10' : (this.avatarColors[p.category] || '#E8600A'),
+          refLabel: refMeta.label,
+          refBg: refMeta.bg,
+          refColor: refMeta.color,
+          starsDisplay: this.stars(p.nota),
+          notaDisplay: p.nota.toFixed(1),
+          taxaDisplay: p.taxaLabel,
+          borderColor: expanded ? '#E8600A' : '#22262B',
+          displayStyle: (s.openId && !expanded) ? 'display: none;' : '',
+          expanded,
+          chevron: expanded ? '−' : '+',
+          posStyle: expanded ? 'grid-column: 1 / -1;' : '',
+          hasReferral: p.refLink !== p.officialLink,
+          officialColor: p.refLink !== p.officialLink ? '#c9cdd1' : '#0B0D10',
+          officialBg: p.refLink !== p.officialLink ? 'transparent' : '#E8600A',
+          bonusLabel: p.bonus && p.bonus.length > 0 ? 'TEM BÔNUS' : 'SEM BÔNUS',
+          bonusBg: p.bonus && p.bonus.length > 0 ? 'rgba(232,96,10,0.12)' : 'rgba(148,163,184,0.1)',
+          bonusColor: p.bonus && p.bonus.length > 0 ? '#E8600A' : '#9aa0a6',
+          toggle: () => this.setState(st => ({ openId: st.openId === p.id ? null : p.id })),
+        };
+      }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
