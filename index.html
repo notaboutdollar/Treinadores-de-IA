@@ -35,6 +35,7 @@
   @media (max-width: 720px) {
     .platforms-grid { grid-template-columns: 1fr; }
     .estimator-grid { grid-template-columns: 1fr; gap: 20px; }
+    .pros-cons-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
     .hero-title { font-size: 36px; }
     .section-title { font-size: 30px; }
     .total-amount { font-size: 44px; }
@@ -188,12 +189,16 @@ const data = [
       { req: '200h', reward: 'Bilhete mensal de sorteio de iPhone' },
     ],
     referralInfo: 'Você ganha R$ 2,50 a cada hora do seu referido e R$ 1,25 a cada hora do referido do seu referido.',
-    estReview: { highlight: 'velocidade e suporte', items: [
-      { icon: '⚡', text: 'O vídeo aparece na plataforma mais rápido que as outras duas' },
-      { icon: '🎧', text: 'Suporte: o melhor entre as opções, ativo no Telegram' },
-      { icon: '💰', text: 'Pagamento: o que paga menos ($5/h)' },
-      { icon: '💵', text: 'Saque: mínimo de R$ 25 (≈ $5)' },
-    ] },
+    estReview: { highlight: 'velocidade e suporte',
+      pros: [
+        { icon: '⚡', text: 'O vídeo aparece na plataforma mais rápido que as outras duas' },
+        { icon: '🎧', text: 'Suporte: o melhor entre as opções, ativo no Telegram' },
+        { icon: '💵', text: 'Saque: mínimo de R$ 25 (≈ $5)' },
+      ],
+      cons: [
+        { icon: '💰', text: 'Pagamento: o que paga menos ($5/h)' },
+      ],
+    },
     review: 'É o que mais uso. Simples de usar, saca rápido e você pode sacar a hora que quiser. É a única que envia suporte de cabeça de graça (precisa entrar na whitelist). Sistema de indicação bem interessante — você ganha R$ 2,50 a cada hora do seu referido e R$ 1,25 a cada hora do referido do seu referido. Único que envia suporte de graça, mas precisa entrar na whitelist.',
     duracao: 'Até 20 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis o tempo todo', zoom: '0.5x (grande angular)', celulares: 'iPhone 11+, Galaxy S20+, Pixel 5+',
     saqueMin: 'R$ 25', tempoPagamento: '1 a 2 dias', metodos: ['Pix'],
@@ -229,12 +234,17 @@ const data = [
       { req: '1.000h', reward: '$1.000' },
     ],
     referralInfo: 'Você ganha $25 quando seu referido bate 5 horas.',
-    estReview: { highlight: 'bônus de horas', items: [
-      { icon: '💰', text: 'Pagamento: na média ($6/h), porém possui muitos bônus por meta batida.' },
-      { icon: '⚡', text: 'Vídeo demora pra aparecer na plataforma pra ser avaliado (mesmo problema do Crowtado)' },
-      { icon: '🎧', text: 'Suporte: ativo no Discord' },
-      { icon: '💵', text: 'Saque: semanal (toda terça), mínimo $50 (≈ R$ 250)' },
-    ] },
+    estReview: { highlight: 'bônus de horas',
+      pros: [
+        { icon: '💰', text: 'Pagamento na média ($6/h), porém possui muitos bônus por meta batida.' },
+        { icon: '🎧', text: 'Suporte: ativo no Discord' },
+        { icon: '📅', text: 'Saque semanal (toda terça)' },
+      ],
+      cons: [
+        { icon: '⚡', text: 'Vídeo demora pra aparecer na plataforma pra ser avaliado (mesmo problema do Crowtado)' },
+        { icon: '💵', text: 'Saque mínimo alto: $50 (≈ R$ 250)' },
+      ],
+    },
     review: 'Tem o melhor bonus. Pagamento semanal. Pagamento por tarefa de anotação de texto, não por hora de vídeo. Boa quando tem tarefa disponível, mas a fila seca com frequência.',
     duracao: 'Sessões de 15 a 45 min', formato: 'Baseado em texto, sem vídeo', maos: 'Não se aplica', zoom: 'Não se aplica', celulares: 'Funciona só via navegador desktop',
     saqueMin: 'US$ 25', tempoPagamento: 'Semanal', metodos: ['PayPal'],
@@ -243,12 +253,16 @@ const data = [
     calcRate: 8, calcCurrency: '$', calcBonuses: [],
     bonus: [],
     referralInfo: 'Você ganha $10 quando seu referido faz $50.',
-    estReview: { highlight: 'pagamento', items: [
-      { icon: '💰', text: 'Pagamento: o que paga mais ($8/h)' },
-      { icon: '⚡', text: 'Vídeo demora pra aparecer na plataforma e ser avaliado' },
-      { icon: '🎧', text: 'Suporte: o pior das três, não encontrei alguém que recebeu um bom suporte.' },
-      { icon: '💵', text: 'Saque: mínimo $10 (≈ R$ 50)' },
-    ] },
+    estReview: { highlight: 'pagamento',
+      pros: [
+        { icon: '💰', text: 'Pagamento: o que paga mais ($8/h)' },
+        { icon: '💵', text: 'Saque mínimo baixo: $10 (≈ R$ 50)' },
+      ],
+      cons: [
+        { icon: '⚡', text: 'Vídeo demora pra aparecer na plataforma e ser avaliado' },
+        { icon: '🎧', text: 'Suporte: o pior das três, não encontrei alguém que recebeu um bom suporte.' },
+      ],
+    },
     review: 'O que paga mais por hora. Você avalia e compara respostas de modelos de IA — trabalho mais analítico. Análise dos vídeos e saque são um pouco lentos. Suporte não é bom.',
     duracao: 'Sessões de 30 a 90 min', formato: 'Texto e áudio, via navegador', maos: 'Não se aplica', zoom: 'Não se aplica', celulares: 'Desktop recomendado, app mobile em beta',
     saqueMin: 'US$ 10', tempoPagamento: 'Variável', metodos: ['Pix', 'Transferência internacional'],
@@ -405,10 +419,26 @@ function renderEstimator() {
   const estReviewEl = document.getElementById('estimatorReview');
   if (estPlatform.estReview) {
     const r = estPlatform.estReview;
-    const bullets = r.items.map(i => `<li style="display: flex; gap: 10px; padding: 4px 0; align-items: flex-start;"><span style="font-size: 15px; line-height: 1.4; flex-shrink: 0;">${i.icon}</span><span>${esc(i.text)}</span></li>`).join('');
+    const renderList = (items) => items.map(i => `<li style="display: flex; gap: 10px; padding: 5px 0; align-items: flex-start; font-size: 13.5px; line-height: 1.5; color: #c9cdd1;"><span style="font-size: 15px; line-height: 1.4; flex-shrink: 0;">${i.icon}</span><span>${esc(i.text)}</span></li>`).join('');
+    const prosHtml = r.pros && r.pros.length ? `
+      <div>
+        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+          <span style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: rgba(34,197,94,0.15); color: #4ade80; font-size: 11px; font-weight: 700;">+</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4ade80; font-weight: 700;">Pontos positivos</span>
+        </div>
+        <ul style="list-style: none; margin: 0; padding: 0;">${renderList(r.pros)}</ul>
+      </div>` : '';
+    const consHtml = r.cons && r.cons.length ? `
+      <div>
+        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+          <span style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: rgba(239,68,68,0.15); color: #f87171; font-size: 11px; font-weight: 700;">−</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #f87171; font-weight: 700;">Pontos negativos</span>
+        </div>
+        <ul style="list-style: none; margin: 0; padding: 0;">${renderList(r.cons)}</ul>
+      </div>` : '';
     estReviewEl.innerHTML = `
-      <div style="display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #E8600A; background: rgba(232,96,10,0.12); padding: 4px 10px; border-radius: 999px; margin-bottom: 12px; font-weight: 700;">Destaque: ${esc(r.highlight)}</div>
-      <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px;">${bullets}</ul>
+      <div style="display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #E8600A; background: rgba(232,96,10,0.12); padding: 4px 10px; border-radius: 999px; margin-bottom: 14px; font-weight: 700;">Destaque: ${esc(r.highlight)}</div>
+      <div class="pros-cons-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">${prosHtml}${consHtml}</div>
     `;
   } else {
     estReviewEl.innerHTML = '';
