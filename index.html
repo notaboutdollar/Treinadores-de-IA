@@ -442,7 +442,7 @@ function renderEstimator() {
     estReviewEl.innerHTML = '';
   }
   document.getElementById('totalAmount').innerHTML = `${displayCurrency} ${fmt(totalEarnings)}<span style="font-size: 0.4em; color: #6b7280; font-weight: 600;"> /mês</span>`;
-  document.getElementById('currencyToggle').textContent = state.currencyMode === 'USD' ? 'Ver em Dólares' : 'Ver em Reais';
+  document.getElementById('currencyToggle').textContent = state.currencyMode === 'USD' ? 'Ver em Reais' : 'Ver em Dólares';
 
   const footnote = bonusAmount > 0
     ? `Estimativa baseada em gravar todos os dias do mês, incluindo ${displayCurrency} ${bonusAmount} em bônus desbloqueados nesse ritmo.`
