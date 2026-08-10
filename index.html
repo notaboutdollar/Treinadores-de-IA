@@ -102,12 +102,21 @@
     <div style="margin-bottom: 32px;">
       <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #E8600A; margin-bottom: 12px; font-weight: 600;">ESTIMATIVA</div>
       <h2 class="section-title">Quanto você pode ganhar?</h2>
-      <p style="font-size: 16px; line-height: 1.6; color: #9aa0a6; margin: 0; max-width: 600px;">Você ganha pelas horas que grava e pelos bônus quando bate marcos. Arraste para estimar.</p>
+      <p style="font-size: 16px; line-height: 1.6; color: #9aa0a6; margin: 0; max-width: 600px;">Você ganha pelas horas que grava e pelos bônus quando bate marcos. Clique em cada projeto e faça uma previsão de quanto você pode fazer no mês.</p>
     </div>
 
-    <div id="estimatorPlatforms" style="display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap;"></div>
+    <div id="estimatorPlatforms" style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;"></div>
+
+    <div id="estimatorReview" style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 14px 18px; margin-bottom: 28px; font-size: 14px; line-height: 1.55; color: #c9cdd1;"></div>
 
     <div class="estimator-grid">
+      <div>
+        <div style="background: #14171B; border: 1px solid #22262B; border-radius: 16px; padding: 24px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #9aa0a6; text-transform: uppercase; margin-bottom: 20px; font-weight: 600;">Seu ganho na <span id="estPlatformName"></span></div>
+          <div id="earningsBreakdown" style="display: flex; flex-direction: column; gap: 12px;"></div>
+        </div>
+      </div>
+
       <div>
         <div style="background: #14171B; border: 1px solid #22262B; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
           <div style="margin-bottom: 20px;">
@@ -120,19 +129,14 @@
           <div id="hoursDisplay" class="hours-display" style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #E8600A; text-align: right;"></div>
         </div>
 
-        <div style="background: #14171B; border: 1px solid #22262B; border-radius: 16px; padding: 24px;">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #9aa0a6; text-transform: uppercase; margin-bottom: 20px; font-weight: 600;">Seu ganho na <span id="estPlatformName"></span></div>
-          <div id="earningsBreakdown" style="display: flex; flex-direction: column; gap: 12px;"></div>
+        <div class="estimator-total-card" style="background: #1a1d21; border-radius: 24px; padding: 40px; border: 1px solid #22262B;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; gap: 12px; flex-wrap: wrap;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #9aa0a6; text-transform: uppercase; font-weight: 600;">Estimativa mensal</div>
+            <button id="currencyToggle" style="flex-shrink: 0; background: #14171B; border: 1px solid #22262B; border-radius: 999px; padding: 6px 14px; color: #E8600A; font-size: 12px; font-weight: 600; cursor: pointer; font-family: 'JetBrains Mono', monospace; white-space: nowrap;"></button>
+          </div>
+          <div id="totalAmount" class="total-amount" style="font-family: 'JetBrains Mono', monospace; font-weight: 800; color: white; margin-bottom: 24px; word-break: break-word;"></div>
+          <p id="estFootnote" style="font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 0;"></p>
         </div>
-      </div>
-
-      <div class="estimator-total-card" style="background: #1a1d21; border-radius: 24px; padding: 40px; border: 1px solid #22262B;">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; gap: 12px; flex-wrap: wrap;">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #9aa0a6; text-transform: uppercase; font-weight: 600;">Estimativa mensal</div>
-          <button id="currencyToggle" style="flex-shrink: 0; background: #14171B; border: 1px solid #22262B; border-radius: 999px; padding: 6px 14px; color: #E8600A; font-size: 12px; font-weight: 600; cursor: pointer; font-family: 'JetBrains Mono', monospace; white-space: nowrap;"></button>
-        </div>
-        <div id="totalAmount" class="total-amount" style="font-family: 'JetBrains Mono', monospace; font-weight: 800; color: white; margin-bottom: 24px; word-break: break-word;"></div>
-        <p id="estFootnote" style="font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 0;"></p>
       </div>
     </div>
   </section>
@@ -181,6 +185,7 @@ const data = [
       { req: '200h', reward: 'Bilhete mensal de sorteio de iPhone' },
     ],
     referralInfo: 'Você ganha R$ 2,50 a cada hora do seu referido e R$ 1,25 a cada hora do referido do seu referido.',
+    shortReview: 'É o que paga menos, mas é o que aprova mais rápido, tem o melhor suporte, você consegue sacar com apenas 25 reais.',
     review: 'É o que mais uso. Simples de usar, saca rápido e você pode sacar a hora que quiser. É a única que envia suporte de cabeça de graça (precisa entrar na whitelist). Sistema de indicação bem interessante — você ganha R$ 2,50 a cada hora do seu referido e R$ 1,25 a cada hora do referido do seu referido. Único que envia suporte de graça, mas precisa entrar na whitelist.',
     duracao: 'Até 20 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis o tempo todo', zoom: '0.5x (grande angular)', celulares: 'iPhone 11+, Galaxy S20+, Pixel 5+',
     saqueMin: 'R$ 25', tempoPagamento: '1 a 2 dias', metodos: ['Pix'],
@@ -216,6 +221,7 @@ const data = [
       { req: '1.000h', reward: '$1.000' },
     ],
     referralInfo: 'Você ganha $25 quando seu referido bate 5 horas.',
+    shortReview: 'O que tem mais bônus, demora um pouco para aprovar, saque semanal toda terça, saque mínimo $50, suporte ativo no Discord.',
     review: 'Tem o melhor bonus. Pagamento semanal. Pagamento por tarefa de anotação de texto, não por hora de vídeo. Boa quando tem tarefa disponível, mas a fila seca com frequência.',
     duracao: 'Sessões de 15 a 45 min', formato: 'Baseado em texto, sem vídeo', maos: 'Não se aplica', zoom: 'Não se aplica', celulares: 'Funciona só via navegador desktop',
     saqueMin: 'US$ 25', tempoPagamento: 'Semanal', metodos: ['PayPal'],
@@ -224,6 +230,7 @@ const data = [
     calcRate: 8, calcCurrency: '$', calcBonuses: [],
     bonus: [],
     referralInfo: 'Você ganha $10 quando seu referido faz $50.',
+    shortReview: 'O que paga mais, porém é o que tem o pior suporte, demora às vezes pra aprovar.',
     review: 'O que paga mais por hora. Você avalia e compara respostas de modelos de IA — trabalho mais analítico. Análise dos vídeos e saque são um pouco lentos. Suporte não é bom.',
     duracao: 'Sessões de 30 a 90 min', formato: 'Texto e áudio, via navegador', maos: 'Não se aplica', zoom: 'Não se aplica', celulares: 'Desktop recomendado, app mobile em beta',
     saqueMin: 'US$ 30', tempoPagamento: 'Variável', metodos: ['Pix', 'Transferência internacional'],
@@ -377,6 +384,7 @@ function renderEstimator() {
 
   document.getElementById('hoursDisplay').textContent = `${hoursPerDay}h/dia`;
   document.getElementById('estPlatformName').textContent = estPlatform.name;
+  document.getElementById('estimatorReview').textContent = estPlatform.shortReview || '';
   document.getElementById('totalAmount').innerHTML = `${displayCurrency} ${fmt(totalEarnings)}<span style="font-size: 0.4em; color: #6b7280; font-weight: 600;"> /mês</span>`;
   document.getElementById('currencyToggle').textContent = state.currencyMode === 'USD' ? 'Ver em Dólares' : 'Ver em Reais';
 
