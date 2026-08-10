@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Treinadores de IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      background: #0B0D10; 
+      color: #fff; 
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { opacity: 0.8; }
+    
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(11, 13, 16, 0.95);
+      backdrop-filter: blur(10px);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: #E8600A;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: #0B0D10;
+    }
+    nav {
+      display: flex;
+      gap: 32px;
+      font-size: 14px;
+    }
+    nav a {
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    nav a:hover {
+      opacity: 1;
+    }
+    
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+      padding: 140px 40px 80px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .hero-content h1 {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .hero-content p {
+      font-size: 16px;
+      line-height: 1.6;
+      opacity: 0.8;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1ABC9C;
+      padding: 14px 28px;
+      border-radius: 24px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+    }
+    .cta-button:hover {
+      background: #16a085;
+      transform: translateY(-2px);
+    }
+    .hero-image {
+      position: relative;
+      height: 500px;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    
+    .search-section {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .search-bar {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .search-input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 14px 20px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 14px;
+    }
+    .search-input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+    .filter-select {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 12px 16px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    
+    .platforms {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      padding: 0 40px 80px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .platform-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.3s;
+    }
+    .platform-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(232, 96, 10, 0.5);
+    }
+    .platform-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .platform-info {
+      flex: 1;
+    }
+    .platform-name {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .platform-type {
+      font-size: 13px;
+      opacity: 0.6;
+    }
+    .platform-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(232, 96, 10, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 12px 0;
+      font-size: 13px;
+    }
+    .stars {
+      color: #E8600A;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+    .badge-green {
+      background: rgba(26, 188, 156, 0.2);
+      color: #1ABC9C;
+    }
+    .badge-orange {
+      background: rgba(232, 96, 10, 0.2);
+      color: #E8600A;
+    }
+    .price {
+      font-size: 16px;
+      font-weight: 600;
+      color: #E8600A;
+      margin-top: 16px;
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 16px 20px;
+      }
+      nav {
+        display: none;
+      }
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 120px 20px 60px;
+        gap: 40px;
+      }
+      .hero-content h1 {
+        font-size: 36px;
+      }
+      .hero-content p {
+        font-size: 15px;
+      }
+      .hero-image {
+        height: 300px;
+      }
+      .search-section, .platforms {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .platforms {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="logo-icon">TI</div>
+      <span>TREINADORES DE IA</span>
+    </div>
+    <nav>
+      <a href="#plataformas">Plataformas</a>
+      <a href="#estimativa">Estimativa</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Ganhe treinando IA.</h1>
+      <p>Curadoria pessoal de plataformas que pagam por treinamento de inteligência artificial — vídeo, anotação de dados, avaliação de respostas. Cada card tem minha nota, minha opinião e o link de indicação de quem eu realmente uso.</p>
+      <button class="cta-button">
+        <span>↗</span>
+        <span>Entrar na comunidade</span>
+      </button>
+    </div>
+    <div class="hero-image">
+      <img src="pfp.png" alt="Robot with money">
+    </div>
+  </section>
+
+  <section class="search-section">
+    <div class="search-bar">
+      <input type="text" class="search-input" placeholder="Buscar plataforma...">
+      <select class="filter-select">
+        <option>Todas</option>
+        <option>Vídeo</option>
+        <option>Anotação</option>
+        <option>Avaliação</option>
+      </select>
+      <select class="filter-select">
+        <option>Maior nota</option>
+        <option>Maior preço</option>
+        <option>Menor preço</option>
+      </select>
+    </div>
+
+    <div style="padding: 12px 16px; background: rgba(232, 96, 10, 0.1); border-radius: 6px; font-size: 13px; color: #E8600A; font-weight: 600;">
+      ⭐ RECOMENDAÇÃO DO DÓLAR
+    </div>
+  </section>
+
+  <section class="platforms">
+    <div class="platform-card">
+      <div class="platform-header">
+        <div class="platform-info">
+          <div class="platform-name">Hub.xyz</div>
+          <div class="platform-type">Vídeo doméstico</div>
+        </div>
+        <div class="platform-icon">🎥</div>
+      </div>
+      <div class="rating">
+        <span class="stars">★★★★☆</span>
+        <span>4.8</span>
+      </div>
+      <div style="display: flex; gap: 8px; margin-top: 12px;">
+        <span class="badge badge-green">COM INDICAÇÃO</span>
+        <span class="badge badge-orange">TEM BÔNUS</span>
+      </div>
+      <div class="price">$5-6/h</div>
+    </div>
+
+    <div class="platform-card">
+      <div class="platform-header">
+        <div class="platform-info">
+          <div class="platform-name">Claru.ai</div>
+          <div class="platform-type">Vídeo doméstico</div>
+        </div>
+        <div class="platform-icon">🎬</div>
+      </div>
+      <div class="rating">
+        <span class="stars">★★★★☆</span>
+        <span>4.2</span>
+      </div>
+      <div style="display: flex; gap: 8px; margin-top: 12px;">
+        <span class="badge badge-green">COM INDICAÇÃO</span>
+        <span class="badge badge-orange">TEM BÔNUS</span>
+      </div>
+      <div class="price">$6/h</div>
+    </div>
+
+    <div class="platform-card">
+      <div class="platform-header">
+        <div class="platform-info">
+          <div class="platform-name">Crowtado</div>
+          <div class="platform-type">Vídeo doméstico</div>
+        </div>
+        <div class="platform-icon">👥</div>
+      </div>
+      <div class="rating">
+        <span class="stars">★★★☆☆</span>
+        <span>3.9</span>
+      </div>
+      <div style="display: flex; gap: 8px; margin-top: 12px;">
+        <span class="badge badge-green">COM INDICAÇÃO</span>
+        <span class="badge" style="background: rgba(255, 255, 255, 0.05); color: rgba(255, 255, 255, 0.5);">SEM BÔNUS</span>
+      </div>
+      <div class="price">$8/h</div>
+    </div>
+  </section>
+</body>
+</html>
