@@ -704,15 +704,15 @@ function renderPlatBody(p, hasBonus) {
           <div class="step-num">2</div>
           <div class="step-body step-inline"><span style="flex: 1; min-width: 140px;">Cadastre pelo meu link de indicação.</span><a class="btn btn-accent" style="padding: 8px 14px; font-size: 12.5px;" href="${p.refLink}" target="_blank">Cadastrar na ${esc(p.name)} →</a></div>
         </div>
-        ${p.orgCode ? `
         <div class="step">
           <div class="step-num">3</div>
-          <div class="step-body step-inline"><span style="flex: 1; min-width: 140px;">Coloque o código de organização.</span><button class="code-chip copy-code" data-code="${esc(p.orgCode)}" data-orig="${codeOrig}">${codeOrig}</button></div>
-        </div>` : ''}
-        <div class="step">
-          <div class="step-num">${p.orgCode ? '4' : '3'}</div>
           <div class="step-body">Baixe o <strong>Minute</strong>, o app que você vai usar pra gravar os vídeos (App Store e Play Store).</div>
         </div>
+        ${p.orgCode ? `
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body step-inline"><span style="flex: 1; min-width: 140px;">Coloque o código de organização.</span><button class="code-chip copy-code" data-code="${esc(p.orgCode)}" data-orig="${codeOrig}">${codeOrig}</button></div>
+        </div>` : ''}
         <div class="step">
           <div class="step-num">${p.orgCode ? '5' : '4'}</div>
           <div class="step-body">Depois de cadastrado, <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">entra na comunidade</a> que a gente te ajuda a configurar tudo.</div>
