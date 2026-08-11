@@ -81,9 +81,11 @@
 
   /* Chapter section */
   section.chapter { padding: 72px 0; border-top: 1px solid var(--line); }
-  .chap-head { display: grid; grid-template-columns: 200px 1fr; gap: 40px; margin-bottom: 44px; align-items: start; }
-  .chap-num { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; color: var(--accent); font-weight: 600; }
-  .chap-tag { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .chap-head { max-width: 720px; margin: 0 0 44px; }
+  .chap-eyebrow { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+  .chap-num { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; color: var(--accent); font-weight: 700; text-transform: uppercase; }
+  .chap-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .chap-tag::before { content: '·'; margin-right: 10px; color: var(--line-strong); }
 
   /* Platforms */
   .plat-list { display: flex; flex-direction: column; gap: 20px; }
@@ -215,7 +217,7 @@
 
   @media (max-width: 900px) {
     .hero-grid { grid-template-columns: 1fr; gap: 32px; }
-    .chap-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 32px; }
+    .chap-head { margin-bottom: 32px; }
     .kv-grid { grid-template-columns: repeat(2, 1fr); }
     .est-grid { grid-template-columns: 1fr; }
     .total-card { position: static; padding: 28px; }
@@ -257,9 +259,9 @@
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <div class="eyebrow-accent" style="margin-bottom: 20px;">— Curadoria pessoal</div>
+        <div class="eyebrow-accent" style="margin-bottom: 20px;">CURADORIA PESSOAL</div>
         <h1 class="h1">Ganhe em dólar<br/>treinando IA.</h1>
-        <p class="lead" style="margin: 0 0 32px;">Existe um mercado silencioso em que você grava tarefas domésticas simples — lavar louça, dobrar roupa, cozinhar — e é pago em dólar por hora gravada. Os vídeos treinam a próxima geração de IA e robôs domésticos.</p>
+        <p class="lead" style="margin: 0 0 32px;">Existe um mercado silencioso onde você grava tarefas domésticas simples (como lavar louça, dobrar roupa ou cozinhar) e recebe em dólar por hora gravada. Os vídeos servem pra treinar a próxima geração de IA e robôs domésticos.</p>
         <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px;">
           <a class="btn btn-wa" href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">
             <svg width="16" height="16" viewBox="0 0 32 32"><path fill="#fff" d="M16.004 3.2c-7.076 0-12.8 5.724-12.8 12.8 0 2.263.596 4.484 1.727 6.437L3.2 28.8l6.552-1.696c1.867 1.02 3.98 1.555 6.132 1.555h.005c7.075 0 12.8-5.724 12.8-12.8s-5.724-12.66-12.685-12.66zm7.475 18.09c-.313.883-1.55 1.62-2.146 1.706-.549.08-1.24.114-1.998-.126-.462-.147-1.058-.343-1.822-.671-3.207-1.385-5.298-4.596-5.457-4.808-.16-.212-1.303-1.735-1.303-3.309 0-1.574.826-2.35 1.117-2.671.29-.32.635-.4.847-.4.212 0 .424.002.61.011.196.01.457-.074.716.546.264.635.898 2.187.978 2.346.08.16.133.347.026.559-.107.212-.16.346-.32.532-.16.187-.336.417-.48.56-.16.16-.327.334-.14.653.186.32.828 1.363 1.777 2.208 1.222 1.09 2.253 1.427 2.63 1.585.283.117.62.1.827-.126.267-.29.601-.771.943-1.244.243-.339.55-.383.923-.246.373.137 2.359 1.112 2.762 1.315.402.202.67.303.767.472.098.169.098.981-.215 1.864z"/></svg>
@@ -307,14 +309,12 @@
 <section id="plataformas" class="chapter">
   <div class="wrap">
     <div class="chap-head">
-      <div>
-        <div class="chap-num">01 · Plataformas</div>
-        <div class="chap-tag">3 opções testadas</div>
+      <div class="chap-eyebrow">
+        <span class="chap-num">01 · Plataformas</span>
+        <span class="chap-tag">3 opções testadas</span>
       </div>
-      <div>
-        <h2 class="h2">As plataformas que eu uso.</h2>
-        <p class="lead">Testei, gravei e saquei em cada uma. Clique num card pra ver review completo, requisitos técnicos, bônus e o passo a passo pra se cadastrar.</p>
-      </div>
+      <h2 class="h2">As plataformas que eu uso.</h2>
+      <p class="lead">Testei, gravei e saquei em cada uma. Clique num card pra ver o review completo, os requisitos técnicos, os bônus e o passo a passo pra se cadastrar.</p>
     </div>
 
     <div id="platformsList" class="plat-list"></div>
@@ -325,14 +325,12 @@
 <section id="ganhar" class="chapter">
   <div class="wrap">
     <div class="chap-head">
-      <div>
-        <div class="chap-num">02 · Estimativa</div>
-        <div class="chap-tag">calcule seu ganho</div>
+      <div class="chap-eyebrow">
+        <span class="chap-num">02 · Estimativa</span>
+        <span class="chap-tag">calcule seu ganho</span>
       </div>
-      <div>
-        <h2 class="h2">Quanto dá pra ganhar?</h2>
-        <p class="lead">Você ganha pelas horas gravadas + bônus quando bate marcos. Escolha a plataforma e arraste as horas.</p>
-      </div>
+      <h2 class="h2">Quanto dá pra ganhar?</h2>
+      <p class="lead">Você ganha pelas horas gravadas mais bônus quando bate os marcos. Escolha a plataforma e arraste o slider de horas.</p>
     </div>
 
     <div class="est-tabs" id="estTabs"></div>
@@ -368,19 +366,17 @@
 <section id="qual" class="chapter">
   <div class="wrap">
     <div class="chap-head">
-      <div>
-        <div class="chap-num">03 · Comparativo</div>
-        <div class="chap-tag">meu resumo honesto</div>
+      <div class="chap-eyebrow">
+        <span class="chap-num">03 · Comparativo</span>
+        <span class="chap-tag">meu resumo honesto</span>
       </div>
-      <div>
-        <h2 class="h2">Qual você deveria escolher?</h2>
-        <p class="lead">Se você tá em dúvida, olha por objetivo — cada uma brilha num ponto.</p>
-      </div>
+      <h2 class="h2">Qual você deveria escolher?</h2>
+      <p class="lead">Se você tá em dúvida, olha pelo seu objetivo. Cada uma brilha num ponto diferente.</p>
     </div>
 
     <div class="which-grid">
       <div class="which-card">
-        <div class="which-eye">RECOMENDAÇÃO DO DOLLAR</div>
+        <div class="which-eye">O QUE ESTOU MAIS USANDO</div>
         <h3 class="which-title">Comece pela Hub.xyz</h3>
         <div class="which-sub">Velocidade + suporte</div>
         <p class="which-body">Simples, saca rápido em Pix e é a única que envia o suporte de cabeça de graça (via whitelist). Pra quem tá começando, é o caminho mais curto pro primeiro pagamento.</p>
@@ -397,7 +393,7 @@
         <div class="which-eye" style="color: #6B6B6B;">MAIOR TAXA</div>
         <h3 class="which-title">Vá de Crowtado se…</h3>
         <div class="which-sub">Você tá caçando o maior $/h</div>
-        <p class="which-body">$8/h — o mais alto entre as três — e saque mínimo baixo ($10). O suporte é o ponto fraco; se for autônomo, é uma boa complementar.</p>
+        <p class="which-body">Paga $8/h (o mais alto entre as três) e tem saque mínimo baixo ($10). O suporte é o ponto fraco, então se você é mais autônomo, ela funciona como uma boa opção complementar.</p>
         <a class="btn btn-ghost" href="https://www.crowtado.com/sign-up?ref=4T2L4ATC" target="_blank">Cadastrar na Crowtado →</a>
       </div>
     </div>
@@ -408,14 +404,12 @@
 <section class="chapter" id="requisitos">
   <div class="wrap">
     <div class="chap-head">
-      <div>
-        <div class="chap-num">04 · O básico</div>
-        <div class="chap-tag">antes de cadastrar</div>
+      <div class="chap-eyebrow">
+        <span class="chap-num">04 · O básico</span>
+        <span class="chap-tag">antes de cadastrar</span>
       </div>
-      <div>
-        <h2 class="h2">O que você precisa.</h2>
-        <p class="lead">O único investimento inicial é o suporte de cabeça. O resto você já tem em casa.</p>
-      </div>
+      <h2 class="h2">O que você precisa.</h2>
+      <p class="lead">O único investimento inicial é o suporte de cabeça pra celular. O resto você já tem em casa.</p>
     </div>
 
     <div class="req-grid">
@@ -441,7 +435,7 @@
       <img src="public/head-strap.png" alt="Suporte de cabeça pra celular">
       <div>
         <h3>O suporte de cabeça</h3>
-        <p class="body" style="margin: 0 0 18px;">A Hub envia grátis pra quem entra na whitelist, mas a fila demora. Se quiser começar hoje, comprei o meu no Mercado Livre (mais caro, chega em 1 dia). A Shopee é o caminho barato — a comunidade aprovou.</p>
+        <p class="body" style="margin: 0 0 18px;">A Hub envia grátis pra quem entra na whitelist, mas a fila demora. Se quiser começar hoje, comprei o meu no Mercado Livre (mais caro, mas chega em 1 dia). A Shopee é o caminho barato, e a comunidade aprovou.</p>
         <div class="cta-row" style="margin-top: 0;">
           <a class="btn btn-accent" href="https://ai.hub.xyz/" target="_blank">Grátis na Hub →</a>
           <a class="btn btn-ghost" href="https://meli.la/2FhJMgR" target="_blank">Mercado Livre →</a>
@@ -456,32 +450,30 @@
 <section id="faq" class="chapter">
   <div class="wrap">
     <div class="chap-head">
-      <div>
-        <div class="chap-num">05 · FAQ</div>
-        <div class="chap-tag">dúvidas frequentes</div>
+      <div class="chap-eyebrow">
+        <span class="chap-num">05 · FAQ</span>
+        <span class="chap-tag">dúvidas frequentes</span>
       </div>
-      <div>
-        <h2 class="h2">Perguntas comuns.</h2>
-        <p class="lead">Se a sua não estiver aqui, joga no grupo — a comunidade responde rápido.</p>
-      </div>
+      <h2 class="h2">Perguntas comuns.</h2>
+      <p class="lead">Se a sua não estiver aqui, joga no grupo. A comunidade responde rápido.</p>
     </div>
 
     <div class="faq-list">
       <details class="faq-item">
         <summary>Quanto tempo demora pra receber o primeiro pagamento?</summary>
-        <p>Varia por plataforma. Na Claru.ai o pagamento é processado toda terça — saque automático quando você bate $50 (ou já na primeira semana, se bateu 5h gravadas). Na Hub.xyz o prazo médio é de 1 a 2 dias, e na Crowtado é variável. Você confere o prazo específico em "Pagamento" dentro do card de cada plataforma.</p>
+        <p>Varia por plataforma. Na Claru.ai o pagamento é processado toda terça, com saque automático quando você bate $50 (ou já na primeira semana, se bateu 5h gravadas). Na Hub.xyz o prazo médio é de 1 a 2 dias, e na Crowtado é variável. Você confere o prazo específico em "Pagamento" dentro do card de cada plataforma.</p>
       </details>
       <details class="faq-item">
         <summary>Posso usar mais de uma plataforma ao mesmo tempo?</summary>
-        <p>Pode, e é o que eu recomendo — cada uma paga por hora gravada, então quanto mais plataformas ativas, mais você fatura. Só uma regra importante: use um e-mail diferente em cada plataforma. Cadastro duplicado com o mesmo e-mail pode travar sua conta.</p>
+        <p>Pode, e é o que eu recomendo. Cada uma paga por hora gravada, então quanto mais plataformas ativas, mais você fatura. Só uma regra importante: use um e-mail diferente em cada plataforma. Cadastro duplicado com o mesmo e-mail pode travar sua conta.</p>
       </details>
       <details class="faq-item">
         <summary>Preciso declarar imposto sobre esse ganho?</summary>
-        <p>Isso depende do seu volume de ganho e da sua situação fiscal, então não vou te dar uma resposta genérica aqui — o ideal é confirmar com um contador. Não sou contador nem consultor financeiro, então prefiro não arriscar te passar uma informação errada nesse tema.</p>
+        <p>Isso depende do seu volume de ganho e da sua situação fiscal, então não vou te dar uma resposta genérica aqui. O ideal é confirmar com um contador. Não sou contador nem consultor financeiro, então prefiro não arriscar te passar uma informação errada nesse tema.</p>
       </details>
       <details class="faq-item">
         <summary>E se meu vídeo for rejeitado?</summary>
-        <p>Cada plataforma avalia o clipe antes de aprovar, então respeitar os requisitos técnicos (duração, enquadramento, mãos visíveis, zoom) reduz bastante a chance de rejeição — dá uma conferida na seção "Requisitos técnicos" de cada card antes de gravar.</p>
+        <p>Cada plataforma avalia o clipe antes de aprovar, então respeitar os requisitos técnicos (duração, enquadramento, mãos visíveis, zoom) reduz bastante a chance de rejeição. Dá uma conferida na seção "Requisitos técnicos" de cada card antes de gravar.</p>
       </details>
       <details class="faq-item">
         <summary>Preciso aparecer no vídeo ou minha voz vai ser gravada?</summary>
@@ -489,7 +481,7 @@
       </details>
       <details class="faq-item">
         <summary>Qual celular funciona?</summary>
-        <p>Não é qualquer um — cada plataforma tem uma lista de modelos aceitos (Samsung Galaxy S, iPhone e Google Pixel, geralmente das últimas 4-5 gerações). Confirma o modelo específico dentro do card de cada plataforma antes de comprar o suporte de cabeça.</p>
+        <p>Não é qualquer um. Cada plataforma tem uma lista de modelos aceitos (Samsung Galaxy S, iPhone e Google Pixel, geralmente das últimas 4 ou 5 gerações). Confirma o modelo específico dentro do card de cada plataforma antes de comprar o suporte de cabeça.</p>
       </details>
     </div>
 
@@ -499,7 +491,7 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <div style="font-size: 13px; color: var(--muted); max-width: 620px;">Alguns links são de indicação — se você se cadastrar por eles, eu posso ganhar uma comissão. Não custa nada a mais pra você. © Treinadores de IA · 2026</div>
+    <div style="font-size: 13px; color: var(--muted); max-width: 620px;">Alguns links são de indicação. Se você se cadastrar por eles, eu posso ganhar uma comissão. Não custa nada a mais pra você. © Treinadores de IA · 2026</div>
     <div class="social">
       <a href="https://x.com/notaboutdollar" target="_blank">X</a>
       <a href="https://www.instagram.com/notaboutdollar" target="_blank">Instagram</a>
@@ -621,7 +613,7 @@ function renderPlatforms() {
     const el = document.createElement('article');
     el.className = 'plat' + (p.featured ? ' featured' : '') + (open ? ' open' : '');
     el.innerHTML = `
-      ${p.featured ? '<div class="featured-tag">RECOMENDAÇÃO DO DOLLAR</div>' : ''}
+      ${p.featured ? '<div class="featured-tag">O QUE ESTOU MAIS USANDO</div>' : ''}
       <div class="plat-head">
         <div class="plat-logo"><img src="${p.logo}" alt=""></div>
         <div>
@@ -744,7 +736,7 @@ function renderEstimator() {
 
   const footnote = bonusSum > 0
     ? `Estimativa com base em gravar todos os dias do mês, incluindo ${cur === '$' ? 'US$' : 'R$'} ${fmt(bonusSum)} em bônus desbloqueados nesse ritmo.`
-    : (p.calcBonuses.length > 0 ? 'Aumente as horas por dia para desbloquear os bônus dessa plataforma.' : 'Só taxa por hora — essa plataforma não paga bônus.');
+    : (p.calcBonuses.length > 0 ? 'Aumente as horas por dia para desbloquear os bônus dessa plataforma.' : 'Só taxa por hora. Essa plataforma não paga bônus.');
   document.getElementById('estFootnote').textContent = footnote;
 
   const r = p.estReview;
