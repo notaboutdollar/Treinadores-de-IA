@@ -60,13 +60,14 @@
   .btn-wa { background: #25D366; color: #fff; }
   .btn-wa:hover { background: #1EBE5D; text-decoration: none; color: #fff; }
 
-  nav.top { position: sticky; top: 0; z-index: 30; background: rgba(244,239,231,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  nav.top { position: sticky; top: 0; z-index: 30; background: rgba(15,15,15,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.08); box-shadow: 0 1px 12px rgba(0,0,0,0.15); }
   nav.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; }
-  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--paper); }
   .brand img { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; }
-  .brand-name { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.06em; font-weight: 600; }
-  .nav-links { display: flex; gap: 28px; font-size: 14px; color: #333; }
-  .nav-links a { color: #333; }
+  .brand-name { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.06em; font-weight: 600; color: var(--paper); }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; }
+  .nav-links a { color: rgba(255,255,255,0.75); transition: color .15s; }
+  .nav-links a:hover { color: var(--paper); text-decoration: none; }
 
   /* HERO */
   .hero { padding: 72px 0 40px; }
