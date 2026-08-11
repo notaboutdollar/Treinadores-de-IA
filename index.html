@@ -1,244 +1,472 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="public/pfp-dollar.png">
-<link rel="shortcut icon" type="image/png" href="public/pfp-dollar.png">
 <link rel="apple-touch-icon" href="public/pfp-dollar.png">
 <title>Treinadores de IA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --bg: #F4EFE7;
+    --paper: #FFFFFF;
+    --ink: #0F0F0F;
+    --muted: #6B6B6B;
+    --line: #E4DDD0;
+    --line-strong: #C9BFA9;
+    --accent: #D9591F;
+    --accent-soft: #F8E7DA;
+    --ok: #2F7A3D;
+    --ok-soft: #E4F1E4;
+    --warn: #B33A16;
+    --warn-soft: #FBEAE2;
+  }
   * { box-sizing: border-box; }
   html, body { max-width: 100%; overflow-x: hidden; }
-  body { margin: 0; background: #0B0D10; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; color: #E7E7E7; }
-  a { color: #E8600A; text-decoration: none; }
-  a:hover { color: #ff7b2e; }
-  ::selection { background: #E8600A; color: white; }
-  input::placeholder { color: #6b7280; }
-  img { max-width: 100%; height: auto; }
-  input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; }
-  input[type="range"]::-webkit-slider-runnable-track { height: 6px; background: #22262B; border-radius: 3px; }
-  input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; margin-top: -6px; border-radius: 50%; background: #E8600A; cursor: pointer; border: 2px solid #0B0D10; }
-  input[type="range"]::-moz-range-track { height: 6px; background: #22262B; border-radius: 3px; }
-  input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #E8600A; cursor: pointer; border: 2px solid #0B0D10; }
-  .platforms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; row-gap: 24px; position: relative; }
-  .requirements-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-  .faq-item { background: #14171B; border: 1px solid #22262B; border-radius: 14px; overflow: hidden; transition: border-color .15s; }
-  .faq-item[open] { border-color: #E8600A; }
-  .faq-item summary { list-style: none; cursor: pointer; padding: 18px 20px; font-size: 15px; font-weight: 700; color: white; display: flex; align-items: center; justify-content: space-between; gap: 12px; user-select: none; }
+  body { margin: 0; background: var(--bg); font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; color: var(--ink); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ::selection { background: var(--accent); color: #fff; }
+  img { max-width: 100%; height: auto; display: block; }
+  input, select, button { font-family: inherit; }
+  input::placeholder { color: #a0a0a0; }
+  input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; width: 100%; }
+  input[type="range"]::-webkit-slider-runnable-track { height: 4px; background: var(--line-strong); border-radius: 2px; }
+  input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; margin-top: -8px; border-radius: 50%; background: var(--accent); cursor: pointer; border: 3px solid var(--paper); box-shadow: 0 1px 4px rgba(0,0,0,.15); }
+  input[type="range"]::-moz-range-track { height: 4px; background: var(--line-strong); border-radius: 2px; }
+  input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--accent); cursor: pointer; border: 3px solid var(--paper); }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .serif { font-family: 'Fraunces', 'Georgia', serif; font-weight: 700; letter-spacing: -0.015em; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .eyebrow-accent { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .h1 { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(40px, 6vw, 68px); line-height: 1.02; letter-spacing: -0.025em; margin: 0 0 20px; }
+  .h2 { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(30px, 4.2vw, 44px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 16px; }
+  .lead { font-size: 18px; line-height: 1.55; color: #3a3a3a; max-width: 640px; }
+  .body { font-size: 15px; line-height: 1.65; color: #333; }
+  .small { font-size: 13px; line-height: 1.6; color: var(--muted); }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font-weight: 700; font-size: 14px; border: 1px solid transparent; cursor: pointer; transition: transform .1s, background .15s; }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-primary:hover { background: #2a2a2a; text-decoration: none; color: var(--paper); }
+  .btn-accent { background: var(--accent); color: #fff; }
+  .btn-accent:hover { background: #b74615; text-decoration: none; color: #fff; }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+  .btn-ghost:hover { background: var(--paper); text-decoration: none; color: var(--ink); }
+  .btn-wa { background: #25D366; color: #fff; }
+  .btn-wa:hover { background: #1EBE5D; text-decoration: none; color: #fff; }
+
+  nav.top { position: sticky; top: 0; z-index: 30; background: rgba(244,239,231,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  nav.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; }
+  .brand-name { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.06em; font-weight: 600; }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; color: #333; }
+  .nav-links a { color: #333; }
+
+  /* HERO */
+  .hero { padding: 72px 0 40px; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: end; }
+  .hero-right { position: relative; }
+  .hero-card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 22px; box-shadow: 0 1px 0 rgba(0,0,0,.03); }
+  .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 48px; }
+  .hero-stats > div { padding: 22px 20px; border-right: 1px solid var(--line); }
+  .hero-stats > div:last-child { border-right: none; }
+  .stat-num { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; letter-spacing: -0.02em; }
+  .stat-lbl { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* Chapter section */
+  section.chapter { padding: 72px 0; border-top: 1px solid var(--line); }
+  .chap-head { display: grid; grid-template-columns: 200px 1fr; gap: 40px; margin-bottom: 44px; align-items: start; }
+  .chap-num { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; color: var(--accent); font-weight: 600; }
+  .chap-tag { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+  /* Platforms */
+  .plat-list { display: flex; flex-direction: column; gap: 20px; }
+  .plat { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; transition: border-color .15s; position: relative; }
+  .plat.featured { border: 1.5px solid var(--accent); box-shadow: 0 4px 24px -8px rgba(217,89,31,.2); }
+  .plat-head { display: grid; grid-template-columns: 56px 1fr auto; gap: 18px; padding: 24px; align-items: center; cursor: pointer; }
+  .plat-logo { width: 56px; height: 56px; border-radius: 12px; overflow: hidden; background: #f4f0e8; display: flex; align-items: center; justify-content: center; }
+  .plat-logo img { width: 100%; height: 100%; object-fit: cover; }
+  .plat-name { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 700; letter-spacing: -0.015em; }
+  .plat-meta { font-size: 12.5px; color: var(--muted); margin-top: 3px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .plat-price { text-align: right; }
+  .plat-rate { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+  .plat-rate-lbl { font-size: 11px; color: var(--muted); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .featured-tag { position: absolute; top: -1px; right: 24px; background: var(--accent); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; padding: 5px 12px; border-radius: 0 0 8px 8px; letter-spacing: 0.08em; }
+  .badges { display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; letter-spacing: 0.02em; }
+  .b-ref { background: var(--ok-soft); color: var(--ok); }
+  .b-noref { background: #EEE7DB; color: #7a6b52; }
+  .b-bonus { background: var(--accent-soft); color: var(--accent); }
+  .b-nobonus { background: #EEE7DB; color: #7a6b52; }
+  .expand-btn { border: 1px solid var(--line); background: var(--bg); padding: 8px 14px; border-radius: 999px; font-size: 12.5px; font-weight: 600; color: var(--ink); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+  .expand-btn:hover { border-color: var(--ink); }
+
+  .plat-body { display: none; padding: 0 24px 24px; border-top: 1px solid var(--line); padding-top: 24px; }
+  .plat.open .plat-body { display: block; }
+  .plat.open .plat-head { padding-bottom: 20px; }
+  .plat.open .expand-icon { transform: rotate(45deg); }
+  .expand-icon { display: inline-block; transition: transform .2s; font-weight: 400; font-size: 14px; }
+
+  .stars { color: var(--accent); font-size: 13px; letter-spacing: 1px; }
+
+  .rev-block { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .rev-col { }
+  .rev-col-title { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .rev-col-title.pros { color: var(--ok); }
+  .rev-col-title.cons { color: var(--warn); }
+  .rev-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .rev-col li { font-size: 14px; line-height: 1.55; color: #333; padding-left: 22px; position: relative; }
+  .rev-col li::before { position: absolute; left: 0; top: 0; font-weight: 700; }
+  .rev-col.pros li::before { content: '+'; color: var(--ok); }
+  .rev-col.cons li::before { content: '−'; color: var(--warn); }
+
+  .kv-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .kv-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .kv-val { font-size: 14px; color: var(--ink); font-weight: 500; }
+
+  .subsec-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 24px 0 12px; }
+
+  .bonus-list { display: flex; flex-direction: column; gap: 0; max-height: 240px; overflow-y: auto; }
+  .bonus-row { display: flex; justify-content: space-between; gap: 24px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; }
+  .bonus-row span:first-child { color: var(--muted); }
+  .bonus-row span:last-child { color: var(--ink); font-weight: 500; }
+
+  .step-list { display: flex; flex-direction: column; gap: 14px; }
+  .step { display: flex; gap: 14px; align-items: flex-start; }
+  .step-num { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .step-body { flex: 1; font-size: 14px; line-height: 1.55; color: #333; }
+  .step-body strong { color: var(--ink); }
+  .step-inline { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .code-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--bg); border: 1px solid var(--line-strong); font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer; color: var(--ink); }
+  .code-chip:hover { border-color: var(--ink); }
+  .warn-note { color: var(--warn); font-size: 12.5px; margin-top: 4px; }
+
+  .cta-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+  .method-chip { display: inline-block; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); color: var(--ink); }
+
+  /* Estimator */
+  .est-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .est-tab { display: inline-flex; align-items: center; gap: 8px; background: var(--paper); border: 1px solid var(--line); padding: 8px 16px 8px 8px; border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--ink); }
+  .est-tab img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
+  .est-tab.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  .est-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+  .est-card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 26px; }
+  .est-slider-label { font-size: 14px; color: #333; margin-bottom: 18px; }
+  .slider-ticks { display: flex; justify-content: space-between; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); }
+  .hours-num { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--accent); text-align: right; font-size: 40px; margin-top: 8px; }
+  .breakdown { display: flex; flex-direction: column; }
+  .brk-row { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; }
+  .brk-row:last-child { border-bottom: none; }
+  .brk-label { color: #333; }
+  .brk-val { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--ink); }
+  .brk-val.plus { color: var(--ok); }
+  .brk-locked .brk-label, .brk-locked .brk-val { color: var(--muted); }
+  .total-card { background: var(--ink); color: var(--paper); border-radius: 18px; padding: 36px; position: sticky; top: 90px; }
+  .total-eye { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-weight: 600; }
+  .total-amount { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(48px, 6vw, 72px); line-height: 1; margin: 14px 0 20px; letter-spacing: -0.03em; }
+  .total-amount .per { font-size: 0.32em; color: rgba(255,255,255,0.55); font-family: 'Inter', sans-serif; font-weight: 500; }
+  .cur-toggle { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: var(--paper); padding: 7px 14px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 600; cursor: pointer; }
+  .cur-toggle:hover { background: rgba(255,255,255,0.15); }
+
+  /* Which one section */
+  .which-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .which-card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+  .which-eye { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 10px; }
+  .which-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; letter-spacing: -0.015em; margin: 0 0 6px; }
+  .which-sub { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+  .which-body { font-size: 14px; line-height: 1.55; color: #333; margin-bottom: 18px; }
+
+  /* Prova */
+  .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .proof-grid img { width: 100%; border-radius: 14px; border: 1px solid var(--line); }
+  .highlight-strip { display: inline-flex; align-items: center; gap: 10px; background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--ok); border-radius: 10px; padding: 10px 16px; margin-top: 20px; font-size: 14px; color: var(--ink); font-weight: 500; }
+
+  /* Requisitos + suporte cluster */
+  .req-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .req { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 20px; text-align: center; }
+  .req-icon { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); font-weight: 700; letter-spacing: 0.14em; margin-bottom: 8px; }
+  .req-txt { font-size: 14px; line-height: 1.5; color: #333; }
+
+  .support { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; padding: 28px; margin-top: 32px; display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center; }
+  .support img { max-width: 180px; border-radius: 12px; }
+  .support h3 { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; margin: 0 0 10px; letter-spacing: -0.015em; }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 780px; margin: 0 auto; }
+  .faq-item { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .faq-item summary { list-style: none; cursor: pointer; padding: 20px 24px; font-size: 15px; font-weight: 600; color: var(--ink); display: flex; align-items: center; justify-content: space-between; gap: 12px; user-select: none; }
   .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-item summary::after { content: '+'; font-family: 'JetBrains Mono', monospace; font-size: 20px; color: #E8600A; font-weight: 400; line-height: 1; transition: transform .2s; flex-shrink: 0; }
+  .faq-item summary::after { content: '+'; font-family: 'JetBrains Mono', monospace; font-size: 22px; color: var(--accent); font-weight: 400; line-height: 1; transition: transform .2s; }
   .faq-item[open] summary::after { content: '−'; }
-  .faq-item p { font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 0; padding: 0 20px 18px; }
-  .estimator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
-  .hero-title { font-size: 48px; line-height: 1.08; letter-spacing: -0.025em; font-weight: 800; margin: 0 0 20px; color: white; }
-  .section-title { font-size: 42px; line-height: 1.2; font-weight: 800; margin: 0 0 20px; color: white; }
-  .total-amount { font-size: 64px; }
-  .hours-display { font-size: 48px; }
-  @media (max-width: 1024px) {
-    .platforms-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 720px) {
-    .platforms-grid { grid-template-columns: 1fr; }
-    .requirements-grid { grid-template-columns: 1fr 1fr; }
-    .proof-grid { grid-template-columns: 1fr !important; }
-    .estimator-grid { grid-template-columns: 1fr; gap: 20px; }
-    .pros-cons-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
-    .support-card { grid-template-columns: 1fr !important; gap: 18px !important; }
-    .hero-title { font-size: 36px; }
-    .section-title { font-size: 30px; }
-    .total-amount { font-size: 44px; }
-    .hours-display { font-size: 36px; }
-    .nav-links { display: none !important; }
-    .estimator-total-card { padding: 24px !important; }
-  }
-  @media (max-width: 480px) {
-    .footer-links { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+  .faq-item p { font-size: 14px; line-height: 1.65; color: #444; margin: 0; padding: 0 24px 22px; }
+
+  /* Footer */
+  footer.site-footer { border-top: 1px solid var(--line); padding: 40px 0 60px; margin-top: 40px; }
+  footer.site-footer .wrap { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center; }
+  footer .social { display: flex; gap: 18px; font-size: 13.5px; }
+  footer .social a { color: #333; }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .chap-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 32px; }
+    .kv-grid { grid-template-columns: repeat(2, 1fr); }
+    .est-grid { grid-template-columns: 1fr; }
+    .total-card { position: static; padding: 28px; }
+    .which-grid { grid-template-columns: 1fr; }
+    .req-grid { grid-template-columns: repeat(2, 1fr); }
+    .support { grid-template-columns: 1fr; }
+    .support img { margin: 0 auto; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .hero-stats > div:nth-child(2) { border-right: none; }
+    .hero-stats > div:nth-child(1), .hero-stats > div:nth-child(2) { border-bottom: 1px solid var(--line); }
+    .rev-block { grid-template-columns: 1fr; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .plat-head { grid-template-columns: 48px 1fr; }
+    .plat-price { grid-column: 2; text-align: left; margin-top: 4px; }
+    .plat-logo { width: 48px; height: 48px; }
   }
 </style>
 </head>
 <body>
-<div style="background: #0B0D10; min-height: 100vh; color: #E7E7E7;">
 
-  <!-- NAV -->
-  <nav style="position: sticky; top: 0; z-index: 20; background: rgba(11,13,16,0.9); backdrop-filter: blur(8px); border-bottom: 1px solid #16191d;">
-    <div style="max-width: 1040px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
-      <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
-        <img src="public/pfp-dollar.png" style="width: 30px; height: 30px; border-radius: 8px; object-fit: cover; flex-shrink: 0;" />
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.05em; color: #E7E7E7; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">TREINADORES DE IA</div>
-      </div>
-      <div class="nav-links" style="display: flex; gap: 24px; font-size: 14px;">
-        <a href="#suporte" style="color: #c9cdd1;">Suporte</a>
-        <a href="#plataformas" style="color: #c9cdd1;">Plataformas</a>
-        <a href="#estimativa" style="color: #c9cdd1;">Estimativa</a>
-        <a href="#faq" style="color: #c9cdd1;">FAQ</a>
-      </div>
+<nav class="top">
+  <div class="wrap">
+    <div class="brand">
+      <img src="public/pfp-dollar.png" alt="">
+      <div class="brand-name">TREINADORES DE IA</div>
     </div>
-  </nav>
-
-  <!-- HERO -->
-  <header style="max-width: 1040px; margin: 0 auto; padding: 40px 20px 32px;">
-    <div style="max-width: 720px;">
-      <h1 class="hero-title">Ganhe em dólar treinando IA.</h1>
-      <p style="font-size: 17px; line-height: 1.6; color: #9aa0a6; margin: 0 0 24px;">Existe um mercado silencioso em que você grava tarefas domésticas simples — lavar louça, dobrar roupa, cozinhar — e é pago em dólar por hora gravada. Os vídeos treinam a próxima geração de IA e robôs domésticos.</p>
-      <ul style="list-style: none; margin: 0 0 28px; padding: 0; display: flex; flex-direction: column; gap: 8px;">
-        <li style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: #c9cdd1;"><span style="color: #4ade80; font-weight: 700; flex-shrink: 0;">✅</span>Sem aparecer no vídeo (só as mãos)</li>
-        <li style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: #c9cdd1;"><span style="color: #4ade80; font-weight: 700; flex-shrink: 0;">✅</span>Sem áudio</li>
-        <li style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: #c9cdd1;"><span style="color: #4ade80; font-weight: 700; flex-shrink: 0;">✅</span>Sem compromisso — grava quando quiser</li>
-        <li style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: #c9cdd1;"><span style="color: #4ade80; font-weight: 700; flex-shrink: 0;">✅</span>Pagamento em dólar, saque via PIX</li>
-      </ul>
-      <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 10px 22px; border-radius: 999px; font-weight: 700; font-size: 14px; text-decoration: none; white-space: nowrap; margin-bottom: 20px;">
-        <svg width="18" height="18" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M16.004 3.2c-7.076 0-12.8 5.724-12.8 12.8 0 2.263.596 4.484 1.727 6.437L3.2 28.8l6.552-1.696c1.867 1.02 3.98 1.555 6.132 1.555h.005c7.075 0 12.8-5.724 12.8-12.8s-5.724-12.66-12.685-12.66zm7.475 18.09c-.313.883-1.55 1.62-2.146 1.706-.549.08-1.24.114-1.998-.126-.462-.147-1.058-.343-1.822-.671-3.207-1.385-5.298-4.596-5.457-4.808-.16-.212-1.303-1.735-1.303-3.309 0-1.574.826-2.35 1.117-2.671.29-.32.635-.4.847-.4.212 0 .424.002.61.011.196.01.457-.074.716.546.264.635.898 2.187.978 2.346.08.16.133.347.026.559-.107.212-.16.346-.32.532-.16.187-.336.417-.48.56-.16.16-.327.334-.14.653.186.32.828 1.363 1.777 2.208 1.222 1.09 2.253 1.427 2.63 1.585.283.117.62.1.827-.126.267-.29.601-.771.943-1.244.243-.339.55-.383.923-.246.373.137 2.359 1.112 2.762 1.315.402.202.67.303.767.472.098.169.098.981-.215 1.864z"/></svg>
-        Entrar na comunidade
-      </a>
-      <p style="font-size: 13px; line-height: 1.6; color: #6b7280; margin: 0; max-width: 640px;">Curadoria pessoal das plataformas que eu realmente uso. Cada card tem minha nota, minha opinião e o link de indicação. Se você se cadastrar pelos links, eu posso ganhar comissão — não custa nada a mais pra você.</p>
-    </div>
-  </header>
-
-  <!-- PROVA SOCIAL -->
-  <section style="max-width: 1040px; margin: 0 auto; padding: 8px 20px 40px;">
-    <div style="margin-bottom: 20px;">
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #E8600A; margin-bottom: 12px; font-weight: 600;">"MAS ISSO PAGA MESMO?"</div>
-      <p style="font-size: 16px; line-height: 1.6; color: #9aa0a6; margin: 0; max-width: 680px;">Paga. Aqui estão meus últimos comprovantes de saque da Hub.xyz — a plataforma que eu mais uso e recomendo pra quem tá começando.</p>
-    </div>
-
-    <div class="proof-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px;">
-      <img src="public/proof-1.png" alt="Comprovante de ganho Hub.xyz — R$ 1.533,10 em 30 dias" style="width: 100%; height: auto; border-radius: 14px; border: 1px solid #22262B; display: block;" />
-      <img src="public/proof-2.png" alt="Comprovante de ganho Hub.xyz — R$ 658,85 em cerca de 11 a 12 dias" style="width: 100%; height: auto; border-radius: 14px; border: 1px solid #22262B; display: block;" />
-      <img src="public/proof-3.png" alt="Pix recebido de R$ 152,55" style="width: 100%; height: auto; border-radius: 14px; border: 1px solid #22262B; display: block;" />
-    </div>
-
-    <div style="background: #14171B; border: 1px solid #22262B; border-left: 3px solid #4ade80; border-radius: 14px; padding: 16px 20px; margin-bottom: 16px;">
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #4ade80; margin-bottom: 6px; font-weight: 700;">EXEMPLO REAL</div>
-      <p style="font-size: 14px; line-height: 1.6; color: #c9cdd1; margin: 0;">R$ 1.533,10 ganhos em 30 dias gravando na Hub.xyz.</p>
-    </div>
-
-    <p style="font-size: 14px; color: #9aa0a6; margin: 0;">Se ainda ficar na dúvida, entra na comunidade que a galera compartilha os próprios prints todo dia. <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">Entrar na comunidade →</a></p>
-  </section>
-
-  <!-- REQUISITOS MÍNIMOS -->
-  <section style="max-width: 1040px; margin: 0 auto; padding: 8px 20px 40px;">
-    <div style="margin-bottom: 20px;">
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #E8600A; margin-bottom: 12px; font-weight: 600;">ANTES DE COMEÇAR</div>
-      <h2 class="section-title" style="font-size: 28px; margin-bottom: 8px;">Você precisa:</h2>
-    </div>
-    <div class="requirements-grid">
-      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px; text-align: center;">
-        <div style="font-size: 26px; margin-bottom: 8px;">🔞</div>
-        <div style="font-size: 13.5px; color: #c9cdd1; line-height: 1.5;">Ter 18 anos ou mais</div>
-      </div>
-      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px; text-align: center;">
-        <div style="font-size: 26px; margin-bottom: 8px;">🌎</div>
-        <div style="font-size: 13.5px; color: #c9cdd1; line-height: 1.5;">Morar na América Latina</div>
-      </div>
-      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px; text-align: center;">
-        <div style="font-size: 26px; margin-bottom: 8px;">📱</div>
-        <div style="font-size: 13.5px; color: #c9cdd1; line-height: 1.5;">Ter um celular compatível (iPhone, Samsung Galaxy S, Pixel)</div>
-      </div>
-      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px; text-align: center;">
-        <div style="font-size: 26px; margin-bottom: 8px;">🎥</div>
-        <div style="font-size: 13.5px; color: #c9cdd1; line-height: 1.5;">Ter um suporte de cabeça pra celular (~R$30)</div>
-      </div>
-    </div>
-    <p style="font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 16px 0 0; max-width: 720px;">O suporte é o único investimento inicial. A Hub envia de graça pra quem entra na whitelist, mas a fila demora. Se quiser começar rápido, tem opções abaixo. ↓</p>
-  </section>
-
-  <!-- SUPORTE DE CABEÇA -->
-  <section id="suporte" style="max-width: 1040px; margin: 0 auto; padding: 0 20px 48px; scroll-margin-top: 60px;">
-    <div class="support-card" style="background: #14171B; border: 1px solid #22262B; border-radius: 18px; padding: 24px; display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: center;">
-      <div style="background: #0B0D10; border-radius: 14px; padding: 12px; display: flex; align-items: center; justify-content: center;">
-        <img src="public/head-strap.png" alt="Suporte de cabeça pra celular" style="width: 100%; height: auto; max-width: 200px; border-radius: 8px; display: block;" />
-      </div>
-      <div>
-        <p style="font-size: 15px; line-height: 1.65; color: #c9cdd1; margin: 0 0 18px;">A HUB envia o suporte de cabeça de graça pra quem entra na whitelist, mas a fila demora um pouco. Se você quer começar a gravar rápido deixei essas duas opções abaixo. Na época comprei pelo Mercado Livre — saiu mais caro, mas o suporte é bom e chegou em 1 dia. Da Shopee a comunidade comprou e achou bom.</p>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <a href="https://ai.hub.xyz/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: #22DD5A; color: #0B0D10; font-size: 13px; font-weight: 700; padding: 10px 16px; border-radius: 10px;">
-            <img src="public/logo-hub.png" alt="" style="width: 16px; height: 16px; border-radius: 4px;" />
-            Peça grátis na Hub →
-          </a>
-          <a href="https://meli.la/2FhJMgR" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: #E8600A; color: #0B0D10; font-size: 13px; font-weight: 700; padding: 10px 16px; border-radius: 10px;">Comprar no Mercado Livre →</a>
-          <a href="https://s.shopee.com.br/20uYfjsybN" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px solid #22262B; color: #E7E7E7; font-size: 13px; font-weight: 700; padding: 10px 16px; border-radius: 10px;">Comprar na Shopee →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTROLES -->
-  <div id="plataformas" style="max-width: 1040px; margin: 0 auto; padding: 0 20px 24px; position: sticky; top: 54px; z-index: 10; background: linear-gradient(#0B0D10 82%, transparent); scroll-margin-top: 60px;">
-    <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; background: #14171B; border: 1px solid #22262B; border-radius: 16px; padding: 12px 14px;">
-      <input id="searchInput" placeholder="Buscar plataforma..." style="flex: 1; min-width: 140px; background: #0B0D10; border: 1px solid #22262B; border-radius: 10px; padding: 10px 14px; color: white; font-size: 14px; outline: none;" />
-      <select id="categorySelect" style="background: #0B0D10; border: 1px solid #22262B; border-radius: 10px; padding: 10px 12px; color: #E7E7E7; font-size: 13px; outline: none;"></select>
-      <select id="sortSelect" style="background: #0B0D10; border: 1px solid #22262B; border-radius: 10px; padding: 10px 12px; color: #E7E7E7; font-size: 13px; outline: none;">
-        <option value="nota">Maior nota</option>
-        <option value="taxa">Maior taxa/h</option>
-      </select>
+    <div class="nav-links">
+      <a href="#plataformas">Plataformas</a>
+      <a href="#ganhar">Estimativa</a>
+      <a href="#qual">Qual escolher</a>
+      <a href="#faq">FAQ</a>
     </div>
   </div>
+</nav>
 
-  <!-- GRID -->
-  <main style="max-width: 1040px; margin: 0 auto; padding: 0 20px 40px;">
-    <div id="platformsGrid" class="platforms-grid"></div>
-    <div id="noResults" style="display:none; text-align: center; padding: 80px 20px; color: #6b7280;">
-      <div style="font-size: 32px; margin-bottom: 12px;">—</div>
-      <div style="font-size: 15px;">Nenhuma plataforma encontrada com esses filtros.</div>
-    </div>
-  </main>
-
-  <!-- ESTIMATIVA -->
-  <section id="estimativa" style="max-width: 1040px; margin: 0 auto; padding: 48px 20px; scroll-margin-top: 60px;">
-    <div style="margin-bottom: 32px;">
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #E8600A; margin-bottom: 12px; font-weight: 600;">ESTIMATIVA</div>
-      <h2 class="section-title">Quanto você pode ganhar?</h2>
-      <p style="font-size: 16px; line-height: 1.6; color: #9aa0a6; margin: 0; max-width: 600px;">Você ganha pelas horas que grava e pelos bônus quando bate marcos. Clique em cada projeto e faça uma previsão de quanto você pode fazer no mês.</p>
-    </div>
-
-    <div id="estimatorPlatforms" style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;"></div>
-
-    <div style="background: #14171B; border: 1px solid #22262B; border-left: 3px solid #E8600A; border-radius: 14px; padding: 14px 18px; margin-bottom: 28px;">
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #E8600A; margin-bottom: 6px; font-weight: 700;">REVIEW</div>
-      <div id="estimatorReview" style="font-size: 14px; line-height: 1.55; color: #c9cdd1;"></div>
-    </div>
-
-    <div class="estimator-grid">
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
       <div>
-        <div style="background: #14171B; border: 1px solid #22262B; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
-          <div style="margin-bottom: 20px;">
-            <label style="display: block; font-size: 14px; color: #c9cdd1; margin-bottom: 16px; font-weight: 500;">Horas que você grava por dia</label>
-            <input id="hoursSlider" type="range" min="0" max="12" step="0.5" value="3" style="width: 100%; height: 6px; background: #22262B; border-radius: 3px; outline: none; -webkit-appearance: none; appearance: none;" />
-            <div style="display: flex; justify-content: space-between; margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6b7280;">
-              <span>0h</span><span>3h</span><span>6h</span><span>9h</span><span>12h</span>
-            </div>
+        <div class="eyebrow-accent" style="margin-bottom: 20px;">— Curadoria pessoal</div>
+        <h1 class="h1">Ganhe em dólar<br/>treinando IA.</h1>
+        <p class="lead" style="margin: 0 0 32px;">Existe um mercado silencioso em que você grava tarefas domésticas simples — lavar louça, dobrar roupa, cozinhar — e é pago em dólar por hora gravada. Os vídeos treinam a próxima geração de IA e robôs domésticos.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px;">
+          <a class="btn btn-wa" href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 32 32"><path fill="#fff" d="M16.004 3.2c-7.076 0-12.8 5.724-12.8 12.8 0 2.263.596 4.484 1.727 6.437L3.2 28.8l6.552-1.696c1.867 1.02 3.98 1.555 6.132 1.555h.005c7.075 0 12.8-5.724 12.8-12.8s-5.724-12.66-12.685-12.66zm7.475 18.09c-.313.883-1.55 1.62-2.146 1.706-.549.08-1.24.114-1.998-.126-.462-.147-1.058-.343-1.822-.671-3.207-1.385-5.298-4.596-5.457-4.808-.16-.212-1.303-1.735-1.303-3.309 0-1.574.826-2.35 1.117-2.671.29-.32.635-.4.847-.4.212 0 .424.002.61.011.196.01.457-.074.716.546.264.635.898 2.187.978 2.346.08.16.133.347.026.559-.107.212-.16.346-.32.532-.16.187-.336.417-.48.56-.16.16-.327.334-.14.653.186.32.828 1.363 1.777 2.208 1.222 1.09 2.253 1.427 2.63 1.585.283.117.62.1.827-.126.267-.29.601-.771.943-1.244.243-.339.55-.383.923-.246.373.137 2.359 1.112 2.762 1.315.402.202.67.303.767.472.098.169.098.981-.215 1.864z"/></svg>
+            Entrar na comunidade
+          </a>
+          <a class="btn btn-ghost" href="#plataformas">Ver plataformas ↓</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+            <div class="eyebrow">Comprovante · Hub.xyz</div>
+            <span class="badge b-ref">RECEBIDO</span>
           </div>
-          <div id="hoursDisplay" class="hours-display" style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #E8600A; text-align: right;"></div>
+          <div style="font-family: 'Fraunces', serif; font-size: 44px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px;">R$ 1.533,10</div>
+          <div style="font-size: 13px; color: var(--muted); margin-bottom: 20px;">em 30 dias gravando 3h/dia · pagos via Pix</div>
+          <img src="public/proof-1.png" alt="" style="border-radius: 10px; border: 1px solid var(--line);">
         </div>
+      </div>
+    </div>
 
-        <div style="background: #14171B; border: 1px solid #22262B; border-radius: 16px; padding: 24px;">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #9aa0a6; text-transform: uppercase; margin-bottom: 20px; font-weight: 600;">Seu ganho na <span id="estPlatformName"></span></div>
-          <div id="earningsBreakdown" style="display: flex; flex-direction: column; gap: 12px;"></div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-lbl">plataformas testadas</div>
+      </div>
+      <div>
+        <div class="stat-num">$5–8</div>
+        <div class="stat-lbl">por hora gravada</div>
+      </div>
+      <div>
+        <div class="stat-num">Pix</div>
+        <div class="stat-lbl">saque em reais</div>
+      </div>
+      <div>
+        <div class="stat-num">Zero</div>
+        <div class="stat-lbl">experiência necessária</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 · PLATAFORMAS -->
+<section id="plataformas" class="chapter">
+  <div class="wrap">
+    <div class="chap-head">
+      <div>
+        <div class="chap-num">01 · Plataformas</div>
+        <div class="chap-tag">3 opções testadas</div>
+      </div>
+      <div>
+        <h2 class="h2">As plataformas que eu uso.</h2>
+        <p class="lead">Testei, gravei e saquei em cada uma. Clique num card pra ver review completo, requisitos técnicos, bônus e o passo a passo pra se cadastrar.</p>
+      </div>
+    </div>
+
+    <div id="platformsList" class="plat-list"></div>
+  </div>
+</section>
+
+<!-- 02 · QUANTO PAGA -->
+<section id="ganhar" class="chapter">
+  <div class="wrap">
+    <div class="chap-head">
+      <div>
+        <div class="chap-num">02 · Estimativa</div>
+        <div class="chap-tag">calcule seu ganho</div>
+      </div>
+      <div>
+        <h2 class="h2">Quanto dá pra ganhar?</h2>
+        <p class="lead">Você ganha pelas horas gravadas + bônus quando bate marcos. Escolha a plataforma e arraste as horas.</p>
+      </div>
+    </div>
+
+    <div class="est-tabs" id="estTabs"></div>
+    <div id="estimatorReview" style="background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin-bottom: 24px;"></div>
+
+    <div class="est-grid">
+      <div>
+        <div class="est-card" style="margin-bottom: 20px;">
+          <div class="est-slider-label">Horas que você grava por dia</div>
+          <input id="hoursSlider" type="range" min="0" max="12" step="0.5" value="3">
+          <div class="slider-ticks"><span>0h</span><span>3h</span><span>6h</span><span>9h</span><span>12h</span></div>
+          <div class="hours-num" id="hoursDisplay"></div>
+        </div>
+        <div class="est-card">
+          <div class="eyebrow" style="margin-bottom: 16px;">Seu ganho na <span id="estPlatformName" style="color: var(--accent);"></span></div>
+          <div id="earningsBreakdown" class="breakdown"></div>
         </div>
       </div>
 
-      <div class="estimator-total-card" style="background: #1a1d21; border-radius: 24px; padding: 40px; border: 1px solid #22262B;">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; gap: 12px; flex-wrap: wrap;">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #9aa0a6; text-transform: uppercase; font-weight: 600;">Estimativa mensal</div>
-          <button id="currencyToggle" style="flex-shrink: 0; background: #14171B; border: 1px solid #22262B; border-radius: 999px; padding: 6px 14px; color: #E8600A; font-size: 12px; font-weight: 600; cursor: pointer; font-family: 'JetBrains Mono', monospace; white-space: nowrap;"></button>
+      <div class="total-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 4px;">
+          <div class="total-eye">Estimativa mensal</div>
+          <button class="cur-toggle" id="currencyToggle"></button>
         </div>
-        <div id="totalAmount" class="total-amount" style="font-family: 'JetBrains Mono', monospace; font-weight: 800; color: white; margin-bottom: 24px; word-break: break-word;"></div>
-        <p id="estFootnote" style="font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 0;"></p>
+        <div id="totalAmount" class="total-amount"></div>
+        <p id="estFootnote" style="font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.65); margin: 0;"></p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section id="faq" style="max-width: 860px; margin: 0 auto; padding: 24px 20px 56px; scroll-margin-top: 60px;">
-    <div style="margin-bottom: 28px; text-align: center;">
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #E8600A; margin-bottom: 12px; font-weight: 600;">FAQ</div>
-      <h2 class="section-title" style="margin-bottom: 0;">Perguntas que a galera mais faz</h2>
+<!-- 03 · QUAL ESCOLHER -->
+<section id="qual" class="chapter">
+  <div class="wrap">
+    <div class="chap-head">
+      <div>
+        <div class="chap-num">03 · Comparativo</div>
+        <div class="chap-tag">meu resumo honesto</div>
+      </div>
+      <div>
+        <h2 class="h2">Qual você deveria escolher?</h2>
+        <p class="lead">Se você tá em dúvida, olha por objetivo — cada uma brilha num ponto.</p>
+      </div>
     </div>
 
-    <div style="display: flex; flex-direction: column; gap: 10px;">
+    <div class="which-grid">
+      <div class="which-card">
+        <div class="which-eye">RECOMENDAÇÃO DO DOLLAR</div>
+        <h3 class="which-title">Comece pela Hub.xyz</h3>
+        <div class="which-sub">Velocidade + suporte</div>
+        <p class="which-body">Simples, saca rápido em Pix e é a única que envia o suporte de cabeça de graça (via whitelist). Pra quem tá começando, é o caminho mais curto pro primeiro pagamento.</p>
+        <a class="btn btn-accent" href="https://ai.hub.xyz/r/DOLETA" target="_blank">Cadastrar na Hub →</a>
+      </div>
+      <div class="which-card">
+        <div class="which-eye" style="color: #6B6B6B;">MELHORES BÔNUS</div>
+        <h3 class="which-title">Vá de Claru.ai se…</h3>
+        <div class="which-sub">Você grava com regularidade</div>
+        <p class="which-body">A Claru paga bônus escalonado até 1.000h ($1.000 no marco máximo). Se você grava consistente, é a que mais cresce no longo prazo.</p>
+        <a class="btn btn-ghost" href="https://app.claru.ai/signup?ref=2d1cs845" target="_blank">Cadastrar na Claru →</a>
+      </div>
+      <div class="which-card">
+        <div class="which-eye" style="color: #6B6B6B;">MAIOR TAXA</div>
+        <h3 class="which-title">Vá de Crowtado se…</h3>
+        <div class="which-sub">Você tá caçando o maior $/h</div>
+        <p class="which-body">$8/h — o mais alto entre as três — e saque mínimo baixo ($10). O suporte é o ponto fraco; se for autônomo, é uma boa complementar.</p>
+        <a class="btn btn-ghost" href="https://www.crowtado.com/sign-up?ref=4T2L4ATC" target="_blank">Cadastrar na Crowtado →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUISITOS + SUPORTE -->
+<section class="chapter" id="requisitos">
+  <div class="wrap">
+    <div class="chap-head">
+      <div>
+        <div class="chap-num">04 · O básico</div>
+        <div class="chap-tag">antes de cadastrar</div>
+      </div>
+      <div>
+        <h2 class="h2">O que você precisa.</h2>
+        <p class="lead">O único investimento inicial é o suporte de cabeça. O resto você já tem em casa.</p>
+      </div>
+    </div>
+
+    <div class="req-grid">
+      <div class="req">
+        <div class="req-icon">01</div>
+        <div class="req-txt">Ter 18 anos ou mais</div>
+      </div>
+      <div class="req">
+        <div class="req-icon">02</div>
+        <div class="req-txt">Morar na América Latina</div>
+      </div>
+      <div class="req">
+        <div class="req-icon">03</div>
+        <div class="req-txt">Celular compatível (iPhone 11+, Galaxy S20+, Pixel)</div>
+      </div>
+      <div class="req">
+        <div class="req-icon">04</div>
+        <div class="req-txt">Suporte de cabeça pra celular (~R$30)</div>
+      </div>
+    </div>
+
+    <div class="support">
+      <img src="public/head-strap.png" alt="Suporte de cabeça pra celular">
+      <div>
+        <h3>O suporte de cabeça</h3>
+        <p class="body" style="margin: 0 0 18px;">A Hub envia grátis pra quem entra na whitelist, mas a fila demora. Se quiser começar hoje, comprei o meu no Mercado Livre (mais caro, chega em 1 dia). A Shopee é o caminho barato — a comunidade aprovou.</p>
+        <div class="cta-row" style="margin-top: 0;">
+          <a class="btn btn-accent" href="https://ai.hub.xyz/" target="_blank">Grátis na Hub →</a>
+          <a class="btn btn-ghost" href="https://meli.la/2FhJMgR" target="_blank">Mercado Livre →</a>
+          <a class="btn btn-ghost" href="https://s.shopee.com.br/20uYfjsybN" target="_blank">Shopee →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="chapter">
+  <div class="wrap">
+    <div class="chap-head">
+      <div>
+        <div class="chap-num">05 · FAQ</div>
+        <div class="chap-tag">dúvidas frequentes</div>
+      </div>
+      <div>
+        <h2 class="h2">Perguntas comuns.</h2>
+        <p class="lead">Se a sua não estiver aqui, joga no grupo — a comunidade responde rápido.</p>
+      </div>
+    </div>
+
+    <div class="faq-list">
       <details class="faq-item">
         <summary>Quanto tempo demora pra receber o primeiro pagamento?</summary>
         <p>Varia por plataforma. Na Claru.ai o pagamento é processado toda terça — saque automático quando você bate $50 (ou já na primeira semana, se bateu 5h gravadas). Na Hub.xyz o prazo médio é de 1 a 2 dias, e na Crowtado é variável. Você confere o prazo específico em "Pagamento" dentro do card de cada plataforma.</p>
@@ -253,11 +481,7 @@
       </details>
       <details class="faq-item">
         <summary>E se meu vídeo for rejeitado?</summary>
-        <p>Cada plataforma avalia o clipe antes de aprovar, então respeitar os requisitos técnicos (duração, enquadramento, mãos visíveis, zoom) reduz bastante a chance de rejeição — dá uma conferida na seção "Requisitos técnicos" de cada card antes de gravar. Ainda não tenho o motivo mais comum de rejeição por plataforma confirmado; assim que tiver, atualizo aqui.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Tem limite de horas por dia?</summary>
-        <p>Na Claru.ai o vídeo precisa ter entre 2 e 30 minutos (o app corta automaticamente aos 30min), mas não há limite de vídeos por dia. Na Hub.xyz e na Crowtado ainda não confirmei se existe algum limite diário — assim que tiver certeza, atualizo aqui.</p>
+        <p>Cada plataforma avalia o clipe antes de aprovar, então respeitar os requisitos técnicos (duração, enquadramento, mãos visíveis, zoom) reduz bastante a chance de rejeição — dá uma conferida na seção "Requisitos técnicos" de cada card antes de gravar.</p>
       </details>
       <details class="faq-item">
         <summary>Preciso aparecer no vídeo ou minha voz vai ser gravada?</summary>
@@ -269,34 +493,28 @@
       </details>
     </div>
 
-    <p style="font-size: 14px; color: #9aa0a6; margin: 24px 0 0; text-align: center;">Não achou sua dúvida? <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">Entra na comunidade. →</a></p>
-  </section>
+    <p style="text-align: center; margin-top: 32px; font-size: 14px; color: var(--muted);">Não achou sua dúvida? <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">Entra na comunidade →</a></p>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="footer-links" style="max-width: 1040px; margin: 0 auto; padding: 28px 20px 40px; border-top: 1px solid #16191d; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;">
-    <div style="font-size: 13px; color: #6b7280; max-width: 640px;">Alguns links são de indicação — se você se cadastrar por eles, eu posso ganhar uma comissão. Não custa nada mais pra você.</div>
-    <div style="display: flex; gap: 16px; font-size: 13px; flex-wrap: wrap;">
-      <a href="https://x.com/notaboutdollar" target="_blank" style="color: #9aa0a6;">X</a>
-      <a href="https://www.instagram.com/notaboutdollar" target="_blank" style="color: #9aa0a6;">Instagram</a>
-      <a href="https://www.youtube.com/@notaboutdollar" target="_blank" style="color: #9aa0a6;">YouTube</a>
-      <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank" style="color: #9aa0a6;">Comunidade</a>
+<footer class="site-footer">
+  <div class="wrap">
+    <div style="font-size: 13px; color: var(--muted); max-width: 620px;">Alguns links são de indicação — se você se cadastrar por eles, eu posso ganhar uma comissão. Não custa nada a mais pra você. © Treinadores de IA · 2026</div>
+    <div class="social">
+      <a href="https://x.com/notaboutdollar" target="_blank">X</a>
+      <a href="https://www.instagram.com/notaboutdollar" target="_blank">Instagram</a>
+      <a href="https://www.youtube.com/@notaboutdollar" target="_blank">YouTube</a>
+      <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">Comunidade</a>
     </div>
-  </footer>
-
-</div>
+  </div>
+</footer>
 
 <script>
 const DAYS_PER_MONTH = 30;
 const EXCHANGE_RATE = 5.08;
 
-const avatarColors = { 'Vídeo doméstico': '#E8600A', 'Anotação de dados': '#2563eb', 'Avaliação de respostas': '#7c3aed', 'Expertise sob demanda': '#0d9488' };
-const refMeta = {
-  com: { label: 'COM INDICAÇÃO', bg: 'rgba(34,197,94,0.12)', color: '#4ade80' },
-  sem: { label: 'SEM INDICAÇÃO', bg: 'rgba(148,163,184,0.1)', color: '#9aa0a6' },
-};
-
 const data = [
-  { id: 1, name: 'Hub.xyz', category: 'Vídeo doméstico', temRef: true, nota: 4.8, taxa: 6, taxaLabel: '$5–6/h', logo: 'public/logo-hub.png',
+  { id: 1, name: 'Hub.xyz', category: 'Vídeo doméstico', temRef: true, nota: 4.8, taxa: 6, taxaLabel: '$5–6', logo: 'public/logo-hub.png', featured: true,
     calcRate: 5, calcCurrency: '$', bonusCurrency: 'R$', calcBonuses: [
       { threshold: 1, amount: 15, milestone: '1h' },
       { threshold: 5, amount: 10, milestone: '5h' },
@@ -318,349 +536,256 @@ const data = [
     referralInfo: 'Você ganha R$ 2,50 a cada hora do seu indicado e R$ 1,25 a cada hora do indicado do seu indicado.',
     estReview: { highlight: 'velocidade e suporte',
       pros: [
-        { icon: '⚡', text: 'O vídeo aparece na plataforma mais rápido que as outras duas' },
-        { icon: '🎧', text: 'Suporte: o melhor entre as opções, ativo no Telegram' },
-        { icon: '💵', text: 'Saque: mínimo de R$ 25 (≈ $5)' },
+        'O vídeo aparece na plataforma mais rápido que as outras duas',
+        'Suporte: o melhor entre as opções, ativo no Telegram',
+        'Saque: mínimo de R$ 25 (≈ $5)',
       ],
-      cons: [
-        { icon: '💰', text: 'Pagamento: o que paga menos ($5/h)' },
-      ],
+      cons: [ 'Pagamento: o que paga menos ($5/h)' ],
     },
-    review: 'É o que mais uso. Simples de usar, saca rápido e você pode sacar a hora que quiser. É a única que envia suporte de cabeça de graça (precisa entrar na whitelist). Sistema de indicação bem interessante — você ganha R$ 2,50 a cada hora do seu indicado e R$ 1,25 a cada hora do indicado do seu indicado. Único que envia suporte de graça, mas precisa entrar na whitelist.',
-    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis o tempo todo', zoom: '0,5 (grande angular)', celulares: 'A partir do iPhone 11 e a partir do Galaxy S20+',
+    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: 'A partir do iPhone 11 e a partir do Galaxy S20+',
     saqueMin: 'R$ 25', tempoPagamento: '1 a 2 dias', metodos: ['Pix'],
     refLink: 'https://ai.hub.xyz/r/DOLETA', officialLink: 'https://hub.xyz', orgCode: 'JUK9YQWE' },
-  { id: 2, name: 'Claru.ai', category: 'Vídeo doméstico', temRef: true, nota: 4.2, taxa: 6, taxaLabel: '$6/h', logo: 'public/logo-claru.png',
+  { id: 2, name: 'Claru.ai', category: 'Vídeo doméstico', temRef: true, nota: 4.2, taxa: 6, taxaLabel: '$6', logo: 'public/logo-claru.png',
     calcRate: 6, calcCurrency: '$', calcBonuses: [
-      { threshold: 1, amount: 5, milestone: '1h' },
-      { threshold: 5, amount: 10, milestone: '5h' },
-      { threshold: 10, amount: 15, milestone: '10h' },
-      { threshold: 25, amount: 30, milestone: '25h' },
-      { threshold: 50, amount: 75, milestone: '50h' },
-      { threshold: 100, amount: 100, milestone: '100h' },
-      { threshold: 175, amount: 175, milestone: '175h' },
-      { threshold: 250, amount: 250, milestone: '250h' },
-      { threshold: 375, amount: 375, milestone: '375h' },
-      { threshold: 500, amount: 500, milestone: '500h' },
-      { threshold: 750, amount: 750, milestone: '750h' },
-      { threshold: 1000, amount: 1000, milestone: '1.000h' },
+      { threshold: 1, amount: 5, milestone: '1h' }, { threshold: 5, amount: 10, milestone: '5h' },
+      { threshold: 10, amount: 15, milestone: '10h' }, { threshold: 25, amount: 30, milestone: '25h' },
+      { threshold: 50, amount: 75, milestone: '50h' }, { threshold: 100, amount: 100, milestone: '100h' },
+      { threshold: 175, amount: 175, milestone: '175h' }, { threshold: 250, amount: 250, milestone: '250h' },
+      { threshold: 375, amount: 375, milestone: '375h' }, { threshold: 500, amount: 500, milestone: '500h' },
+      { threshold: 750, amount: 750, milestone: '750h' }, { threshold: 1000, amount: 1000, milestone: '1.000h' },
     ],
     bonus: [
-      { req: '1º clipe enviado', reward: '$5' },
-      { req: '1h', reward: '$5' },
-      { req: '5h', reward: '$10' },
-      { req: '10h', reward: '$15' },
-      { req: '25h', reward: '$30' },
-      { req: '50h', reward: '$75' },
-      { req: '100h', reward: '$100' },
-      { req: '175h', reward: '$175' },
-      { req: '250h', reward: '$250' },
-      { req: '375h', reward: '$375' },
-      { req: '500h', reward: '$500' },
-      { req: '750h', reward: '$750' },
+      { req: '1º clipe enviado', reward: '$5' }, { req: '1h', reward: '$5' }, { req: '5h', reward: '$10' },
+      { req: '10h', reward: '$15' }, { req: '25h', reward: '$30' }, { req: '50h', reward: '$75' },
+      { req: '100h', reward: '$100' }, { req: '175h', reward: '$175' }, { req: '250h', reward: '$250' },
+      { req: '375h', reward: '$375' }, { req: '500h', reward: '$500' }, { req: '750h', reward: '$750' },
       { req: '1.000h', reward: '$1.000' },
     ],
     referralInfo: 'Você ganha $25 quando seu indicado bate 5 horas.',
     estReview: { highlight: 'bônus de horas',
       pros: [
-        { icon: '💰', text: 'Pagamento na média ($6/h), porém possui muitos bônus por meta batida.' },
-        { icon: '🎧', text: 'Suporte: ativo no Discord' },
-        { icon: '📅', text: 'Saque semanal (toda terça)' },
+        'Pagamento na média ($6/h), porém possui muitos bônus por meta batida',
+        'Suporte: ativo no Discord',
+        'Saque semanal (toda terça)',
       ],
       cons: [
-        { icon: '⚡', text: 'Vídeo demora pra aparecer na plataforma pra ser avaliado (mesmo problema do Crowtado)' },
-        { icon: '💵', text: 'Saque mínimo alto: $50 (≈ R$ 250)' },
+        'Vídeo demora pra aparecer na plataforma pra ser avaliado',
+        'Saque mínimo alto: $50 (≈ R$ 250)',
       ],
     },
-    review: 'Tem o melhor bonus. Pagamento semanal. Pagamento por tarefa de anotação de texto, não por hora de vídeo. Boa quando tem tarefa disponível, mas a fila seca com frequência.',
-    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis o tempo todo', zoom: '0,5 (grande angular)', celulares: 'A partir do iPhone 11 e a partir do Galaxy S20+',
+    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: 'A partir do iPhone 11 e a partir do Galaxy S20+',
     saqueMin: 'US$ 25', tempoPagamento: 'Semanal', metodos: ['PayPal'],
     refLink: 'https://app.claru.ai/signup?ref=2d1cs845', officialLink: 'https://claru.ai', orgCode: '5PK5NFJE' },
-  { id: 3, name: 'Crowtado', category: 'Vídeo doméstico', temRef: true, nota: 3.9, taxa: 8, taxaLabel: '$8/h', logo: 'public/logo-crowtado.png',
-    calcRate: 8, calcCurrency: '$', calcBonuses: [],
-    bonus: [],
+  { id: 3, name: 'Crowtado', category: 'Vídeo doméstico', temRef: true, nota: 3.9, taxa: 8, taxaLabel: '$8', logo: 'public/logo-crowtado.png',
+    calcRate: 8, calcCurrency: '$', calcBonuses: [], bonus: [],
     referralInfo: 'Você ganha $10 quando seu indicado faz $50.',
     estReview: { highlight: 'pagamento',
       pros: [
-        { icon: '💰', text: 'Pagamento: o que paga mais ($8/h)' },
-        { icon: '💵', text: 'Saque mínimo baixo: $10 (≈ R$ 50)' },
+        'Pagamento: o que paga mais ($8/h)',
+        'Saque mínimo baixo: $10 (≈ R$ 50)',
       ],
       cons: [
-        { icon: '⚡', text: 'Vídeo demora pra aparecer na plataforma e ser avaliado' },
-        { icon: '🎧', text: 'Suporte: o pior das três, não encontrei alguém que recebeu um bom suporte.' },
+        'Vídeo demora pra aparecer na plataforma e ser avaliado',
+        'Suporte: o pior das três, não encontrei alguém que recebeu um bom suporte',
       ],
     },
-    review: 'O que paga mais por hora. Você avalia e compara respostas de modelos de IA — trabalho mais analítico. Análise dos vídeos e saque são um pouco lentos. Suporte não é bom.',
-    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis o tempo todo', zoom: '0,5 (grande angular)', celulares: 'A partir do iPhone 11 e a partir do Galaxy S20+',
+    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: 'A partir do iPhone 11 e a partir do Galaxy S20+',
     saqueMin: 'US$ 10', tempoPagamento: 'Variável', metodos: ['Pix', 'Transferência internacional'],
     refLink: 'https://www.crowtado.com/sign-up?ref=4T2L4ATC', officialLink: 'https://crowtado.com', orgCode: 'PE8EARV5' },
 ];
 
-let state = { openId: null, search: '', category: 'Todas', sort: 'nota', estimatorHoursPerDay: 3, estimatorPlatformId: 2, currencyMode: 'USD' };
+let state = { openId: 1, estimatorPlatformId: 1, estimatorHoursPerDay: 3, currencyMode: 'USD' };
 
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+function fmt(n) { return Math.round(n).toLocaleString('pt-BR'); }
+function stars(n) {
+  const full = Math.floor(n), half = n % 1 !== 0;
+  return '★'.repeat(full) + (half ? '⯪' : '') + '☆'.repeat(5 - full - (half ? 1 : 0));
+}
 function convertAmount(amount, fromCur, toCur) {
   if (fromCur === toCur) return amount;
   return fromCur === '$' ? Math.round(amount * EXCHANGE_RATE) : Math.round(amount / EXCHANGE_RATE);
 }
-function getDisplayRate(platform, mode) {
-  const targetCur = mode === 'USD' ? '$' : 'R$';
-  if (platform.calcCurrency === targetCur) return { rate: platform.calcRate, currency: targetCur };
-  return { rate: convertAmount(platform.calcRate, platform.calcCurrency, targetCur), currency: targetCur };
+function getDisplayRate(p, mode) {
+  const target = mode === 'USD' ? '$' : 'R$';
+  if (p.calcCurrency === target) return { rate: p.calcRate, currency: target };
+  return { rate: convertAmount(p.calcRate, p.calcCurrency, target), currency: target };
 }
-function getBonusBreakdown(platform, hours) {
-  return (platform.calcBonuses || []).filter(b => hours >= b.threshold);
-}
-function stars(n) {
-  const full = Math.floor(n);
-  const half = n % 1 !== 0;
-  return '★'.repeat(full) + (half ? '⯪' : '') + '☆'.repeat(5 - full - (half ? 1 : 0));
-}
-function fmt(n) { return Math.round(n).toLocaleString('pt-BR'); }
-function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 
 function renderPlatforms() {
-  const q = state.search.trim().toLowerCase();
-  let list = data.filter(p => {
-    const matchQ = !q || p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q);
-    const matchCat = state.category === 'Todas' || p.category === state.category;
-    return matchQ && matchCat;
-  });
-  list = list.slice().sort((a, b) => state.sort === 'taxa' ? b.taxa - a.taxa : b.nota - a.nota);
-
-  const grid = document.getElementById('platformsGrid');
-  const noResults = document.getElementById('noResults');
-  grid.innerHTML = '';
-  noResults.style.display = list.length === 0 ? 'block' : 'none';
-
-  list.forEach(p => {
-    const expanded = state.openId === p.id;
-    const isHighlighted = p.id === 1;
-    const rm = refMeta[p.temRef ? 'com' : 'sem'];
-    const hidden = state.openId && !expanded;
-    const card = document.createElement('div');
-    card.style.cssText = `background: #14171B; border: ${isHighlighted ? '2px solid #E8600A' : '1px solid ' + (expanded ? '#E8600A' : '#22262B')}; border-radius: 18px; padding: 20px; transition: border-color .15s; box-shadow: ${isHighlighted ? '0 0 16px rgba(232, 96, 10, 0.2)' : 'none'}; position: relative; ${expanded ? 'grid-column: 1 / -1;' : ''} ${hidden ? 'display: none;' : ''}`;
-
+  const list = document.getElementById('platformsList');
+  list.innerHTML = '';
+  data.forEach(p => {
+    const open = state.openId === p.id;
     const hasBonus = p.bonus && p.bonus.length > 0;
-    const bonusLabel = hasBonus ? 'TEM BÔNUS' : 'SEM BÔNUS';
-    const bonusBg = hasBonus ? 'rgba(232,96,10,0.12)' : 'rgba(148,163,184,0.1)';
-    const bonusColor = hasBonus ? '#E8600A' : '#9aa0a6';
-    const hasReferral = p.refLink !== p.officialLink;
-
-    card.innerHTML = `
-      ${isHighlighted ? `<div style="position: absolute; top: -12px; left: 20px; background: #E8600A; color: #0B0D10; font-size: 10px; font-weight: 700; letter-spacing: 0.03em; padding: 4px 10px; border-radius: 999px; line-height: 1.4; white-space: nowrap;">RECOMENDAÇÃO DO DOLLAR</div>` : ''}
-      <div class="toggleArea" style="cursor: pointer; ${isHighlighted ? 'margin-top: 8px;' : ''}">
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
-          <div style="width: 40px; height: 40px; border-radius: 10px; background: ${p.logo ? '#0B0D10' : (avatarColors[p.category] || '#E8600A')}; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-            ${p.logo ? `<img src="${p.logo}" alt="${esc(p.name)}" style="width: 100%; height: 100%; object-fit: cover;" />` : `<span style="color: white; font-weight: 700; font-size: 16px;">${esc(p.name[0])}</span>`}
+    const el = document.createElement('article');
+    el.className = 'plat' + (p.featured ? ' featured' : '') + (open ? ' open' : '');
+    el.innerHTML = `
+      ${p.featured ? '<div class="featured-tag">RECOMENDAÇÃO DO DOLLAR</div>' : ''}
+      <div class="plat-head">
+        <div class="plat-logo"><img src="${p.logo}" alt=""></div>
+        <div>
+          <div class="plat-name">${esc(p.name)}</div>
+          <div class="plat-meta">
+            <span class="stars">${stars(p.nota)}</span>
+            <span>${p.nota.toFixed(1)}</span>
+            <span>·</span>
+            <span>${esc(p.category)}</span>
           </div>
-          <div style="flex: 1; min-width: 0;">
-            <div style="font-size: 16px; font-weight: 700; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${esc(p.name)}</div>
-            <div style="font-size: 12px; color: #9aa0a6;">${esc(p.category)}</div>
+          <div class="badges" style="margin-top: 10px;">
+            <span class="badge ${p.temRef ? 'b-ref' : 'b-noref'}">${p.temRef ? 'Com indicação' : 'Sem indicação'}</span>
+            <span class="badge ${hasBonus ? 'b-bonus' : 'b-nobonus'}">${hasBonus ? 'Tem bônus' : 'Sem bônus'}</span>
           </div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #6b7280; flex-shrink: 0;">${expanded ? '−' : '+'}</div>
         </div>
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
-          <div style="display: flex; align-items: center; gap: 6px;">
-            <span style="color: #E8600A; font-size: 14px; letter-spacing: 1px;">${stars(p.nota)}</span>
-            <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9aa0a6;">${p.nota.toFixed(1)}</span>
-          </div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 700; color: white;">${esc(p.taxaLabel)}</div>
-        </div>
-        <div style="display: flex; gap: 6px; margin-top: 8px;">
-          <div style="display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; padding: 3px 10px; border-radius: 999px; background: ${rm.bg}; color: ${rm.color};">${rm.label}</div>
-          <div style="display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; padding: 3px 10px; border-radius: 999px; background: ${bonusBg}; color: ${bonusColor};">${bonusLabel}</div>
+        <div class="plat-price">
+          <div class="plat-rate">${esc(p.taxaLabel)}</div>
+          <div class="plat-rate-lbl">USD por hora</div>
+          <button class="expand-btn" style="margin-top: 12px;"><span>${open ? 'Fechar' : 'Ver detalhes'}</span><span class="expand-icon">+</span></button>
         </div>
       </div>
-      ${expanded ? `
-      <div style="margin-top: 18px; padding-top: 18px; border-top: 1px solid #22262B; display: flex; flex-direction: column; gap: 18px;">
-        <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #E8600A; margin-bottom: 8px;">REVIEW</div>
-          <p style="font-size: 13.5px; line-height: 1.6; color: #c9cdd1; margin: 0 0 14px;">${esc(p.review)}</p>
-          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-            ${hasReferral ? `<a href="${p.refLink}" target="_blank" style="background: #E8600A; color: #0B0D10; font-size: 13px; font-weight: 700; padding: 9px 16px; border-radius: 10px;">Acessar via meu link</a>` : ''}
-            <a href="${p.officialLink}" target="_blank" style="background: ${hasReferral ? 'transparent' : '#E8600A'}; border: 1px solid #22262B; color: ${hasReferral ? '#c9cdd1' : '#0B0D10'}; font-size: 13px; font-weight: 700; padding: 9px 16px; border-radius: 10px;">Site oficial</a>
-          </div>
-        </div>
-        <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #E8600A; margin-bottom: 10px;">REQUISITOS TÉCNICOS</div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px;">
-            <div><div style="font-size: 11px; color: #6b7280; margin-bottom: 2px;">Duração do clipe</div><div style="font-size: 13px; color: #E7E7E7;">${esc(p.duracao)}</div></div>
-            <div><div style="font-size: 11px; color: #6b7280; margin-bottom: 2px;">Formato do vídeo</div><div style="font-size: 13px; color: #E7E7E7;">${esc(p.formato)}</div></div>
-            <div><div style="font-size: 11px; color: #6b7280; margin-bottom: 2px;">Visibilidade das mãos</div><div style="font-size: 13px; color: #E7E7E7;">${esc(p.maos)}</div></div>
-            <div><div style="font-size: 11px; color: #6b7280; margin-bottom: 2px;">Zoom / lente</div><div style="font-size: 13px; color: #E7E7E7;">${esc(p.zoom)}</div></div>
-          </div>
-          <div style="margin-top: 10px;"><div style="font-size: 11px; color: #6b7280; margin-bottom: 2px;">Celulares compatíveis</div><div style="font-size: 13px; color: #E7E7E7;">${esc(p.celulares)}</div></div>
-        </div>
-        ${hasBonus ? `
-        <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #E8600A; margin-bottom: 10px;">BÔNUS</div>
-          <div style="display: flex; flex-direction: column; gap: 6px; max-height: 180px; overflow-y: auto; padding-right: 8px;">
-            ${p.bonus.map(b => `<div style="display: flex; justify-content: space-between; gap: 40px; font-size: 12.5px; padding: 5px 0; border-bottom: 1px solid #1a1d21;"><span style="color: #9aa0a6; flex-shrink: 0;">${esc(b.req)}</span><span style="color: #E7E7E7; flex-shrink: 0;">${esc(b.reward)}</span></div>`).join('')}
-          </div>
-        </div>` : ''}
-        ${p.referralInfo ? `
-        <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #E8600A; margin-bottom: 10px;">SISTEMA DE INDICAÇÃO</div>
-          <p style="font-size: 13px; line-height: 1.6; color: #c9cdd1; margin: 0;">${esc(p.referralInfo)}</p>
-        </div>` : ''}
-        <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #E8600A; margin-bottom: 10px;">PAGAMENTO</div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; margin-bottom: 10px;">
-            <div><div style="font-size: 11px; color: #6b7280; margin-bottom: 2px;">Saque mínimo</div><div style="font-size: 13px; color: #E7E7E7;">${esc(p.saqueMin)}</div></div>
-            <div><div style="font-size: 11px; color: #6b7280; margin-bottom: 2px;">Tempo médio</div><div style="font-size: 13px; color: #E7E7E7;">${esc(p.tempoPagamento)}</div></div>
-          </div>
-          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-            ${p.metodos.map(m => `<span style="font-size: 11px; font-weight: 600; background: #0B0D10; border: 1px solid #22262B; color: #c9cdd1; padding: 4px 10px; border-radius: 999px;">${esc(m)}</span>`).join('')}
-          </div>
-        </div>
-        <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #E8600A; margin-bottom: 12px;">COMO SE CADASTRAR</div>
-          <div style="display: flex; flex-direction: column; gap: 14px;">
-            <div style="display: flex; gap: 10px; align-items: flex-start;">
-              <div style="width: 22px; height: 22px; border-radius: 50%; background: rgba(232,96,10,0.15); color: #E8600A; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
-              <div style="font-size: 13px; line-height: 1.55; color: #c9cdd1;">
-                Use um e-mail <strong style="color: white;">novo</strong> (diferente do que você usa em outra plataforma)<br/>
-                <span style="color: #f87171; font-size: 12px;">⚠️ Isso é importante — o mesmo e-mail em duas plataformas pode travar seu cadastro.</span>
-              </div>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-              <div style="width: 22px; height: 22px; border-radius: 50%; background: rgba(232,96,10,0.15); color: #E8600A; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
-              <div style="font-size: 13px; color: #c9cdd1; flex: 1; min-width: 140px;">Cadastre pelo meu link de indicação</div>
-              <a href="${p.refLink}" target="_blank" style="flex-shrink: 0; background: #E8600A; color: #0B0D10; font-size: 12.5px; font-weight: 700; padding: 7px 14px; border-radius: 8px;">Cadastrar na ${esc(p.name)}</a>
-            </div>
-            ${p.orgCode ? `
-            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-              <div style="width: 22px; height: 22px; border-radius: 50%; background: rgba(232,96,10,0.15); color: #E8600A; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
-              <div style="font-size: 13px; color: #c9cdd1; flex: 1; min-width: 140px;">Coloque o código de organização</div>
-              <button class="copyCodeBtn" data-code="${esc(p.orgCode)}" style="flex-shrink: 0; display: flex; align-items: center; gap: 6px; background: #0B0D10; border: 1px solid #22262B; color: #E7E7E7; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 700; padding: 7px 12px; border-radius: 8px; cursor: pointer;">${esc(p.orgCode)} <span class="copyIcon">📋</span></button>
-            </div>` : ''}
-            <div style="display: flex; gap: 10px; align-items: flex-start;">
-              <div style="width: 22px; height: 22px; border-radius: 50%; background: rgba(232,96,10,0.15); color: #E8600A; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">${p.orgCode ? '4' : '3'}</div>
-              <div style="font-size: 13px; line-height: 1.55; color: #c9cdd1;">Depois de cadastrado, <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">entra na comunidade</a> que a gente te ajuda a configurar tudo.</div>
-            </div>
-          </div>
-        </div>
-      </div>` : ''}
+      ${open ? renderPlatBody(p, hasBonus) : ''}
     `;
-    card.querySelector('.toggleArea').addEventListener('click', () => {
+    el.querySelector('.plat-head').addEventListener('click', (e) => {
+      if (e.target.closest('.copy-code')) return;
       state.openId = state.openId === p.id ? null : p.id;
       renderPlatforms();
     });
-    card.querySelectorAll('.copyCodeBtn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        navigator.clipboard.writeText(btn.dataset.code).then(() => {
-          const icon = btn.querySelector('.copyIcon');
-          icon.textContent = '✅';
-          setTimeout(() => { icon.textContent = '📋'; }, 1500);
+    if (open) {
+      el.querySelectorAll('.copy-code').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          navigator.clipboard.writeText(btn.dataset.code).then(() => {
+            const orig = btn.dataset.orig;
+            btn.textContent = 'Copiado ✓';
+            setTimeout(() => { btn.innerHTML = orig; }, 1500);
+          });
         });
       });
-    });
-    grid.appendChild(card);
+    }
+    list.appendChild(el);
   });
+}
+
+function renderPlatBody(p, hasBonus) {
+  const pros = p.estReview.pros.map(t => `<li>${esc(t)}</li>`).join('');
+  const cons = p.estReview.cons.map(t => `<li>${esc(t)}</li>`).join('');
+  const codeOrig = `${esc(p.orgCode)} <span style="color: var(--muted); font-weight: 400;">copiar</span>`;
+  return `
+    <div class="plat-body">
+      <div class="rev-block">
+        <div class="rev-col pros"><div class="rev-col-title pros">+ Pontos positivos</div><ul>${pros}</ul></div>
+        <div class="rev-col cons"><div class="rev-col-title cons">− Pontos negativos</div><ul>${cons}</ul></div>
+      </div>
+
+      <div class="subsec-title">Requisitos técnicos</div>
+      <div class="kv-grid">
+        <div><div class="kv-lbl">Duração</div><div class="kv-val">${esc(p.duracao)}</div></div>
+        <div><div class="kv-lbl">Formato</div><div class="kv-val">${esc(p.formato)}</div></div>
+        <div><div class="kv-lbl">Mãos</div><div class="kv-val">${esc(p.maos)}</div></div>
+        <div><div class="kv-lbl">Zoom</div><div class="kv-val">${esc(p.zoom)}</div></div>
+      </div>
+      <div style="margin-top: 14px;"><div class="kv-lbl">Celulares compatíveis</div><div class="kv-val">${esc(p.celulares)}</div></div>
+
+      <div class="subsec-title">Pagamento</div>
+      <div class="kv-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div><div class="kv-lbl">Saque mínimo</div><div class="kv-val">${esc(p.saqueMin)}</div></div>
+        <div><div class="kv-lbl">Tempo médio</div><div class="kv-val">${esc(p.tempoPagamento)}</div></div>
+        <div><div class="kv-lbl">Métodos</div><div class="kv-val" style="display: flex; gap: 6px; flex-wrap: wrap;">${p.metodos.map(m => `<span class="method-chip">${esc(m)}</span>`).join('')}</div></div>
+      </div>
+
+      ${hasBonus ? `
+        <div class="subsec-title">Bônus</div>
+        <div class="bonus-list">${p.bonus.map(b => `<div class="bonus-row"><span>${esc(b.req)}</span><span>${esc(b.reward)}</span></div>`).join('')}</div>
+      ` : ''}
+
+      <div class="subsec-title">Sistema de indicação</div>
+      <p class="body" style="margin: 0;">${esc(p.referralInfo)}</p>
+
+      <div class="subsec-title">Como se cadastrar</div>
+      <div class="step-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">Use um e-mail <strong>novo</strong> (diferente do que você usa em outra plataforma).<div class="warn-note">Cadastro duplicado pode travar sua conta.</div></div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body step-inline"><span style="flex: 1; min-width: 140px;">Cadastre pelo meu link de indicação.</span><a class="btn btn-accent" style="padding: 8px 14px; font-size: 12.5px;" href="${p.refLink}" target="_blank">Cadastrar na ${esc(p.name)} →</a></div>
+        </div>
+        ${p.orgCode ? `
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body step-inline"><span style="flex: 1; min-width: 140px;">Coloque o código de organização.</span><button class="code-chip copy-code" data-code="${esc(p.orgCode)}" data-orig="${codeOrig}">${codeOrig}</button></div>
+        </div>` : ''}
+        <div class="step">
+          <div class="step-num">${p.orgCode ? '4' : '3'}</div>
+          <div class="step-body">Depois de cadastrado, <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">entra na comunidade</a> que a gente te ajuda a configurar tudo.</div>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 function renderEstimator() {
-  const hoursPerDay = state.estimatorHoursPerDay;
-  const monthlyHours = hoursPerDay * DAYS_PER_MONTH;
-  const estPlatform = data.find(p => p.id === state.estimatorPlatformId) || data[0];
-  const { rate: displayRate, currency: displayCurrency } = getDisplayRate(estPlatform, state.currencyMode);
-  const baseEarnings = Math.round(hoursPerDay * displayRate * 100) / 100;
-  const bonusCurrency = estPlatform.bonusCurrency || estPlatform.calcCurrency;
-  const bonusBreakdown = getBonusBreakdown(estPlatform, monthlyHours).map(b => {
-    const amount = convertAmount(b.amount, bonusCurrency, displayCurrency);
-    return { ...b, amount };
-  });
-  const lockedBonuses = (estPlatform.calcBonuses || []).filter(b => monthlyHours < b.threshold).map(b => {
-    const amount = convertAmount(b.amount, bonusCurrency, displayCurrency);
-    return { ...b, amount };
-  });
-  const bonusAmount = bonusBreakdown.reduce((sum, b) => sum + b.amount, 0);
-  const totalEarnings = Math.round((baseEarnings * DAYS_PER_MONTH + bonusAmount) * 100) / 100;
+  const p = data.find(x => x.id === state.estimatorPlatformId) || data[0];
+  const h = state.estimatorHoursPerDay;
+  const monthly = h * DAYS_PER_MONTH;
+  const { rate: displayRate, currency: cur } = getDisplayRate(p, state.currencyMode);
+  const baseMonth = h * displayRate * DAYS_PER_MONTH;
+  const bCur = p.bonusCurrency || p.calcCurrency;
+  const hit = (p.calcBonuses || []).filter(b => monthly >= b.threshold).map(b => ({ ...b, amount: convertAmount(b.amount, bCur, cur) }));
+  const locked = (p.calcBonuses || []).filter(b => monthly < b.threshold).map(b => ({ ...b, amount: convertAmount(b.amount, bCur, cur) }));
+  const bonusSum = hit.reduce((s, b) => s + b.amount, 0);
+  const total = baseMonth + bonusSum;
 
-  document.getElementById('hoursDisplay').textContent = `${hoursPerDay}h/dia`;
-  document.getElementById('estPlatformName').textContent = estPlatform.name;
-  const estReviewEl = document.getElementById('estimatorReview');
-  if (estPlatform.estReview) {
-    const r = estPlatform.estReview;
-    const renderList = (items) => items.map(i => `<li style="display: flex; gap: 10px; padding: 5px 0; align-items: flex-start; font-size: 13.5px; line-height: 1.5; color: #c9cdd1;"><span style="font-size: 15px; line-height: 1.4; flex-shrink: 0;">${i.icon}</span><span>${esc(i.text)}</span></li>`).join('');
-    const prosHtml = r.pros && r.pros.length ? `
-      <div>
-        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
-          <span style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: rgba(34,197,94,0.15); color: #4ade80; font-size: 11px; font-weight: 700;">+</span>
-          <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4ade80; font-weight: 700;">Pontos positivos</span>
-        </div>
-        <ul style="list-style: none; margin: 0; padding: 0;">${renderList(r.pros)}</ul>
-      </div>` : '';
-    const consHtml = r.cons && r.cons.length ? `
-      <div>
-        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
-          <span style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: rgba(239,68,68,0.15); color: #f87171; font-size: 11px; font-weight: 700;">−</span>
-          <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #f87171; font-weight: 700;">Pontos negativos</span>
-        </div>
-        <ul style="list-style: none; margin: 0; padding: 0;">${renderList(r.cons)}</ul>
-      </div>` : '';
-    estReviewEl.innerHTML = `
-      <div style="display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #E8600A; background: rgba(232,96,10,0.12); padding: 4px 10px; border-radius: 999px; margin-bottom: 14px; font-weight: 700;">Destaque: ${esc(r.highlight)}</div>
-      <div class="pros-cons-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">${prosHtml}${consHtml}</div>
-    `;
-  } else {
-    estReviewEl.innerHTML = '';
-  }
-  document.getElementById('totalAmount').innerHTML = `${displayCurrency} ${fmt(totalEarnings)}<span style="font-size: 0.4em; color: #6b7280; font-weight: 600;"> /mês</span>`;
-  document.getElementById('currencyToggle').textContent = state.currencyMode === 'USD' ? 'Ver em Reais' : 'Ver em Dólares';
+  document.getElementById('hoursDisplay').textContent = `${h}h/dia`;
+  document.getElementById('estPlatformName').textContent = p.name;
+  document.getElementById('totalAmount').innerHTML = `${cur === '$' ? 'US$' : 'R$'} ${fmt(total)}<span class="per"> /mês</span>`;
+  document.getElementById('currencyToggle').textContent = state.currencyMode === 'USD' ? 'Ver em reais' : 'Ver em dólares';
 
-  const footnote = bonusAmount > 0
-    ? `Estimativa baseada em gravar todos os dias do mês, incluindo ${displayCurrency} ${bonusAmount} em bônus desbloqueados nesse ritmo.`
-    : (estPlatform.calcBonuses.length > 0 ? 'Aumente as horas por dia para desbloquear os bônus dessa plataforma no mês.' : 'Estimativa baseada em gravar todos os dias do mês, só na taxa por hora — essa plataforma não paga bônus.');
+  const footnote = bonusSum > 0
+    ? `Estimativa com base em gravar todos os dias do mês, incluindo ${cur === '$' ? 'US$' : 'R$'} ${fmt(bonusSum)} em bônus desbloqueados nesse ritmo.`
+    : (p.calcBonuses.length > 0 ? 'Aumente as horas por dia para desbloquear os bônus dessa plataforma.' : 'Só taxa por hora — essa plataforma não paga bônus.');
   document.getElementById('estFootnote').textContent = footnote;
 
-  const breakdown = document.getElementById('earningsBreakdown');
-  let html = `<div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #22262B;"><span style="color: #c9cdd1;">Gravação · ${hoursPerDay}h/dia × ${displayCurrency}${displayRate}/h</span><span style="color: #E7E7E7; font-family: 'JetBrains Mono', monospace; font-weight: 600;">${displayCurrency} ${fmt(baseEarnings * DAYS_PER_MONTH)}/dia</span></div>`;
-  if (bonusBreakdown.length > 0) {
-    bonusBreakdown.forEach(b => {
-      html += `<div style="display: flex; justify-content: space-between; padding: 8px 0;"><span style="color: #9aa0a6;">Bônus ${b.milestone} (no mês)</span><span style="color: #22c55e; font-family: 'JetBrains Mono', monospace; font-weight: 600;">+ ${displayCurrency} ${fmt(b.amount)}</span></div>`;
-    });
-  }
-  if (lockedBonuses.length > 0) {
-    html += `<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 8px; border-top: 1px solid #22262B;"><div style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">Próximos marcos (ainda não batidos)</div>`;
-    lockedBonuses.forEach(b => {
-      html += `<div style="display: flex; justify-content: space-between; padding: 4px 0;"><span style="color: #6b7280;">Bônus ${b.milestone}</span><span style="color: #6b7280; font-family: 'JetBrains Mono', monospace; font-weight: 600;">${displayCurrency} ${fmt(b.amount)}</span></div>`;
-    });
-    html += `</div>`;
-  }
-  if (estPlatform.calcBonuses.length === 0) {
-    html += `<div style="padding: 8px 0; font-size: 13px; color: #6b7280;">Esta plataforma não tem bônus por hora.</div>`;
-  } else if (bonusBreakdown.length === 0) {
-    html += `<div style="padding: 8px 0; font-size: 13px; color: #6b7280;">Bata ${estPlatform.calcBonuses[0].milestone} no mês pra desbloquear o primeiro bônus.</div>`;
-  }
-  breakdown.innerHTML = html;
+  const r = p.estReview;
+  document.getElementById('estimatorReview').innerHTML = `
+    <div style="display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: 4px 10px; border-radius: 999px; margin-bottom: 14px; font-weight: 700;">Destaque: ${esc(r.highlight)}</div>
+    <div class="rev-block" style="margin-bottom: 0;">
+      <div class="rev-col pros"><div class="rev-col-title pros">+ Pontos positivos</div><ul>${r.pros.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>
+      <div class="rev-col cons"><div class="rev-col-title cons">− Pontos negativos</div><ul>${r.cons.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>
+    </div>
+  `;
 
-  const epContainer = document.getElementById('estimatorPlatforms');
-  epContainer.innerHTML = '';
-  data.forEach(p => {
-    const active = p.id === state.estimatorPlatformId;
+  const bk = document.getElementById('earningsBreakdown');
+  let html = `<div class="brk-row"><span class="brk-label">Gravação · ${h}h/dia × ${cur === '$' ? 'US$' : 'R$'}${displayRate}/h × 30 dias</span><span class="brk-val">${cur === '$' ? 'US$' : 'R$'} ${fmt(baseMonth)}</span></div>`;
+  hit.forEach(b => {
+    html += `<div class="brk-row"><span class="brk-label">Bônus ${b.milestone} (batido)</span><span class="brk-val plus">+ ${cur === '$' ? 'US$' : 'R$'} ${fmt(b.amount)}</span></div>`;
+  });
+  if (locked.length > 0) {
+    html += `<div style="padding: 12px 0 4px; font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-family: 'JetBrains Mono', monospace;">Próximos marcos</div>`;
+    locked.slice(0, 6).forEach(b => {
+      html += `<div class="brk-row brk-locked"><span class="brk-label">Bônus ${b.milestone}</span><span class="brk-val">${cur === '$' ? 'US$' : 'R$'} ${fmt(b.amount)}</span></div>`;
+    });
+  }
+  if (p.calcBonuses.length === 0) {
+    html += `<div class="brk-row"><span class="brk-label" style="color: var(--muted);">Sem bônus por hora nessa plataforma.</span></div>`;
+  }
+  bk.innerHTML = html;
+
+  const tabs = document.getElementById('estTabs');
+  tabs.innerHTML = '';
+  data.forEach(pl => {
     const btn = document.createElement('button');
-    btn.style.cssText = `display: flex; align-items: center; gap: 8px; background: ${active ? 'rgba(232,96,10,0.12)' : '#14171B'}; border: 1px solid ${active ? '#E8600A' : '#22262B'}; border-radius: 999px; padding: 8px 16px 8px 8px; cursor: pointer;`;
-    btn.innerHTML = `${p.logo ? `<img src="${p.logo}" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover;" />` : `<div style="width: 24px; height: 24px; border-radius: 50%; background: ${avatarColors[p.category] || '#E8600A'}; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: white;">${esc(p.name[0])}</div>`}<span style="font-size: 13px; font-weight: 600; color: ${active ? '#E8600A' : '#c9cdd1'};">${esc(p.name)}</span>`;
-    btn.addEventListener('click', () => { state.estimatorPlatformId = p.id; renderEstimator(); });
-    epContainer.appendChild(btn);
+    btn.className = 'est-tab' + (pl.id === state.estimatorPlatformId ? ' active' : '');
+    btn.innerHTML = `<img src="${pl.logo}" alt=""><span>${esc(pl.name)}</span>`;
+    btn.addEventListener('click', () => { state.estimatorPlatformId = pl.id; renderEstimator(); });
+    tabs.appendChild(btn);
   });
 }
 
-function populateCategorySelect() {
-  const sel = document.getElementById('categorySelect');
-  const categories = ['Todas', ...new Set(data.map(p => p.category))];
-  sel.innerHTML = categories.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
-}
-
-document.getElementById('searchInput').addEventListener('input', (e) => { state.search = e.target.value; renderPlatforms(); });
-document.getElementById('categorySelect').addEventListener('change', (e) => { state.category = e.target.value; renderPlatforms(); });
-document.getElementById('sortSelect').addEventListener('change', (e) => { state.sort = e.target.value; renderPlatforms(); });
 document.getElementById('hoursSlider').addEventListener('input', (e) => { state.estimatorHoursPerDay = parseFloat(e.target.value); renderEstimator(); });
 document.getElementById('currencyToggle').addEventListener('click', () => { state.currencyMode = state.currencyMode === 'USD' ? 'BRL' : 'USD'; renderEstimator(); });
 
-populateCategorySelect();
 renderPlatforms();
 renderEstimator();
 </script>
