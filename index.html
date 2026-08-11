@@ -180,11 +180,11 @@
 
   /* Which one section */
   .which-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  .which-card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+  .which-card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; }
   .which-eye { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 10px; }
   .which-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; letter-spacing: -0.015em; margin: 0 0 6px; }
   .which-sub { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
-  .which-body { font-size: 14px; line-height: 1.55; color: #333; margin-bottom: 18px; }
+  .which-body { font-size: 14px; line-height: 1.55; color: #333; margin-bottom: 18px; flex: 1; }
 
   /* Prova */
   .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
