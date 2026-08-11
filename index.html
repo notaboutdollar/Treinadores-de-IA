@@ -25,6 +25,13 @@
   input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #E8600A; cursor: pointer; border: 2px solid #0B0D10; }
   .platforms-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; row-gap: 24px; position: relative; }
   .requirements-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .faq-item { background: #14171B; border: 1px solid #22262B; border-radius: 14px; overflow: hidden; transition: border-color .15s; }
+  .faq-item[open] { border-color: #E8600A; }
+  .faq-item summary { list-style: none; cursor: pointer; padding: 18px 20px; font-size: 15px; font-weight: 700; color: white; display: flex; align-items: center; justify-content: space-between; gap: 12px; user-select: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-family: 'JetBrains Mono', monospace; font-size: 20px; color: #E8600A; font-weight: 400; line-height: 1; transition: transform .2s; flex-shrink: 0; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p { font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 0; padding: 0 20px 18px; }
   .estimator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
   .hero-title { font-size: 48px; line-height: 1.08; letter-spacing: -0.025em; font-weight: 800; margin: 0 0 20px; color: white; }
   .section-title { font-size: 42px; line-height: 1.2; font-weight: 800; margin: 0 0 20px; color: white; }
@@ -147,6 +154,10 @@
       <div>
         <p style="font-size: 15px; line-height: 1.65; color: #c9cdd1; margin: 0 0 18px;">A HUB envia o suporte de cabeça de graça pra quem entra na whitelist, mas a fila demora um pouco. Se você quer começar a gravar rápido deixei essas duas opções abaixo. Na época comprei pelo Mercado Livre — saiu mais caro, mas o suporte é bom e chegou em 1 dia. Da Shopee a comunidade comprou e achou bom.</p>
         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="https://ai.hub.xyz/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: #22DD5A; color: #0B0D10; font-size: 13px; font-weight: 700; padding: 10px 16px; border-radius: 10px;">
+            <img src="public/logo-hub.png" alt="" style="width: 16px; height: 16px; border-radius: 4px;" />
+            Peça grátis na Hub →
+          </a>
           <a href="https://meli.la/2FhJMgR" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: #E8600A; color: #0B0D10; font-size: 13px; font-weight: 700; padding: 10px 16px; border-radius: 10px;">Comprar no Mercado Livre →</a>
           <a href="https://s.shopee.com.br/20uYfjsybN" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px solid #22262B; color: #E7E7E7; font-size: 13px; font-weight: 700; padding: 10px 16px; border-radius: 10px;">Comprar na Shopee →</a>
         </div>
@@ -221,44 +232,44 @@
   </section>
 
   <!-- FAQ -->
-  <section id="faq" style="max-width: 1180px; margin: 0 auto; padding: 24px 20px 56px; scroll-margin-top: 60px;">
-    <div style="margin-bottom: 28px;">
+  <section id="faq" style="max-width: 860px; margin: 0 auto; padding: 24px 20px 56px; scroll-margin-top: 60px;">
+    <div style="margin-bottom: 28px; text-align: center;">
       <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #E8600A; margin-bottom: 12px; font-weight: 600;">FAQ</div>
-      <h2 class="section-title">Perguntas que a galera mais faz</h2>
+      <h2 class="section-title" style="margin-bottom: 0;">Perguntas que a galera mais faz</h2>
     </div>
 
-    <div style="display: flex; flex-direction: column; gap: 12px; max-width: 860px;">
-      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px 20px;">
-        <div style="font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px;">▸ Quanto tempo demora pra receber o primeiro pagamento?</div>
-        <p style="font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 0;">Varia por plataforma. Na Claru.ai o pagamento é processado toda terça — saque automático quando você bate $50 (ou já na primeira semana, se bateu 5h gravadas). Na Hub.xyz o prazo médio é de 1 a 2 dias, e na Crowtado é variável. Você confere o prazo específico em "Pagamento" dentro do card de cada plataforma.</p>
-      </div>
-      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px 20px;">
-        <div style="font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px;">▸ Posso usar mais de uma plataforma ao mesmo tempo?</div>
-        <p style="font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 0;">Pode, e é o que eu recomendo — cada uma paga por hora gravada, então quanto mais plataformas ativas, mais você fatura. Só uma regra importante: use um e-mail diferente em cada plataforma. Cadastro duplicado com o mesmo e-mail pode travar sua conta.</p>
-      </div>
-      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px 20px;">
-        <div style="font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px;">▸ Preciso declarar imposto sobre esse ganho?</div>
-        <p style="font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 0;">Isso depende do seu volume de ganho e da sua situação fiscal, então não vou te dar uma resposta genérica aqui — o ideal é confirmar com um contador. Não sou contador nem consultor financeiro, então prefiro não arriscar te passar uma informação errada nesse tema.</p>
-      </div>
-      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px 20px;">
-        <div style="font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px;">▸ E se meu vídeo for rejeitado?</div>
-        <p style="font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 0;">Cada plataforma avalia o clipe antes de aprovar, então respeitar os requisitos técnicos (duração, enquadramento, mãos visíveis, zoom) reduz bastante a chance de rejeição — dá uma conferida na seção "Requisitos técnicos" de cada card antes de gravar. Ainda não tenho o motivo mais comum de rejeição por plataforma confirmado; assim que tiver, atualizo aqui.</p>
-      </div>
-      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px 20px;">
-        <div style="font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px;">▸ Tem limite de horas por dia?</div>
-        <p style="font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 0;">Na Claru.ai o vídeo precisa ter entre 2 e 30 minutos (o app corta automaticamente aos 30min), mas não há limite de vídeos por dia. Na Hub.xyz e na Crowtado ainda não confirmei se existe algum limite diário — assim que tiver certeza, atualizo aqui.</p>
-      </div>
-      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px 20px;">
-        <div style="font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px;">▸ Preciso aparecer no vídeo ou minha voz vai ser gravada?</div>
-        <p style="font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 0;">Não. Nas três plataformas você grava só as mãos fazendo a tarefa, sem áudio e sem aparecer o rosto.</p>
-      </div>
-      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px 20px;">
-        <div style="font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px;">▸ Qual celular funciona?</div>
-        <p style="font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 0;">Não é qualquer um — cada plataforma tem uma lista de modelos aceitos (Samsung Galaxy S, iPhone e Google Pixel, geralmente das últimas 4-5 gerações). Confirma o modelo específico dentro do card de cada plataforma antes de comprar o suporte de cabeça.</p>
-      </div>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <details class="faq-item">
+        <summary>Quanto tempo demora pra receber o primeiro pagamento?</summary>
+        <p>Varia por plataforma. Na Claru.ai o pagamento é processado toda terça — saque automático quando você bate $50 (ou já na primeira semana, se bateu 5h gravadas). Na Hub.xyz o prazo médio é de 1 a 2 dias, e na Crowtado é variável. Você confere o prazo específico em "Pagamento" dentro do card de cada plataforma.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Posso usar mais de uma plataforma ao mesmo tempo?</summary>
+        <p>Pode, e é o que eu recomendo — cada uma paga por hora gravada, então quanto mais plataformas ativas, mais você fatura. Só uma regra importante: use um e-mail diferente em cada plataforma. Cadastro duplicado com o mesmo e-mail pode travar sua conta.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Preciso declarar imposto sobre esse ganho?</summary>
+        <p>Isso depende do seu volume de ganho e da sua situação fiscal, então não vou te dar uma resposta genérica aqui — o ideal é confirmar com um contador. Não sou contador nem consultor financeiro, então prefiro não arriscar te passar uma informação errada nesse tema.</p>
+      </details>
+      <details class="faq-item">
+        <summary>E se meu vídeo for rejeitado?</summary>
+        <p>Cada plataforma avalia o clipe antes de aprovar, então respeitar os requisitos técnicos (duração, enquadramento, mãos visíveis, zoom) reduz bastante a chance de rejeição — dá uma conferida na seção "Requisitos técnicos" de cada card antes de gravar. Ainda não tenho o motivo mais comum de rejeição por plataforma confirmado; assim que tiver, atualizo aqui.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Tem limite de horas por dia?</summary>
+        <p>Na Claru.ai o vídeo precisa ter entre 2 e 30 minutos (o app corta automaticamente aos 30min), mas não há limite de vídeos por dia. Na Hub.xyz e na Crowtado ainda não confirmei se existe algum limite diário — assim que tiver certeza, atualizo aqui.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Preciso aparecer no vídeo ou minha voz vai ser gravada?</summary>
+        <p>Não. Nas três plataformas você grava só as mãos fazendo a tarefa, sem áudio e sem aparecer o rosto.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Qual celular funciona?</summary>
+        <p>Não é qualquer um — cada plataforma tem uma lista de modelos aceitos (Samsung Galaxy S, iPhone e Google Pixel, geralmente das últimas 4-5 gerações). Confirma o modelo específico dentro do card de cada plataforma antes de comprar o suporte de cabeça.</p>
+      </details>
     </div>
 
-    <p style="font-size: 14px; color: #9aa0a6; margin: 20px 0 0;">Não achou sua dúvida? <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">Entra na comunidade. →</a></p>
+    <p style="font-size: 14px; color: #9aa0a6; margin: 24px 0 0; text-align: center;">Não achou sua dúvida? <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">Entra na comunidade. →</a></p>
   </section>
 
   <!-- FOOTER -->
