@@ -24,6 +24,7 @@
   input[type="range"]::-moz-range-track { height: 6px; background: #22262B; border-radius: 3px; }
   input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #E8600A; cursor: pointer; border: 2px solid #0B0D10; }
   .platforms-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; row-gap: 24px; position: relative; }
+  .requirements-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
   .estimator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
   .hero-title { font-size: 48px; line-height: 1.08; letter-spacing: -0.025em; font-weight: 800; margin: 0 0 20px; color: white; }
   .section-title { font-size: 42px; line-height: 1.2; font-weight: 800; margin: 0 0 20px; color: white; }
@@ -34,6 +35,7 @@
   }
   @media (max-width: 720px) {
     .platforms-grid { grid-template-columns: 1fr; }
+    .requirements-grid { grid-template-columns: 1fr 1fr; }
     .estimator-grid { grid-template-columns: 1fr; gap: 20px; }
     .pros-cons-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
     .support-card { grid-template-columns: 1fr !important; gap: 18px !important; }
@@ -60,9 +62,10 @@
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.05em; color: #E7E7E7; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">TREINADORES DE IA</div>
       </div>
       <div class="nav-links" style="display: flex; gap: 24px; font-size: 14px;">
+        <a href="#suporte" style="color: #c9cdd1;">Suporte</a>
         <a href="#plataformas" style="color: #c9cdd1;">Plataformas</a>
         <a href="#estimativa" style="color: #c9cdd1;">Estimativa</a>
-        <a href="#suporte" style="color: #c9cdd1;">Suporte</a>
+        <a href="#faq" style="color: #c9cdd1;">FAQ</a>
       </div>
     </div>
   </nav>
@@ -70,14 +73,66 @@
   <!-- HERO -->
   <header style="max-width: 1180px; margin: 0 auto; padding: 40px 20px 32px;">
     <div style="max-width: 720px;">
-      <h1 class="hero-title">Ganhe treinando IA.</h1>
-      <p style="font-size: 17px; line-height: 1.6; color: #9aa0a6; margin: 0 0 24px;">Curadoria pessoal de plataformas que pagam por treinamento de inteligência artificial — vídeo, anotação de dados, avaliação de respostas. Cada card tem minha nota, minha opinião e o link de indicação de quem eu realmente uso.</p>
-      <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 10px 22px; border-radius: 999px; font-weight: 700; font-size: 14px; text-decoration: none; white-space: nowrap;">
+      <h1 class="hero-title">Ganhe em dólar treinando IA.</h1>
+      <p style="font-size: 17px; line-height: 1.6; color: #9aa0a6; margin: 0 0 24px;">Existe um mercado silencioso em que você grava tarefas domésticas simples — lavar louça, dobrar roupa, cozinhar — e é pago em dólar por hora gravada. Os vídeos treinam a próxima geração de IA e robôs domésticos.</p>
+      <ul style="list-style: none; margin: 0 0 28px; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+        <li style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: #c9cdd1;"><span style="color: #4ade80; font-weight: 700; flex-shrink: 0;">✅</span>Sem aparecer no vídeo (só as mãos)</li>
+        <li style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: #c9cdd1;"><span style="color: #4ade80; font-weight: 700; flex-shrink: 0;">✅</span>Sem áudio</li>
+        <li style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: #c9cdd1;"><span style="color: #4ade80; font-weight: 700; flex-shrink: 0;">✅</span>Sem compromisso — grava quando quiser</li>
+        <li style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: #c9cdd1;"><span style="color: #4ade80; font-weight: 700; flex-shrink: 0;">✅</span>Pagamento em dólar, saque via PIX</li>
+      </ul>
+      <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 10px 22px; border-radius: 999px; font-weight: 700; font-size: 14px; text-decoration: none; white-space: nowrap; margin-bottom: 20px;">
         <svg width="18" height="18" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M16.004 3.2c-7.076 0-12.8 5.724-12.8 12.8 0 2.263.596 4.484 1.727 6.437L3.2 28.8l6.552-1.696c1.867 1.02 3.98 1.555 6.132 1.555h.005c7.075 0 12.8-5.724 12.8-12.8s-5.724-12.66-12.685-12.66zm7.475 18.09c-.313.883-1.55 1.62-2.146 1.706-.549.08-1.24.114-1.998-.126-.462-.147-1.058-.343-1.822-.671-3.207-1.385-5.298-4.596-5.457-4.808-.16-.212-1.303-1.735-1.303-3.309 0-1.574.826-2.35 1.117-2.671.29-.32.635-.4.847-.4.212 0 .424.002.61.011.196.01.457-.074.716.546.264.635.898 2.187.978 2.346.08.16.133.347.026.559-.107.212-.16.346-.32.532-.16.187-.336.417-.48.56-.16.16-.327.334-.14.653.186.32.828 1.363 1.777 2.208 1.222 1.09 2.253 1.427 2.63 1.585.283.117.62.1.827-.126.267-.29.601-.771.943-1.244.243-.339.55-.383.923-.246.373.137 2.359 1.112 2.762 1.315.402.202.67.303.767.472.098.169.098.981-.215 1.864z"/></svg>
         Entrar na comunidade
       </a>
+      <p style="font-size: 13px; line-height: 1.6; color: #6b7280; margin: 0; max-width: 640px;">Curadoria pessoal das plataformas que eu realmente uso. Cada card tem minha nota, minha opinião e o link de indicação. Se você se cadastrar pelos links, eu posso ganhar comissão — não custa nada a mais pra você.</p>
     </div>
   </header>
+
+  <!-- PROVA SOCIAL: aguardando prints de saque + números reais do usuário (Bloco 2) -->
+
+  <!-- REQUISITOS MÍNIMOS -->
+  <section style="max-width: 1180px; margin: 0 auto; padding: 8px 20px 40px;">
+    <div style="margin-bottom: 20px;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #E8600A; margin-bottom: 12px; font-weight: 600;">ANTES DE COMEÇAR</div>
+      <h2 class="section-title" style="font-size: 28px; margin-bottom: 8px;">Você precisa:</h2>
+    </div>
+    <div class="requirements-grid">
+      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px; text-align: center;">
+        <div style="font-size: 26px; margin-bottom: 8px;">🔞</div>
+        <div style="font-size: 13.5px; color: #c9cdd1; line-height: 1.5;">Ter 18 anos ou mais</div>
+      </div>
+      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px; text-align: center;">
+        <div style="font-size: 26px; margin-bottom: 8px;">🌎</div>
+        <div style="font-size: 13.5px; color: #c9cdd1; line-height: 1.5;">Morar na América Latina</div>
+      </div>
+      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px; text-align: center;">
+        <div style="font-size: 26px; margin-bottom: 8px;">📱</div>
+        <div style="font-size: 13.5px; color: #c9cdd1; line-height: 1.5;">Ter um celular compatível (iPhone, Samsung Galaxy S, Pixel)</div>
+      </div>
+      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px; text-align: center;">
+        <div style="font-size: 26px; margin-bottom: 8px;">🎥</div>
+        <div style="font-size: 13.5px; color: #c9cdd1; line-height: 1.5;">Ter um suporte de cabeça pra celular (~R$30)</div>
+      </div>
+    </div>
+    <p style="font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 16px 0 0; max-width: 720px;">O suporte é o único investimento inicial. A Hub envia de graça pra quem entra na whitelist, mas a fila demora. Se quiser começar rápido, tem opções abaixo. ↓</p>
+  </section>
+
+  <!-- SUPORTE DE CABEÇA -->
+  <section id="suporte" style="max-width: 1180px; margin: 0 auto; padding: 0 20px 48px; scroll-margin-top: 60px;">
+    <div class="support-card" style="background: #14171B; border: 1px solid #22262B; border-radius: 18px; padding: 24px; display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: center;">
+      <div style="background: #0B0D10; border-radius: 14px; padding: 12px; display: flex; align-items: center; justify-content: center;">
+        <img src="public/head-strap.png" alt="Suporte de cabeça pra celular" style="width: 100%; height: auto; max-width: 200px; border-radius: 8px; display: block;" />
+      </div>
+      <div>
+        <p style="font-size: 15px; line-height: 1.65; color: #c9cdd1; margin: 0 0 18px;">A HUB envia o suporte de cabeça de graça pra quem entra na whitelist, mas a fila demora um pouco. Se você quer começar a gravar rápido deixei essas duas opções abaixo. Na época comprei pelo Mercado Livre — saiu mais caro, mas o suporte é bom e chegou em 1 dia. Da Shopee a comunidade comprou e achou bom.</p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="https://meli.la/2FhJMgR" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: #E8600A; color: #0B0D10; font-size: 13px; font-weight: 700; padding: 10px 16px; border-radius: 10px;">Comprar no Mercado Livre →</a>
+          <a href="https://s.shopee.com.br/20uYfjsybN" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px solid #22262B; color: #E7E7E7; font-size: 13px; font-weight: 700; padding: 10px 16px; border-radius: 10px;">Comprar na Shopee →</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- CONTROLES -->
   <div id="plataformas" style="max-width: 1180px; margin: 0 auto; padding: 0 20px 24px; position: sticky; top: 54px; z-index: 10; background: linear-gradient(#0B0D10 82%, transparent); scroll-margin-top: 60px;">
@@ -145,25 +200,21 @@
     </div>
   </section>
 
-  <!-- SUPORTE DE CABEÇA -->
-  <section id="suporte" style="max-width: 1180px; margin: 0 auto; padding: 24px 20px 48px; scroll-margin-top: 60px;">
-    <div style="margin-bottom: 24px;">
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #E8600A; margin-bottom: 12px; font-weight: 600;">SUPORTE DE CABEÇA</div>
-      <h2 class="section-title">Precisa de um suporte pra gravar?</h2>
+  <!-- FAQ -->
+  <section id="faq" style="max-width: 1180px; margin: 0 auto; padding: 24px 20px 56px; scroll-margin-top: 60px;">
+    <div style="margin-bottom: 28px;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #E8600A; margin-bottom: 12px; font-weight: 600;">FAQ</div>
+      <h2 class="section-title">Perguntas que a galera mais faz</h2>
     </div>
 
-    <div class="support-card" style="background: #14171B; border: 1px solid #22262B; border-radius: 18px; padding: 24px; display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: center;">
-      <div style="background: #0B0D10; border-radius: 14px; padding: 12px; display: flex; align-items: center; justify-content: center;">
-        <img src="public/head-strap.png" alt="Suporte de cabeça pra celular" style="width: 100%; height: auto; max-width: 200px; border-radius: 8px; display: block;" />
-      </div>
-      <div>
-        <p style="font-size: 15px; line-height: 1.65; color: #c9cdd1; margin: 0 0 18px;">A HUB envia o suporte de cabeça de graça pra quem entra na whitelist, mas a fila demora um pouco. Se você quer começar a gravar rápido deixei essas duas opções abaixo. Na época comprei pelo Mercado Livre — saiu mais caro, mas o suporte é bom e chegou em 1 dia. Da Shopee a comunidade comprou e achou bom.</p>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <a href="https://meli.la/2FhJMgR" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: #E8600A; color: #0B0D10; font-size: 13px; font-weight: 700; padding: 10px 16px; border-radius: 10px;">Comprar no Mercado Livre →</a>
-          <a href="https://s.shopee.com.br/20uYfjsybN" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px solid #22262B; color: #E7E7E7; font-size: 13px; font-weight: 700; padding: 10px 16px; border-radius: 10px;">Comprar na Shopee →</a>
-        </div>
+    <div style="display: flex; flex-direction: column; gap: 12px; max-width: 860px;">
+      <div style="background: #14171B; border: 1px solid #22262B; border-radius: 14px; padding: 18px 20px;">
+        <div style="font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px;">▸ Posso usar mais de uma plataforma ao mesmo tempo?</div>
+        <p style="font-size: 14px; line-height: 1.6; color: #9aa0a6; margin: 0;">Pode e é o que eu recomendo. Só lembra de usar um e-mail diferente em cada uma.</p>
       </div>
     </div>
+
+    <p style="font-size: 14px; color: #9aa0a6; margin: 20px 0 0;">Não achou sua dúvida? <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">Entra na comunidade. →</a></p>
   </section>
 
   <!-- FOOTER -->
@@ -287,7 +338,7 @@ const data = [
     review: 'O que paga mais por hora. Você avalia e compara respostas de modelos de IA — trabalho mais analítico. Análise dos vídeos e saque são um pouco lentos. Suporte não é bom.',
     duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis o tempo todo', zoom: '0,5 (grande angular)', celulares: 'A partir do iPhone 11 e a partir do Galaxy S20+',
     saqueMin: 'US$ 10', tempoPagamento: 'Variável', metodos: ['Pix', 'Transferência internacional'],
-    refLink: 'https://www.crowtado.com/sign-up?ref=4T2L4ATC', officialLink: 'https://crowtado.com' },
+    refLink: 'https://www.crowtado.com/sign-up?ref=4T2L4ATC', officialLink: 'https://crowtado.com', orgCode: 'PE8EARV5' },
 ];
 
 let state = { openId: null, search: '', category: 'Todas', sort: 'nota', estimatorHoursPerDay: 3, estimatorPlatformId: 2, currencyMode: 'USD' };
@@ -407,11 +458,48 @@ function renderPlatforms() {
             ${p.metodos.map(m => `<span style="font-size: 11px; font-weight: 600; background: #0B0D10; border: 1px solid #22262B; color: #c9cdd1; padding: 4px 10px; border-radius: 999px;">${esc(m)}</span>`).join('')}
           </div>
         </div>
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #E8600A; margin-bottom: 12px;">COMO SE CADASTRAR</div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; gap: 10px; align-items: flex-start;">
+              <div style="width: 22px; height: 22px; border-radius: 50%; background: rgba(232,96,10,0.15); color: #E8600A; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+              <div style="font-size: 13px; line-height: 1.55; color: #c9cdd1;">
+                Use um e-mail <strong style="color: white;">novo</strong> (diferente do que você usa em outra plataforma)<br/>
+                <span style="color: #f87171; font-size: 12px;">⚠️ Isso é importante — o mesmo e-mail em duas plataformas pode travar seu cadastro.</span>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+              <div style="width: 22px; height: 22px; border-radius: 50%; background: rgba(232,96,10,0.15); color: #E8600A; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+              <div style="font-size: 13px; color: #c9cdd1; flex: 1; min-width: 140px;">Cadastre pelo meu link de indicação</div>
+              <a href="${p.refLink}" target="_blank" style="flex-shrink: 0; background: #E8600A; color: #0B0D10; font-size: 12.5px; font-weight: 700; padding: 7px 14px; border-radius: 8px;">Cadastrar na ${esc(p.name)}</a>
+            </div>
+            ${p.orgCode ? `
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+              <div style="width: 22px; height: 22px; border-radius: 50%; background: rgba(232,96,10,0.15); color: #E8600A; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+              <div style="font-size: 13px; color: #c9cdd1; flex: 1; min-width: 140px;">Coloque o código de organização</div>
+              <button class="copyCodeBtn" data-code="${esc(p.orgCode)}" style="flex-shrink: 0; display: flex; align-items: center; gap: 6px; background: #0B0D10; border: 1px solid #22262B; color: #E7E7E7; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 700; padding: 7px 12px; border-radius: 8px; cursor: pointer;">${esc(p.orgCode)} <span class="copyIcon">📋</span></button>
+            </div>` : ''}
+            <div style="display: flex; gap: 10px; align-items: flex-start;">
+              <div style="width: 22px; height: 22px; border-radius: 50%; background: rgba(232,96,10,0.15); color: #E8600A; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">${p.orgCode ? '4' : '3'}</div>
+              <div style="font-size: 13px; line-height: 1.55; color: #c9cdd1;">Depois de cadastrado, <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">entra na comunidade</a> que a gente te ajuda a configurar tudo.</div>
+            </div>
+          </div>
+        </div>
       </div>` : ''}
     `;
     card.querySelector('.toggleArea').addEventListener('click', () => {
       state.openId = state.openId === p.id ? null : p.id;
       renderPlatforms();
+    });
+    card.querySelectorAll('.copyCodeBtn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navigator.clipboard.writeText(btn.dataset.code).then(() => {
+          const icon = btn.querySelector('.copyIcon');
+          icon.textContent = '✅';
+          setTimeout(() => { icon.textContent = '📋'; }, 1500);
+        });
+      });
     });
     grid.appendChild(card);
   });
