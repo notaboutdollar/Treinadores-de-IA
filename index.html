@@ -765,7 +765,11 @@ function renderPlatBody(p, hasBonus) {
 function buildSignupSteps(p, mkCodeChip) {
   const steps = [];
 
-  steps.push(`<div class="step-body">Use um e-mail <strong>novo</strong> (diferente do que você usa em outra plataforma).<div class="warn-note">Cadastro duplicado pode travar sua conta.</div></div>`);
+  if (p.usesMinute !== false) {
+    steps.push(`<div class="step-body">Use um e-mail <strong>novo</strong> (diferente do que você usa em outra plataforma).<div class="warn-note">Cadastro duplicado pode travar sua conta.</div></div>`);
+  } else {
+    steps.push(`<div class="step-body">Use um e-mail seu pra fazer o cadastro. Como o vídeo é gravado dentro do próprio app da ${esc(p.name)}, não tem problema usar o mesmo e-mail de outra plataforma.</div>`);
+  }
 
   const signupLabel = p.temRef ? 'Cadastre pelo meu link de indicação.' : 'Cadastre-se pelo site oficial.';
   const btnLabel = p.temRef ? `Cadastrar na ${esc(p.name)} →` : `Ir para o site →`;
