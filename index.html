@@ -179,8 +179,8 @@
   .cur-toggle:hover { background: rgba(255,255,255,0.15); }
 
   /* Which one section */
-  .which-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  .which-card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; }
+  .which-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .which-card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; }
   .which-eye { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 10px; }
   .which-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; letter-spacing: -0.015em; margin: 0 0 6px; }
   .which-sub { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
@@ -222,7 +222,7 @@
     .kv-grid { grid-template-columns: repeat(2, 1fr); }
     .est-grid { grid-template-columns: 1fr; }
     .total-card { position: static; padding: 28px; }
-    .which-grid { grid-template-columns: 1fr; }
+    .which-grid { grid-template-columns: repeat(2, 1fr); }
     .req-grid { grid-template-columns: repeat(2, 1fr); }
     .support { grid-template-columns: 1fr; }
     .support img { margin: 0 auto; }
@@ -235,6 +235,10 @@
     .plat-head { grid-template-columns: 48px 1fr; }
     .plat-price { grid-column: 2; text-align: left; margin-top: 4px; }
     .plat-logo { width: 48px; height: 48px; }
+  }
+
+  @media (max-width: 560px) {
+    .which-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -381,21 +385,28 @@
         <h3 class="which-title">Comece pela Hub.xyz</h3>
         <div class="which-sub">Velocidade + suporte</div>
         <p class="which-body">Simples, saca rápido em Pix e é a única que envia o suporte de cabeça de graça (via whitelist). Pra quem tá começando, é o caminho mais curto pro primeiro pagamento.</p>
-        <a class="btn btn-accent" href="https://ai.hub.xyz/r/DOLETA" target="_blank">Cadastrar na Hub →</a>
+        <a class="btn btn-accent" href="https://ai.hub.xyz/r/DOLETA" target="_blank">Cadastrar →</a>
       </div>
       <div class="which-card">
         <div class="which-eye" style="color: #6B6B6B;">MELHORES BÔNUS</div>
         <h3 class="which-title">Vá de Claru.ai se…</h3>
         <div class="which-sub">Você grava com regularidade</div>
         <p class="which-body">A Claru paga bônus escalonado até 1.000h ($1.000 no marco máximo). Se você grava consistente, é a que mais cresce no longo prazo.</p>
-        <a class="btn btn-ghost" href="https://app.claru.ai/signup?ref=2d1cs845" target="_blank">Cadastrar na Claru →</a>
+        <a class="btn btn-ghost" href="https://app.claru.ai/signup?ref=2d1cs845" target="_blank">Cadastrar →</a>
       </div>
       <div class="which-card">
         <div class="which-eye" style="color: #6B6B6B;">MAIOR TAXA</div>
         <h3 class="which-title">Vá de Crowtado se…</h3>
         <div class="which-sub">Você tá caçando o maior $/h</div>
         <p class="which-body">Paga $8/h (o mais alto entre as três) e tem saque mínimo baixo ($10). O suporte é o ponto fraco, então se você é mais autônomo, ela funciona como uma boa opção complementar.</p>
-        <a class="btn btn-ghost" href="https://www.crowtado.com/sign-up?ref=4T2L4ATC" target="_blank">Cadastrar na Crowtado →</a>
+        <a class="btn btn-ghost" href="https://www.crowtado.com/sign-up?ref=4T2L4ATC" target="_blank">Cadastrar →</a>
+      </div>
+      <div class="which-card">
+        <div class="which-eye" style="color: #6B6B6B;">MAIOR VARIEDADE</div>
+        <h3 class="which-title">Vá de Invent Money se…</h3>
+        <div class="which-sub">Você quer variedade de tarefa</div>
+        <p class="which-body">Aceita mais tipos de tarefa (doméstica e comercial) e grava direto no app, sem precisar do Minute. Só paga em cripto, então você precisa converter em reais depois.</p>
+        <a class="btn btn-ghost" href="https://app.inventmoney.com" target="_blank">Cadastrar →</a>
       </div>
     </div>
   </div>
@@ -601,6 +612,36 @@ const data = [
       { label: 'Residencial (em casa)', code: 'VZEAE7WC', examples: 'Ex: lavar louça, dobrar e guardar roupas, jardinagem, tirar o lixo, organizar a garagem.' },
       { label: 'Comercial (no trabalho)', code: '4BYSAHUG', examples: 'Ex: lavar louça em restaurante, limpeza de hotel, separação de pedidos em armazém, reposição de prateleiras, troca de óleo.' },
     ] },
+  { id: 4, name: 'Invent Money', category: 'Vídeo doméstico + comercial', temRef: false, nota: 4.3, taxa: 7, taxaLabel: '$5–8', logo: 'public/logo-inventmoney.png',
+    calcRate: 7, calcCurrency: '$', calcBonuses: [], bonus: [],
+    referralInfo: 'A Invent Money não tem sistema de indicação — todo mundo se cadastra pelo site oficial.',
+    estReview: { highlight: 'variedade de tarefas',
+      pros: [
+        'Grava direto no app da Invent Money, não precisa do Minute',
+        'É a que mais aceita tipos diferentes de tarefa (doméstica e comercial)',
+        'Paga entre $5 e $8 por hora, dependendo da tarefa',
+      ],
+      cons: [
+        'Só paga em cripto (USDT), precisa de um app pra converter em reais',
+        'Aprovação demora em torno de 7 dias',
+      ],
+    },
+    duracao: '3 a 120 min (varia por tarefa)', formato: 'Horizontal, arquivo até 75GB', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)',
+    celulares: [
+      'iPhone: 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). iPhone 11 não é compatível.',
+      'Pixel: 6, 7, 8 e 9 (e versões Pro).',
+      'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
+    ],
+    saqueMin: 'Sem mínimo', tempoPagamento: '~7 dias após aprovação', metodos: ['USDT (cripto)'],
+    refLink: 'https://app.inventmoney.com', officialLink: 'https://app.inventmoney.com',
+    usesMinute: false,
+    cryptoNote: {
+      intro: 'Como a Invent Money paga em cripto (USDT), você vai precisar de um app pra converter em reais. O grupo aprovou a',
+      linkText: 'Conta.vc',
+      linkUrl: 'https://app.conta.vc/ref/doleta',
+      suffix: '(cobra 2,5% de taxa, mas é a mais fácil hoje). Existem outras opções — fique à vontade pra pesquisar.',
+    },
+  },
 ];
 
 let state = { openId: 1, estimatorPlatformId: 1, estimatorHoursPerDay: 3, currencyMode: 'USD' };
@@ -682,8 +723,6 @@ function renderPlatBody(p, hasBonus) {
     const orig = `${esc(code)} <span style="color: var(--muted); font-weight: 400;">copiar</span>`;
     return `<button class="code-chip copy-code" data-code="${esc(code)}" data-orig="${orig}">${orig}</button>`;
   };
-  const hasCode = !!p.orgCode;
-  const hasCodes = Array.isArray(p.orgCodes) && p.orgCodes.length > 0;
   return `
     <div class="plat-body">
       <div class="rev-block">
@@ -717,48 +756,53 @@ function renderPlatBody(p, hasBonus) {
 
       <div class="subsec-title">Como se cadastrar</div>
       <div class="step-list">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">Use um e-mail <strong>novo</strong> (diferente do que você usa em outra plataforma).<div class="warn-note">Cadastro duplicado pode travar sua conta.</div></div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body step-inline"><span style="flex: 1; min-width: 140px;">Cadastre pelo meu link de indicação.</span><a class="btn btn-accent" style="padding: 8px 14px; font-size: 12.5px;" href="${p.refLink}" target="_blank">Cadastrar na ${esc(p.name)} →</a></div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-body">Baixe o <strong>Minute</strong>, o app que você vai usar pra gravar os vídeos (App Store e Play Store).</div>
-        </div>
-        ${hasCode ? `
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-body step-inline"><span style="flex: 1; min-width: 140px;">Coloque o código de organização.</span>${mkCodeChip(p.orgCode)}</div>
-        </div>` : ''}
-        ${hasCodes ? `
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-body">
-            <div style="margin-bottom: 10px;">Escolha o código de organização de acordo com o tipo de tarefa que você vai gravar.</div>
-            <div style="display: flex; flex-direction: column; gap: 14px;">
-              ${p.orgCodes.map(oc => `
-                <div>
-                  <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 4px;">
-                    <strong>${esc(oc.label)}</strong>
-                    ${mkCodeChip(oc.code)}
-                  </div>
-                  <div class="small">${esc(oc.examples)}</div>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-        </div>` : ''}
-        <div class="step">
-          <div class="step-num">${(hasCode || hasCodes) ? '5' : '4'}</div>
-          <div class="step-body">Depois de cadastrado, <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">entra na comunidade</a> que a gente te ajuda a configurar tudo.</div>
-        </div>
+        ${buildSignupSteps(p, mkCodeChip)}
       </div>
     </div>
   `;
+}
+
+function buildSignupSteps(p, mkCodeChip) {
+  const steps = [];
+
+  steps.push(`<div class="step-body">Use um e-mail <strong>novo</strong> (diferente do que você usa em outra plataforma).<div class="warn-note">Cadastro duplicado pode travar sua conta.</div></div>`);
+
+  const signupLabel = p.temRef ? 'Cadastre pelo meu link de indicação.' : 'Cadastre-se pelo site oficial.';
+  const btnLabel = p.temRef ? `Cadastrar na ${esc(p.name)} →` : `Ir para o site →`;
+  steps.push(`<div class="step-body step-inline"><span style="flex: 1; min-width: 140px;">${signupLabel}</span><a class="btn btn-accent" style="padding: 8px 14px; font-size: 12.5px;" href="${p.refLink}" target="_blank">${btnLabel}</a></div>`);
+
+  if (p.usesMinute !== false) {
+    steps.push(`<div class="step-body">Baixe o <strong>Minute</strong>, o app que você vai usar pra gravar os vídeos (App Store e Play Store).</div>`);
+  }
+
+  if (p.orgCode) {
+    steps.push(`<div class="step-body step-inline"><span style="flex: 1; min-width: 140px;">Coloque o código de organização.</span>${mkCodeChip(p.orgCode)}</div>`);
+  }
+
+  if (Array.isArray(p.orgCodes) && p.orgCodes.length > 0) {
+    const cards = p.orgCodes.map(oc => `
+      <div>
+        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 4px;">
+          <strong>${esc(oc.label)}</strong>
+          ${mkCodeChip(oc.code)}
+        </div>
+        <div class="small">${esc(oc.examples)}</div>
+      </div>
+    `).join('');
+    steps.push(`<div class="step-body">
+      <div style="margin-bottom: 10px;">Escolha o código de organização de acordo com o tipo de tarefa que você vai gravar.</div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">${cards}</div>
+    </div>`);
+  }
+
+  if (p.cryptoNote) {
+    const n = p.cryptoNote;
+    steps.push(`<div class="step-body">${esc(n.intro)} <a href="${n.linkUrl}" target="_blank">${esc(n.linkText)}</a> ${esc(n.suffix)}</div>`);
+  }
+
+  steps.push(`<div class="step-body">Depois de cadastrado, <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">entra na comunidade</a> que a gente te ajuda a configurar tudo.</div>`);
+
+  return steps.map((body, i) => `<div class="step"><div class="step-num">${i + 1}</div>${body}</div>`).join('');
 }
 
 function renderEstimator() {
