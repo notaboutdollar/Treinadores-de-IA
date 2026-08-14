@@ -424,7 +424,7 @@
       </div>
       <div class="req">
         <div class="req-icon">03</div>
-        <div class="req-txt">iPhone 12+ (iOS) ou Samsung S21+ (Android)</div>
+        <div class="req-txt">iPhone 12+, Pixel 6+ ou Galaxy S21+ (veja a lista completa no FAQ)</div>
       </div>
       <div class="req">
         <div class="req-icon">04</div>
@@ -482,7 +482,7 @@
       </details>
       <details class="faq-item">
         <summary>Qual celular funciona?</summary>
-        <p>Só dois modelos hoje: iPhone 12+ (iOS) ou Samsung S21+ (Android). Confirma o modelo do seu celular antes de comprar o suporte de cabeça.</p>
+        <p><strong>iPhone:</strong> 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). O iPhone 11 não é compatível.<br><strong>Pixel:</strong> 6, 7, 8 e 9 (e versões Pro).<br><strong>Galaxy S:</strong> S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.<br>Confirma o modelo do seu celular antes de comprar o suporte de cabeça.</p>
       </details>
     </div>
 
@@ -535,7 +535,11 @@ const data = [
       ],
       cons: [ 'Pagamento: o que paga menos ($5/h)' ],
     },
-    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: 'iPhone 12+ (iOS) ou Samsung S21+ (Android)',
+    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: [
+      'iPhone: 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). iPhone 11 não é compatível.',
+      'Pixel: 6, 7, 8 e 9 (e versões Pro).',
+      'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
+    ],
     saqueMin: 'R$ 25', tempoPagamento: '1 a 2 dias', metodos: ['Pix'],
     refLink: 'https://ai.hub.xyz/r/DOLETA', officialLink: 'https://hub.xyz', orgCode: 'JUK9YQWE' },
   { id: 2, name: 'Claru.ai', category: 'Vídeo doméstico', temRef: true, nota: 4.2, taxa: 6, taxaLabel: '$6', logo: 'public/logo-claru.png',
@@ -566,7 +570,11 @@ const data = [
         'Saque mínimo alto: $50 (≈ R$ 250)',
       ],
     },
-    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: 'iPhone 12+ (iOS) ou Samsung S21+ (Android)',
+    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: [
+      'iPhone: 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). iPhone 11 não é compatível.',
+      'Pixel: 6, 7, 8 e 9 (e versões Pro).',
+      'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
+    ],
     saqueMin: 'US$ 25', tempoPagamento: 'Semanal', metodos: ['PayPal'],
     refLink: 'https://app.claru.ai/signup?ref=2d1cs845', officialLink: 'https://claru.ai', orgCode: 'WSNEHSKC' },
   { id: 3, name: 'Crowtado', category: 'Vídeo doméstico', temRef: true, nota: 4.0, taxa: 8, taxaLabel: '$8', logo: 'public/logo-crowtado.png',
@@ -582,9 +590,17 @@ const data = [
         'Suporte: o pior das três, não encontrei alguém que recebeu um bom suporte',
       ],
     },
-    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: 'iPhone 12+ (iOS) ou Samsung S21+ (Android)',
+    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: [
+      'iPhone: 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). iPhone 11 não é compatível.',
+      'Pixel: 6, 7, 8 e 9 (e versões Pro).',
+      'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
+    ],
     saqueMin: 'US$ 10', tempoPagamento: 'Variável', metodos: ['Pix', 'Transferência internacional'],
-    refLink: 'https://www.crowtado.com/sign-up?ref=4T2L4ATC', officialLink: 'https://crowtado.com', orgCode: 'PE8EARV5' },
+    refLink: 'https://www.crowtado.com/sign-up?ref=4T2L4ATC', officialLink: 'https://crowtado.com',
+    orgCodes: [
+      { label: 'Residencial (em casa)', code: 'VZEAE7WC', examples: 'Ex: lavar louça, dobrar e guardar roupas, jardinagem, tirar o lixo, organizar a garagem.' },
+      { label: 'Comercial (no trabalho)', code: '4BYSAHUG', examples: 'Ex: lavar louça em restaurante, limpeza de hotel, separação de pedidos em armazém, reposição de prateleiras, troca de óleo.' },
+    ] },
 ];
 
 let state = { openId: 1, estimatorPlatformId: 1, estimatorHoursPerDay: 3, currencyMode: 'USD' };
@@ -662,7 +678,12 @@ function renderPlatforms() {
 function renderPlatBody(p, hasBonus) {
   const pros = p.estReview.pros.map(t => `<li>${esc(t)}</li>`).join('');
   const cons = p.estReview.cons.map(t => `<li>${esc(t)}</li>`).join('');
-  const codeOrig = `${esc(p.orgCode)} <span style="color: var(--muted); font-weight: 400;">copiar</span>`;
+  const mkCodeChip = (code) => {
+    const orig = `${esc(code)} <span style="color: var(--muted); font-weight: 400;">copiar</span>`;
+    return `<button class="code-chip copy-code" data-code="${esc(code)}" data-orig="${orig}">${orig}</button>`;
+  };
+  const hasCode = !!p.orgCode;
+  const hasCodes = Array.isArray(p.orgCodes) && p.orgCodes.length > 0;
   return `
     <div class="plat-body">
       <div class="rev-block">
@@ -677,7 +698,7 @@ function renderPlatBody(p, hasBonus) {
         <div><div class="kv-lbl">Mãos</div><div class="kv-val">${esc(p.maos)}</div></div>
         <div><div class="kv-lbl">Zoom</div><div class="kv-val">${esc(p.zoom)}</div></div>
       </div>
-      <div style="margin-top: 14px;"><div class="kv-lbl">Celulares compatíveis</div><div class="kv-val">${esc(p.celulares)}</div></div>
+      <div style="margin-top: 14px;"><div class="kv-lbl">Celulares compatíveis</div><div class="kv-val" style="display: flex; flex-direction: column; gap: 4px;">${p.celulares.map(c => `<span>${esc(c)}</span>`).join('')}</div></div>
 
       <div class="subsec-title">Pagamento</div>
       <div class="kv-grid" style="grid-template-columns: repeat(3, 1fr);">
@@ -708,13 +729,31 @@ function renderPlatBody(p, hasBonus) {
           <div class="step-num">3</div>
           <div class="step-body">Baixe o <strong>Minute</strong>, o app que você vai usar pra gravar os vídeos (App Store e Play Store).</div>
         </div>
-        ${p.orgCode ? `
+        ${hasCode ? `
         <div class="step">
           <div class="step-num">4</div>
-          <div class="step-body step-inline"><span style="flex: 1; min-width: 140px;">Coloque o código de organização.</span><button class="code-chip copy-code" data-code="${esc(p.orgCode)}" data-orig="${codeOrig}">${codeOrig}</button></div>
+          <div class="step-body step-inline"><span style="flex: 1; min-width: 140px;">Coloque o código de organização.</span>${mkCodeChip(p.orgCode)}</div>
+        </div>` : ''}
+        ${hasCodes ? `
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div style="margin-bottom: 10px;">Escolha o código de organização de acordo com o tipo de tarefa que você vai gravar.</div>
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              ${p.orgCodes.map(oc => `
+                <div>
+                  <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 4px;">
+                    <strong>${esc(oc.label)}</strong>
+                    ${mkCodeChip(oc.code)}
+                  </div>
+                  <div class="small">${esc(oc.examples)}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
         </div>` : ''}
         <div class="step">
-          <div class="step-num">${p.orgCode ? '5' : '4'}</div>
+          <div class="step-num">${(hasCode || hasCodes) ? '5' : '4'}</div>
           <div class="step-body">Depois de cadastrado, <a href="https://chat.whatsapp.com/JpKJ1EOIvu80TYWF23MaBq" target="_blank">entra na comunidade</a> que a gente te ajuda a configurar tudo.</div>
         </div>
       </div>
