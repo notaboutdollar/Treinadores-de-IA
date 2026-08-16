@@ -91,7 +91,8 @@
   /* Platforms */
   .plat-list { display: flex; flex-direction: column; gap: 20px; }
   .plat { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; transition: border-color .15s; position: relative; }
-  .plat.featured { border: 1.5px solid var(--accent); box-shadow: 0 4px 24px -8px rgba(217,89,31,.2); }
+  .plat.tag-accent { border: 1.5px solid var(--accent); box-shadow: 0 4px 24px -8px rgba(217,89,31,.2); }
+  .plat.tag-warn { border: 1.5px solid var(--warn); box-shadow: 0 4px 24px -8px rgba(179,58,22,.18); }
   .plat-head { display: grid; grid-template-columns: 56px 1fr auto; gap: 18px; padding: 24px; align-items: center; cursor: pointer; }
   .plat-logo { width: 56px; height: 56px; border-radius: 12px; overflow: hidden; background: #f4f0e8; display: flex; align-items: center; justify-content: center; }
   .plat-logo img { width: 100%; height: 100%; object-fit: cover; }
@@ -100,7 +101,10 @@
   .plat-price { text-align: right; }
   .plat-rate { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
   .plat-rate-lbl { font-size: 11px; color: var(--muted); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.08em; }
-  .featured-tag { position: absolute; top: -1px; right: 24px; background: var(--accent); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; padding: 5px 12px; border-radius: 0 0 8px 8px; letter-spacing: 0.08em; }
+  .plat-tag { position: absolute; top: -1px; right: 24px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; padding: 5px 12px; border-radius: 0 0 8px 8px; letter-spacing: 0.08em; }
+  .plat-tag.tag-accent-bg { background: var(--accent); }
+  .plat-tag.tag-warn-bg { background: var(--warn); }
+  .plat-alert { display: flex; align-items: flex-start; gap: 10px; background: var(--warn-soft); border: 1px solid rgba(179,58,22,0.22); border-radius: 12px; padding: 14px 16px; font-size: 13.5px; line-height: 1.55; color: var(--warn); margin-bottom: 20px; }
   .badges { display: flex; gap: 6px; flex-wrap: wrap; }
   .badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; letter-spacing: 0.02em; }
   .b-ref { background: var(--ok-soft); color: var(--ok); }
@@ -381,28 +385,28 @@
 
     <div class="which-grid">
       <div class="which-card">
-        <div class="which-eye">O QUE ESTOU MAIS USANDO</div>
-        <h3 class="which-title">Comece pela Hub.xyz</h3>
-        <div class="which-sub">Velocidade + suporte</div>
-        <p class="which-body">Simples, saca rápido em Pix e é a única que envia o suporte de cabeça de graça (via whitelist). Pra quem tá começando, é o caminho mais curto pro primeiro pagamento.</p>
-        <a class="btn btn-accent" href="https://ai.hub.xyz/r/DOLETA" target="_blank">Cadastrar →</a>
+        <div class="which-eye" style="color: var(--warn);">SAQUE PAUSADO NO MOMENTO</div>
+        <h3 class="which-title">Hub.xyz</h3>
+        <div class="which-sub">Aprovação mais rápida, mas saque parado</div>
+        <p class="which-body">A Hub aprova o vídeo mais rápido que as outras e tem um bom suporte, mas está com o saque pausado agora, sem previsão de volta. Vale se cadastrar pra garantir a vaga, mas não conte com ela pra sacar no curto prazo.</p>
+        <a class="btn btn-ghost" href="https://ai.hub.xyz/r/DOLETA" target="_blank">Cadastrar →</a>
       </div>
       <div class="which-card">
-        <div class="which-eye" style="color: #6B6B6B;">MELHORES BÔNUS</div>
+        <div class="which-eye" style="color: #6B6B6B;">MELHOR SUPORTE</div>
         <h3 class="which-title">Vá de Claru.ai se…</h3>
         <div class="which-sub">Você grava com regularidade</div>
-        <p class="which-body">A Claru paga bônus escalonado até 1.000h ($1.000 no marco máximo). Se você grava consistente, é a que mais cresce no longo prazo.</p>
+        <p class="which-body">O suporte da Claru é o melhor entre as quatro (via Discord), e ela paga bônus escalonado até 1.000h ($1.000 no marco máximo). Se você grava consistente, é a que mais cresce no longo prazo.</p>
         <a class="btn btn-ghost" href="https://app.claru.ai/signup?ref=2d1cs845" target="_blank">Cadastrar →</a>
       </div>
       <div class="which-card">
-        <div class="which-eye" style="color: #6B6B6B;">MAIOR TAXA</div>
+        <div class="which-eye" style="color: #6B6B6B;">PAGA MAIS POR HORA</div>
         <h3 class="which-title">Vá de Crowtado se…</h3>
         <div class="which-sub">Você quer o maior $/h</div>
         <p class="which-body">Paga $8/h, a maior taxa entre as quatro, e tem saque mínimo baixo ($10). O suporte é o ponto fraco, então se você é mais autônomo, ela funciona como uma boa opção complementar.</p>
         <a class="btn btn-ghost" href="https://www.crowtado.com/sign-up?ref=4T2L4ATC" target="_blank">Cadastrar →</a>
       </div>
       <div class="which-card">
-        <div class="which-eye" style="color: #6B6B6B;">MAIOR VARIEDADE</div>
+        <div class="which-eye" style="color: #6B6B6B;">MAIS TAREFAS DIFERENTES</div>
         <h3 class="which-title">Vá de Invent Money se…</h3>
         <div class="which-sub">Você quer variedade de tarefas</div>
         <p class="which-body">Aceita mais tipos de tarefa (doméstica e comercial) e grava direto no app, sem precisar do Minute. Só paga em cripto, então você precisa converter em reais depois.</p>
@@ -518,7 +522,9 @@ const DAYS_PER_MONTH = 30;
 const EXCHANGE_RATE = 5.08;
 
 const data = [
-  { id: 1, name: 'Hub.xyz', category: 'Vídeo doméstico', temRef: true, nota: 4.4, taxa: 6, taxaLabel: '$5 a $6', logo: 'public/logo-hub.png', featured: true,
+  { id: 1, name: 'Hub.xyz', category: 'Vídeo doméstico', temRef: true, nota: 4.4, taxa: 6, taxaLabel: '$5 a $6', logo: 'public/logo-hub.png',
+    highlight: { label: 'SAQUE PARADO', type: 'warn' },
+    alert: 'A Hub está com o saque pausado no momento, sem previsão de volta. Por isso ela deixou de ser minha recomendação principal. Ainda vale se cadastrar pra garantir a vaga, mas não conte com ela pra sacar agora.',
     calcRate: 5, calcCurrency: '$', bonusCurrency: 'R$', calcBonuses: [
       { threshold: 1, amount: 15, milestone: '1h' },
       { threshold: 5, amount: 10, milestone: '5h' },
@@ -538,13 +544,15 @@ const data = [
       { req: '200h', reward: 'Bilhete mensal de sorteio de iPhone' },
     ],
     referralInfo: 'Você ganha R$ 2,50 a cada hora do seu indicado e R$ 1,25 a cada hora do indicado do seu indicado.',
-    estReview: { highlight: 'velocidade e suporte',
+    estReview: { highlight: 'velocidade de aprovação',
       pros: [
         'O vídeo aparece na plataforma mais rápido que nas outras',
-        'Suporte: o melhor entre todas, ativo no Telegram',
-        'Saque: mínimo de R$ 25 (≈ $5)',
+        'Suporte ativo no Telegram',
       ],
-      cons: [ 'Pagamento: o que paga menos ($5/h)' ],
+      cons: [
+        'Pagamento: o que paga menos ($5/h)',
+        'Saque pausado no momento, sem previsão de volta',
+      ],
     },
     duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: [
       'iPhone: 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). iPhone 11 não é compatível.',
@@ -554,6 +562,7 @@ const data = [
     saqueMin: 'R$ 25', tempoPagamento: '1 a 2 dias', metodos: ['Pix'],
     refLink: 'https://ai.hub.xyz/r/DOLETA', officialLink: 'https://hub.xyz', orgCode: 'JUK9YQWE' },
   { id: 2, name: 'Claru.ai', category: 'Vídeo doméstico', temRef: true, nota: 4.2, taxa: 6, taxaLabel: '$6', logo: 'public/logo-claru.png',
+    highlight: { label: 'MELHOR SUPORTE', type: 'accent' },
     calcRate: 6, calcCurrency: '$', calcBonuses: [
       { threshold: 1, amount: 5, milestone: '1h' }, { threshold: 5, amount: 10, milestone: '5h' },
       { threshold: 10, amount: 15, milestone: '10h' }, { threshold: 25, amount: 30, milestone: '25h' },
@@ -573,7 +582,7 @@ const data = [
     estReview: { highlight: 'bônus de horas',
       pros: [
         'Pagamento na média ($6/h), mas tem muitos bônus por meta batida',
-        'Suporte: ativo no Discord',
+        'Suporte: o melhor entre todas, ativo no Discord',
         'Saque semanal (toda terça)',
       ],
       cons: [
@@ -589,6 +598,7 @@ const data = [
     saqueMin: 'US$ 25', tempoPagamento: 'Semanal', metodos: ['PayPal'],
     refLink: 'https://app.claru.ai/signup?ref=2d1cs845', officialLink: 'https://claru.ai', orgCode: 'WSNEHSKC' },
   { id: 3, name: 'Crowtado', category: 'Vídeo doméstico + comercial', temRef: true, nota: 4.0, taxa: 8, taxaLabel: '$8', logo: 'public/logo-crowtado.png',
+    highlight: { label: 'PAGA MAIS', type: 'accent' },
     calcRate: 8, calcCurrency: '$', calcBonuses: [], bonus: [],
     referralInfo: 'Você ganha $10 quando seu indicado faz $50.',
     estReview: { highlight: 'pagamento',
@@ -613,6 +623,7 @@ const data = [
       { label: 'Comercial (no trabalho)', code: '4BYSAHUG', examples: 'Ex: lavar louça em restaurante, limpeza de hotel, separação de pedidos em armazém, reposição de prateleiras, troca de óleo.' },
     ] },
   { id: 4, name: 'Invent Money', category: 'Vídeo doméstico + comercial', temRef: false, nota: 4.3, taxa: 7, taxaLabel: '$5 a $8', logo: 'public/logo-inventmoney.png',
+    highlight: { label: 'MAIS TAREFAS', type: 'accent' },
     calcRate: 7, calcCurrency: '$', calcBonuses: [], bonus: [],
     referralInfo: 'A Invent Money não tem sistema de indicação. Todo mundo se cadastra pelo site oficial.',
     estReview: { highlight: 'variedade de tarefas',
@@ -669,9 +680,9 @@ function renderPlatforms() {
     const open = state.openId === p.id;
     const hasBonus = p.bonus && p.bonus.length > 0;
     const el = document.createElement('article');
-    el.className = 'plat' + (p.featured ? ' featured' : '') + (open ? ' open' : '');
+    el.className = 'plat' + (p.highlight ? ` tag-${p.highlight.type}` : '') + (open ? ' open' : '');
     el.innerHTML = `
-      ${p.featured ? '<div class="featured-tag">O QUE ESTOU MAIS USANDO</div>' : ''}
+      ${p.highlight ? `<div class="plat-tag tag-${p.highlight.type}-bg">${esc(p.highlight.label)}</div>` : ''}
       <div class="plat-head">
         <div class="plat-logo"><img src="${p.logo}" alt=""></div>
         <div>
@@ -725,6 +736,7 @@ function renderPlatBody(p, hasBonus) {
   };
   return `
     <div class="plat-body">
+      ${p.alert ? `<div class="plat-alert">⚠️ ${esc(p.alert)}</div>` : ''}
       <div class="rev-block">
         <div class="rev-col pros"><div class="rev-col-title pros">+ Pontos positivos</div><ul>${pros}</ul></div>
         <div class="rev-col cons"><div class="rev-col-title cons">− Pontos negativos</div><ul>${cons}</ul></div>
