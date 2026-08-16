@@ -205,6 +205,15 @@
   .ref-flat { background: var(--bg); border-radius: 12px; padding: 14px 16px; margin-top: 14px; font-size: 14px; color: #333; line-height: 1.5; }
   .ref-flat strong { color: var(--ok); }
   .ref-none { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin-top: 14px; }
+  .ref-calc { margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--line-strong); display: flex; flex-direction: column; gap: 12px; }
+  .ref-calc-row { display: flex; flex-direction: column; gap: 4px; }
+  .ref-calc-row .ref-calc-lbl { display: flex; justify-content: space-between; font-size: 12.5px; color: #333; }
+  .ref-calc-row .ref-calc-val { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--accent); }
+  .ref-calc-result { background: var(--ink); color: var(--paper); border-radius: 12px; padding: 14px 16px; margin-top: 6px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .ref-calc-result .ref-calc-eye { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-weight: 600; }
+  .ref-calc-result .ref-calc-amount { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 700; letter-spacing: -0.015em; }
+  .ref-calc-result .ref-calc-amount .per { font-size: 0.55em; color: rgba(255,255,255,0.55); font-family: 'Inter', sans-serif; font-weight: 500; margin-left: 4px; }
+  .ref-calc-hint { font-size: 12px; color: var(--muted); line-height: 1.5; }
   @media (max-width: 900px) { .ref-grid { grid-template-columns: 1fr; } }
 
   /* Prova */
@@ -499,8 +508,20 @@
           <div class="ref-card-name">Claru.ai</div>
         </div>
         <div class="ref-mechanic">Bônus por horas gravadas</div>
-        <p class="body" style="margin: 0;">Bônus único quando seu indicado bate um marco de horas gravadas.</p>
-        <div class="ref-flat">A cada indicado que bate <strong>5h gravadas</strong>, você ganha <strong>$25</strong>.</div>
+        <p class="body" style="margin: 0 0 4px;">Bônus fixo quando seu indicado bate <strong>5h gravadas</strong>: você ganha <strong>$25</strong>.</p>
+        <div class="ref-calc">
+          <div class="ref-calc-row">
+            <div class="ref-calc-lbl"><span>Indicados que batem 5h</span><span class="ref-calc-val" id="claruQtyDisplay">0</span></div>
+            <input id="claruQty" type="range" min="0" max="50" step="1" value="0">
+          </div>
+          <div class="ref-calc-result">
+            <div>
+              <div class="ref-calc-eye">Você ganha</div>
+              <div class="ref-calc-amount" id="claruTotal"></div>
+            </div>
+          </div>
+          <div class="ref-calc-hint">Bônus pago uma vez por indicado. Cada um só conta depois de bater as 5h.</div>
+        </div>
       </div>
 
       <div class="ref-card">
@@ -509,8 +530,20 @@
           <div class="ref-card-name">Crowtado</div>
         </div>
         <div class="ref-mechanic">Bônus por valor ganho</div>
-        <p class="body" style="margin: 0;">Bônus único quando seu indicado bate um marco de ganhos.</p>
-        <div class="ref-flat">A cada indicado que bate <strong>$50 em ganhos</strong>, você ganha <strong>$10</strong>.</div>
+        <p class="body" style="margin: 0 0 4px;">Bônus fixo quando seu indicado atinge <strong>$50 em ganhos</strong>: você ganha <strong>$10</strong>.</p>
+        <div class="ref-calc">
+          <div class="ref-calc-row">
+            <div class="ref-calc-lbl"><span>Indicados que batem $50</span><span class="ref-calc-val" id="crowQtyDisplay">0</span></div>
+            <input id="crowQty" type="range" min="0" max="50" step="1" value="0">
+          </div>
+          <div class="ref-calc-result">
+            <div>
+              <div class="ref-calc-eye">Você ganha</div>
+              <div class="ref-calc-amount" id="crowTotal"></div>
+            </div>
+          </div>
+          <div class="ref-calc-hint">Bônus pago uma vez por indicado. Cada um só conta depois de bater os $50.</div>
+        </div>
       </div>
 
       <div class="ref-card">
@@ -528,10 +561,31 @@
           <div class="ref-card-name">Hub.xyz</div>
         </div>
         <div class="ref-mechanic">Multinível (2 níveis)</div>
-        <p class="body" style="margin: 0;">Você ganha por cada hora gravada pelos seus indicados diretos e também pelos indicados deles.</p>
+        <p class="body" style="margin: 0;">Você ganha por hora gravada pelos seus indicados diretos e também pelos indicados deles.</p>
         <div class="ref-levels">
           <div class="ref-level"><span class="ref-level-label">Nível 1 · seu indicado direto</span><span class="ref-level-val">R$ 2,50/h</span></div>
           <div class="ref-level"><span class="ref-level-label">Nível 2 · indicado do seu indicado</span><span class="ref-level-val">R$ 1,25/h</span></div>
+        </div>
+        <div class="ref-calc">
+          <div class="ref-calc-row">
+            <div class="ref-calc-lbl"><span>Amigos que você convida (nível 1)</span><span class="ref-calc-val" id="hubL1Display">3</span></div>
+            <input id="hubL1" type="range" min="0" max="30" step="1" value="3">
+          </div>
+          <div class="ref-calc-row">
+            <div class="ref-calc-lbl"><span>Amigos que cada um deles convida (nível 2)</span><span class="ref-calc-val" id="hubL2Display">3</span></div>
+            <input id="hubL2" type="range" min="0" max="30" step="1" value="3">
+          </div>
+          <div class="ref-calc-row">
+            <div class="ref-calc-lbl"><span>Horas que cada um grava por semana</span><span class="ref-calc-val" id="hubHrsDisplay">10</span></div>
+            <input id="hubHrs" type="range" min="0" max="40" step="1" value="10">
+          </div>
+          <div class="ref-calc-result">
+            <div>
+              <div class="ref-calc-eye">Você poderia ganhar</div>
+              <div class="ref-calc-amount" id="hubTotal"></div>
+            </div>
+          </div>
+          <div class="ref-calc-hint">Estimativa mensal (4 semanas), enquanto sua rede continuar gravando.</div>
         </div>
       </div>
     </div>
@@ -958,8 +1012,48 @@ function renderEstimator() {
 document.getElementById('hoursSlider').addEventListener('input', (e) => { state.estimatorHoursPerDay = parseFloat(e.target.value); renderEstimator(); });
 document.getElementById('currencyToggle').addEventListener('click', () => { state.currencyMode = state.currencyMode === 'USD' ? 'BRL' : 'USD'; renderEstimator(); });
 
+// Referral calculators
+function fmtBRL(n) { return 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+function fmtUSD(n) { return 'US$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 0 }); }
+
+function renderClaruCalc() {
+  const qty = parseInt(document.getElementById('claruQty').value, 10);
+  document.getElementById('claruQtyDisplay').textContent = qty;
+  const usd = qty * 25;
+  const brl = usd * EXCHANGE_RATE;
+  document.getElementById('claruTotal').innerHTML = `${fmtUSD(usd)} <span class="per">(${fmtBRL(brl)})</span>`;
+}
+
+function renderCrowCalc() {
+  const qty = parseInt(document.getElementById('crowQty').value, 10);
+  document.getElementById('crowQtyDisplay').textContent = qty;
+  const usd = qty * 10;
+  const brl = usd * EXCHANGE_RATE;
+  document.getElementById('crowTotal').innerHTML = `${fmtUSD(usd)} <span class="per">(${fmtBRL(brl)})</span>`;
+}
+
+function renderHubCalc() {
+  const l1 = parseInt(document.getElementById('hubL1').value, 10);
+  const l2 = parseInt(document.getElementById('hubL2').value, 10);
+  const hrs = parseInt(document.getElementById('hubHrs').value, 10);
+  document.getElementById('hubL1Display').textContent = l1;
+  document.getElementById('hubL2Display').textContent = l2;
+  document.getElementById('hubHrsDisplay').textContent = hrs;
+  // 4 weeks/month; each L1 indicated by 1 friend generates L1 * L2 total L2s
+  const weeklyBRL = (l1 * hrs * 2.5) + (l1 * l2 * hrs * 1.25);
+  const monthlyBRL = weeklyBRL * 4;
+  document.getElementById('hubTotal').innerHTML = `${fmtBRL(monthlyBRL)}<span class="per">/mês</span>`;
+}
+
+['claruQty'].forEach(id => document.getElementById(id).addEventListener('input', renderClaruCalc));
+['crowQty'].forEach(id => document.getElementById(id).addEventListener('input', renderCrowCalc));
+['hubL1', 'hubL2', 'hubHrs'].forEach(id => document.getElementById(id).addEventListener('input', renderHubCalc));
+
 renderPlatforms();
 renderEstimator();
+renderClaruCalc();
+renderCrowCalc();
+renderHubCalc();
 </script>
 </body>
 </html>
