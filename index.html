@@ -151,6 +151,7 @@
   .step-body strong { color: var(--ink); }
   .step-inline { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
   .code-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--bg); border: 1px solid var(--line-strong); font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer; color: var(--ink); }
+  .code-chip-hint { color: var(--muted); font-weight: 400; font-family: 'Inter', sans-serif; font-size: 12px; }
   .code-chip:hover { border-color: var(--ink); }
   .warn-note { color: var(--warn); font-size: 12.5px; margin-top: 4px; }
 
@@ -262,9 +263,35 @@
     .rev-block { grid-template-columns: 1fr; }
     .proof-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
-    .plat-head { grid-template-columns: 48px 1fr; }
-    .plat-price { grid-column: 2; text-align: left; margin-top: 4px; }
+    .plat-head { grid-template-columns: 48px 1fr; padding: 20px; }
+    .plat-price { grid-column: 1 / -1; text-align: left; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .plat-price .plat-rate { font-size: 20px; }
+    .plat-price .plat-rate-lbl { display: inline-block; margin-left: 6px; }
+    .plat-price .expand-btn { margin-top: 0 !important; margin-left: auto; }
     .plat-logo { width: 48px; height: 48px; }
+    .plat-tag { padding: 4px 10px; font-size: 9.5px; }
+    .plat.tag-warn .plat-head, .plat.tag-accent .plat-head { padding-top: 34px; }
+    .kv-grid[style*="repeat(3"] { grid-template-columns: repeat(2, 1fr) !important; }
+    .plat-body { padding-left: 20px !important; padding-right: 20px !important; }
+    .plat-alert { font-size: 13px; }
+    .step-inline { flex-direction: column; align-items: flex-start !important; }
+    .step-inline .btn, .step-inline .code-chip { width: auto; }
+  }
+  @media (max-width: 640px) {
+    .which-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .req-grid { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr; }
+    .hero-stats > div { border-right: none; border-bottom: 1px solid var(--line); }
+    .hero-stats > div:last-child { border-bottom: none; }
+    .stat-num { font-size: 26px; }
+    footer.site-footer .wrap { flex-direction: column; align-items: flex-start; }
+    footer .social { flex-wrap: wrap; }
+    .chap-eyebrow { flex-wrap: wrap; }
+    .chap-tag::before { display: none; }
+    .chap-tag { padding-left: 0; }
+    .support .cta-row .btn { flex: 1 1 100%; justify-content: center; }
   }
 
   @media (max-width: 560px) {
@@ -845,10 +872,10 @@ function renderPlatforms() {
       el.querySelectorAll('.copy-code').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
-          navigator.clipboard.writeText(btn.dataset.code).then(() => {
-            const orig = btn.dataset.orig;
+          const code = btn.dataset.code;
+          navigator.clipboard.writeText(code).then(() => {
             btn.textContent = 'Copiado ✓';
-            setTimeout(() => { btn.innerHTML = orig; }, 1500);
+            setTimeout(() => { btn.innerHTML = `${esc(code)} <span class="code-chip-hint">copiar</span>`; }, 1500);
           });
         });
       });
@@ -861,8 +888,7 @@ function renderPlatBody(p, hasBonus) {
   const pros = p.estReview.pros.map(t => `<li>${esc(t)}</li>`).join('');
   const cons = p.estReview.cons.map(t => `<li>${esc(t)}</li>`).join('');
   const mkCodeChip = (code) => {
-    const orig = `${esc(code)} <span style="color: var(--muted); font-weight: 400;">copiar</span>`;
-    return `<button class="code-chip copy-code" data-code="${esc(code)}" data-orig="${orig}">${orig}</button>`;
+    return `<button class="code-chip copy-code" data-code="${esc(code)}">${esc(code)} <span class="code-chip-hint">copiar</span></button>`;
   };
   return `
     <div class="plat-body">
