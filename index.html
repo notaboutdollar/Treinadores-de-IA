@@ -439,6 +439,13 @@
 
     <div class="which-grid">
       <div class="which-card">
+        <div class="which-eye">O QUE ESTOU MAIS USANDO</div>
+        <h3 class="which-title">Comece pela Hub.xyz</h3>
+        <div class="which-sub">Velocidade + saque em Pix</div>
+        <p class="which-body">Simples, aprova rápido, saca em Pix com mínimo baixo e é a única que envia o suporte de cabeça de graça (via whitelist). Pra quem tá começando, é o caminho mais curto pro primeiro pagamento.</p>
+        <a class="btn btn-accent" href="https://ai.hub.xyz/r/DOLETA" target="_blank">Cadastrar →</a>
+      </div>
+      <div class="which-card">
         <div class="which-eye" style="color: #6B6B6B;">MELHOR SISTEMA DE INDICAÇÃO</div>
         <h3 class="which-title">Vá de Claru.ai se…</h3>
         <div class="which-sub">Você indica amigos com facilidade</div>
@@ -458,13 +465,6 @@
         <div class="which-sub">Você quer variedade de tarefas</div>
         <p class="which-body">Aceita mais tipos de tarefa (doméstica e comercial) e grava direto no app, sem precisar do Minute. Só paga em cripto, então você precisa converter em reais depois.</p>
         <a class="btn btn-ghost" href="https://nido.global/eSWVI7" target="_blank">Cadastrar →</a>
-      </div>
-      <div class="which-card">
-        <div class="which-eye" style="color: var(--warn);">SAQUE PAUSADO NO MOMENTO</div>
-        <h3 class="which-title">Hub.xyz</h3>
-        <div class="which-sub">Aprovação mais rápida, mas saque parado</div>
-        <p class="which-body">A Hub aprova o vídeo mais rápido que as outras e tem um bom suporte, mas está com o saque pausado agora, sem previsão de volta. Vale se cadastrar pra garantir a vaga, mas não conte com ela pra sacar no curto prazo.</p>
-        <a class="btn btn-ghost" href="https://ai.hub.xyz/r/DOLETA" target="_blank">Cadastrar →</a>
       </div>
     </div>
   </div>
@@ -531,6 +531,40 @@
     <div class="ref-grid">
       <div class="ref-card">
         <div class="ref-card-head">
+          <img src="public/logo-hub.png" alt="">
+          <div class="ref-card-name">Hub.xyz</div>
+        </div>
+        <div class="ref-mechanic">Multinível (2 níveis)</div>
+        <p class="body" style="margin: 0;">Você ganha por hora gravada pelos seus indicados diretos e também pelos indicados deles.</p>
+        <div class="ref-levels">
+          <div class="ref-level"><span class="ref-level-label">Nível 1 · seu indicado direto</span><span class="ref-level-val">R$ 2,50/h</span></div>
+          <div class="ref-level"><span class="ref-level-label">Nível 2 · indicado do seu indicado</span><span class="ref-level-val">R$ 1,25/h</span></div>
+        </div>
+        <div class="ref-calc">
+          <div class="ref-calc-row">
+            <div class="ref-calc-lbl"><span>Amigos que você convida (nível 1)</span><span class="ref-calc-val" id="hubL1Display">3</span></div>
+            <input id="hubL1" type="range" min="0" max="30" step="1" value="3">
+          </div>
+          <div class="ref-calc-row">
+            <div class="ref-calc-lbl"><span>Amigos que cada um deles convida (nível 2)</span><span class="ref-calc-val" id="hubL2Display">3</span></div>
+            <input id="hubL2" type="range" min="0" max="30" step="1" value="3">
+          </div>
+          <div class="ref-calc-row">
+            <div class="ref-calc-lbl"><span>Horas que cada um grava por semana</span><span class="ref-calc-val" id="hubHrsDisplay">10</span></div>
+            <input id="hubHrs" type="range" min="0" max="40" step="1" value="10">
+          </div>
+          <div class="ref-calc-result">
+            <div>
+              <div class="ref-calc-eye">Você poderia ganhar</div>
+              <div class="ref-calc-amount" id="hubTotal"></div>
+            </div>
+          </div>
+          <div class="ref-calc-hint">Estimativa mensal (4 semanas), enquanto sua rede continuar gravando.</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card-head">
           <img src="public/logo-claru.png" alt="">
           <div class="ref-card-name">Claru.ai</div>
         </div>
@@ -582,39 +616,6 @@
         <p class="ref-none">A Invent Money está desenvolvendo o próprio sistema de indicação e a estreia no Brasil está chegando. Por enquanto, quando quiser trazer alguém, é só passar o <a href="https://nido.global/eSWVI7" target="_blank">link do site oficial</a> pra pessoa se cadastrar direto.</p>
       </div>
 
-      <div class="ref-card">
-        <div class="ref-card-head">
-          <img src="public/logo-hub.png" alt="">
-          <div class="ref-card-name">Hub.xyz</div>
-        </div>
-        <div class="ref-mechanic">Multinível (2 níveis)</div>
-        <p class="body" style="margin: 0;">Você ganha por hora gravada pelos seus indicados diretos e também pelos indicados deles.</p>
-        <div class="ref-levels">
-          <div class="ref-level"><span class="ref-level-label">Nível 1 · seu indicado direto</span><span class="ref-level-val">R$ 2,50/h</span></div>
-          <div class="ref-level"><span class="ref-level-label">Nível 2 · indicado do seu indicado</span><span class="ref-level-val">R$ 1,25/h</span></div>
-        </div>
-        <div class="ref-calc">
-          <div class="ref-calc-row">
-            <div class="ref-calc-lbl"><span>Amigos que você convida (nível 1)</span><span class="ref-calc-val" id="hubL1Display">3</span></div>
-            <input id="hubL1" type="range" min="0" max="30" step="1" value="3">
-          </div>
-          <div class="ref-calc-row">
-            <div class="ref-calc-lbl"><span>Amigos que cada um deles convida (nível 2)</span><span class="ref-calc-val" id="hubL2Display">3</span></div>
-            <input id="hubL2" type="range" min="0" max="30" step="1" value="3">
-          </div>
-          <div class="ref-calc-row">
-            <div class="ref-calc-lbl"><span>Horas que cada um grava por semana</span><span class="ref-calc-val" id="hubHrsDisplay">10</span></div>
-            <input id="hubHrs" type="range" min="0" max="40" step="1" value="10">
-          </div>
-          <div class="ref-calc-result">
-            <div>
-              <div class="ref-calc-eye">Você poderia ganhar</div>
-              <div class="ref-calc-amount" id="hubTotal"></div>
-            </div>
-          </div>
-          <div class="ref-calc-hint">Estimativa mensal (4 semanas), enquanto sua rede continuar gravando.</div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -679,6 +680,42 @@ const DAYS_PER_MONTH = 30;
 const EXCHANGE_RATE = 5.08;
 
 const data = [
+  { id: 1, name: 'Hub.xyz', category: 'Vídeo doméstico', temRef: true, nota: 4.4, taxa: 6, taxaLabel: '$5 a $6', logo: 'public/logo-hub.png',
+    highlight: { label: 'O QUE ESTOU MAIS USANDO', type: 'accent' },
+    calcRate: 5, calcCurrency: '$', bonusCurrency: 'R$', calcBonuses: [
+      { threshold: 1, amount: 15, milestone: '1h' },
+      { threshold: 5, amount: 10, milestone: '5h' },
+      { threshold: 50, amount: 50, milestone: '50h' },
+    ],
+    bonus: [
+      { req: 'Tarefas turbinadas', reward: '$6/h (R$ 30/h)' },
+      { req: '1h', reward: 'Bônus de R$ 15' },
+      { req: '2h', reward: 'Bilhete de sorteio de R$ 2.500' },
+      { req: '5h', reward: 'Bônus de R$ 10' },
+      { req: '10h', reward: 'Bilhete de sorteio' },
+      { req: '20h', reward: 'Bilhete de sorteio de R$ 2.500' },
+      { req: '40h', reward: 'Status Premium Collector' },
+      { req: '50h', reward: 'Bônus de R$ 50' },
+      { req: '75h', reward: 'Bilhete mensal de sorteio de iPhone' },
+      { req: '100h', reward: 'Headstrap premium' },
+      { req: '200h', reward: 'Bilhete mensal de sorteio de iPhone' },
+    ],
+    referralInfo: 'Você ganha R$ 2,50 a cada hora do seu indicado e R$ 1,25 a cada hora do indicado do seu indicado.',
+    estReview: { highlight: 'velocidade e saque em Pix',
+      pros: [
+        'O vídeo aparece na plataforma mais rápido que nas outras',
+        'Suporte ativo no Telegram',
+        'Saque em Pix, mínimo baixo (R$ 25)',
+      ],
+      cons: [ 'Pagamento: o que paga menos ($5/h)' ],
+    },
+    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: [
+      'iPhone: 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). iPhone 11 não é compatível.',
+      'Pixel: 6, 7, 8 e 9 (e versões Pro).',
+      'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
+    ],
+    saqueMin: 'R$ 25', tempoPagamento: '1 a 2 dias', metodos: ['Pix'],
+    refLink: 'https://ai.hub.xyz/r/DOLETA', officialLink: 'https://hub.xyz', orgCode: 'JUK9YQWE' },
   { id: 2, name: 'Claru.ai', category: 'Vídeo doméstico', temRef: true, nota: 4.2, taxa: 6, taxaLabel: '$6', logo: 'public/logo-claru.png',
     highlight: { label: 'MELHOR SISTEMA DE INDICAÇÃO', type: 'accent' },
     calcRate: 6, calcCurrency: '$', calcBonuses: [
@@ -771,48 +808,9 @@ const data = [
       suffix: '(cobra 2,5% de taxa, mas é a mais fácil hoje). Existem outras opções, então fique à vontade pra pesquisar.',
     },
   },
-  { id: 1, name: 'Hub.xyz', category: 'Vídeo doméstico', temRef: true, nota: 4.4, taxa: 6, taxaLabel: '$5 a $6', logo: 'public/logo-hub.png',
-    highlight: { label: 'SAQUE PARADO', type: 'warn' },
-    alert: 'A Hub está com o saque pausado no momento, sem previsão de volta. Por isso ela deixou de ser minha recomendação principal. Ainda vale se cadastrar pra garantir a vaga, mas não conte com ela pra sacar agora.',
-    calcRate: 5, calcCurrency: '$', bonusCurrency: 'R$', calcBonuses: [
-      { threshold: 1, amount: 15, milestone: '1h' },
-      { threshold: 5, amount: 10, milestone: '5h' },
-      { threshold: 50, amount: 50, milestone: '50h' },
-    ],
-    bonus: [
-      { req: 'Tarefas turbinadas', reward: '$6/h (R$ 30/h)' },
-      { req: '1h', reward: 'Bônus de R$ 15' },
-      { req: '2h', reward: 'Bilhete de sorteio de R$ 2.500' },
-      { req: '5h', reward: 'Bônus de R$ 10' },
-      { req: '10h', reward: 'Bilhete de sorteio' },
-      { req: '20h', reward: 'Bilhete de sorteio de R$ 2.500' },
-      { req: '40h', reward: 'Status Premium Collector' },
-      { req: '50h', reward: 'Bônus de R$ 50' },
-      { req: '75h', reward: 'Bilhete mensal de sorteio de iPhone' },
-      { req: '100h', reward: 'Headstrap premium' },
-      { req: '200h', reward: 'Bilhete mensal de sorteio de iPhone' },
-    ],
-    referralInfo: 'Você ganha R$ 2,50 a cada hora do seu indicado e R$ 1,25 a cada hora do indicado do seu indicado.',
-    estReview: { highlight: 'velocidade de aprovação',
-      pros: [
-        'O vídeo aparece na plataforma mais rápido que nas outras',
-        'Suporte ativo no Telegram',
-      ],
-      cons: [
-        'Pagamento: o que paga menos ($5/h)',
-        'Saque pausado no momento, sem previsão de volta',
-      ],
-    },
-    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: [
-      'iPhone: 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). iPhone 11 não é compatível.',
-      'Pixel: 6, 7, 8 e 9 (e versões Pro).',
-      'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
-    ],
-    saqueMin: 'R$ 25', tempoPagamento: '1 a 2 dias', metodos: ['Pix'],
-    refLink: 'https://ai.hub.xyz/r/DOLETA', officialLink: 'https://hub.xyz', orgCode: 'JUK9YQWE' },
 ];
 
-let state = { openId: null, estimatorPlatformId: 2, estimatorHoursPerDay: 3, currencyMode: 'USD' };
+let state = { openId: null, estimatorPlatformId: 1, estimatorHoursPerDay: 3, currencyMode: 'USD' };
 
 function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 function fmt(n) { return Math.round(n).toLocaleString('pt-BR'); }
