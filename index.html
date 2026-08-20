@@ -651,6 +651,13 @@ const data = [
       'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
     ],
     saqueMin: 'R$ 25', tempoPagamento: '1 a 2 dias', metodos: ['Pix'],
+    suporte: {
+      note: 'Atendimento pelo próprio site, além de canal ativo no Telegram e e-mail.',
+      channels: [
+        { type: 'Telegram', label: 'Grupo no Telegram', href: 'https://t.me/+vRh6XYI95vY5MDdk' },
+        { type: 'Email', label: 'support@hub.xyz', href: 'mailto:support@hub.xyz' },
+      ],
+    },
     refLink: 'https://ai.hub.xyz/r/DOLETA', officialLink: 'https://hub.xyz', orgCode: 'JUK9YQWE' },
   { id: 2, name: 'Claru.ai', category: 'Vídeo doméstico', temRef: true, nota: 4.2, taxa: 6, taxaLabel: '$6', logo: 'public/logo-claru.png',
     highlight: { label: 'MELHOR SISTEMA DE INDICAÇÃO', type: 'accent' },
@@ -673,7 +680,8 @@ const data = [
     estReview: { highlight: 'bônus de horas',
       pros: [
         'Pagamento na média ($6/h), mas tem muitos bônus por meta batida',
-        'Suporte: o melhor entre todas, ativo no Discord',
+        'Ganha $5 já no 1º clipe enviado (sem precisar bater hora)',
+        'Suporte rápido no Discord (o melhor entre as quatro)',
         'Saque semanal (toda terça)',
       ],
       cons: [
@@ -687,6 +695,12 @@ const data = [
       'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
     ],
     saqueMin: 'US$ 25', tempoPagamento: 'Semanal', metodos: ['Pix', 'PayPal'],
+    suporte: {
+      note: 'Comunidade ativa no Discord com respostas rápidas. É o melhor suporte entre as quatro.',
+      channels: [
+        { type: 'Discord', label: 'Discord da Claru', href: 'https://discord.com/invite/sjWfecavQs' },
+      ],
+    },
     refLink: 'https://app.claru.ai/signup?ref=2d1cs845', officialLink: 'https://claru.ai', orgCode: 'WSNEHSKC' },
   { id: 3, name: 'Crowtado', category: 'Vídeo doméstico + comercial', temRef: true, nota: 4.0, taxa: 8, taxaLabel: '$8', logo: 'public/logo-crowtado.png',
     highlight: { label: 'PAGA MAIS', type: 'accent' },
@@ -708,6 +722,10 @@ const data = [
       'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
     ],
     saqueMin: 'US$ 10', tempoPagamento: 'Variável', metodos: ['Pix', 'Transferência internacional'],
+    suporte: {
+      note: 'Só via chat dentro do próprio site — é o suporte mais fraco entre as quatro. Não encontrei relatos de bom atendimento.',
+      channels: [],
+    },
     refLink: 'https://www.crowtado.com/sign-up?ref=4T2L4ATC', officialLink: 'https://crowtado.com',
     orgCodes: [
       { label: 'Residencial (em casa)', code: 'VZEAE7WC', examples: 'Ex: lavar louça, dobrar e guardar roupas, jardinagem, tirar o lixo, organizar a garagem.' },
@@ -735,6 +753,12 @@ const data = [
       'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
     ],
     saqueMin: 'Sem mínimo', tempoPagamento: '~7 dias após aprovação', metodos: ['USDC (rede Base)'],
+    suporte: {
+      note: 'Atendimento por e-mail e também dentro do próprio app.',
+      channels: [
+        { type: 'Email', label: 'support@inventmoney.com', href: 'mailto:support@inventmoney.com' },
+      ],
+    },
     refLink: 'https://nido.global/eSWVI7', officialLink: 'https://app.inventmoney.com/submissions',
     usesMinute: false,
     cryptoNote: {
@@ -851,6 +875,12 @@ function renderPlatBody(p, hasBonus) {
       ${hasBonus ? `
         <div class="subsec-title">Bônus</div>
         <div class="bonus-list">${p.bonus.map(b => `<div class="bonus-row"><span>${esc(b.req)}</span><span>${esc(b.reward)}</span></div>`).join('')}</div>
+      ` : ''}
+
+      ${p.suporte ? `
+        <div class="subsec-title">Suporte</div>
+        <p class="body" style="margin: 0 0 12px;">${esc(p.suporte.note)}</p>
+        ${p.suporte.channels.length ? `<div class="cta-row" style="margin-top: 0;">${p.suporte.channels.map(c => `<a class="btn btn-ghost" style="padding: 8px 14px; font-size: 12.5px;" href="${c.href}" target="_blank">${esc(c.label)} →</a>`).join('')}</div>` : ''}
       ` : ''}
 
       <div class="subsec-title">Sistema de indicação</div>
