@@ -438,24 +438,17 @@
     <div class="which-grid">
       <div class="which-card">
         <div class="which-eye">O QUE ESTOU MAIS USANDO</div>
-        <h3 class="which-title">Comece pela Hub.xyz</h3>
-        <div class="which-sub">Velocidade + saque em Pix</div>
-        <p class="which-body">Simples, aprova rápido, saca em Pix com mínimo baixo e é a única que envia o suporte de cabeça de graça (via whitelist). Pra quem tá começando, é o caminho mais curto pro primeiro pagamento.</p>
-        <a class="btn btn-accent" href="https://ai.hub.xyz/r/DOLETA" target="_blank">Cadastrar →</a>
+        <h3 class="which-title">Comece pela Claru.ai</h3>
+        <div class="which-sub">Melhor suporte + bônus de sobra</div>
+        <p class="which-body">Comunidade ativa no Discord que responde rápido, $5 já no 1º clipe enviado e bônus escalonado até 1.000h ($1.000 no marco máximo). Também paga $25 por cada indicado que bate 5h. É o caminho mais completo pra quem tá começando.</p>
+        <a class="btn btn-accent" href="https://app.claru.ai/signup?ref=2d1cs845" target="_blank">Cadastrar →</a>
       </div>
       <div class="which-card">
-        <div class="which-eye" style="color: #6B6B6B;">MELHOR SUPORTE</div>
-        <h3 class="which-title">Vá de Claru.ai se…</h3>
-        <div class="which-sub">Você quer resposta rápida quando precisar</div>
-        <p class="which-body">Comunidade ativa no Discord que responde rápido, bônus de $5 já no 1º clipe e escalonado até 1.000h ($1.000 no marco máximo). Também paga $25 por indicado que bate 5h.</p>
-        <a class="btn btn-ghost" href="https://app.claru.ai/signup?ref=2d1cs845" target="_blank">Cadastrar →</a>
-      </div>
-      <div class="which-card">
-        <div class="which-eye" style="color: #6B6B6B;">TAREFAS COMERCIAIS</div>
-        <h3 class="which-title">Vá de Crowtado se…</h3>
-        <div class="which-sub">Você quer gravar também no trabalho</div>
-        <p class="which-body">Aceita tarefas comerciais (no seu trabalho) além das domésticas, paga $6,50/h e tem saque em Pix com mínimo baixo ($10). O suporte é o ponto fraco, então funciona bem como opção complementar.</p>
-        <a class="btn btn-ghost" href="https://www.crowtado.com/sign-up?ref=4T2L4ATC" target="_blank">Cadastrar →</a>
+        <div class="which-eye" style="color: #6B6B6B;">APROVAÇÃO MAIS RÁPIDA</div>
+        <h3 class="which-title">Vá de Hub.xyz se…</h3>
+        <div class="which-sub">Você quer ver o primeiro pagamento cair rápido</div>
+        <p class="which-body">Aprova o vídeo mais rápido que as outras, saca em Pix com mínimo baixo (R$ 25) e é a única que envia o suporte de cabeça de graça (via whitelist). Boa segunda opção pra combinar com a Claru.</p>
+        <a class="btn btn-ghost" href="https://ai.hub.xyz/r/DOLETA" target="_blank">Cadastrar →</a>
       </div>
       <div class="which-card">
         <div class="which-eye" style="color: #6B6B6B;">MAIS TAREFAS DIFERENTES</div>
@@ -463,6 +456,13 @@
         <div class="which-sub">Você quer variedade de tarefas</div>
         <p class="which-body">Aceita mais tipos de tarefa (doméstica e comercial) e grava direto no app, sem precisar do Minute. Só paga em cripto, então você precisa converter em reais depois.</p>
         <a class="btn btn-ghost" href="https://nido.global/eSWVI7" target="_blank">Cadastrar →</a>
+      </div>
+      <div class="which-card">
+        <div class="which-eye" style="color: #6B6B6B;">TAREFAS COMERCIAIS</div>
+        <h3 class="which-title">Vá de Crowtado se…</h3>
+        <div class="which-sub">Você quer gravar também no trabalho</div>
+        <p class="which-body">Aceita tarefas comerciais (no seu trabalho) além das domésticas, paga $6,50/h e tem saque em Pix com mínimo baixo ($10). O suporte é o ponto fraco, então funciona bem como opção complementar.</p>
+        <a class="btn btn-ghost" href="https://www.crowtado.com/sign-up?ref=4T2L4ATC" target="_blank">Cadastrar →</a>
       </div>
     </div>
   </div>
@@ -616,51 +616,8 @@ const DAYS_PER_MONTH = 30;
 const EXCHANGE_RATE = 5.08;
 
 const data = [
-  { id: 1, name: 'Hub.xyz', category: 'Vídeo doméstico', temRef: true, nota: 4.4, taxa: 6, taxaLabel: '$5 a $6', logo: 'public/logo-hub.png',
-    highlight: { label: 'O QUE ESTOU MAIS USANDO', type: 'accent' },
-    calcRate: 5, calcCurrency: '$', bonusCurrency: 'R$', calcBonuses: [
-      { threshold: 1, amount: 15, milestone: '1h' },
-      { threshold: 5, amount: 10, milestone: '5h' },
-      { threshold: 50, amount: 50, milestone: '50h' },
-    ],
-    bonus: [
-      { req: 'Tarefas turbinadas', reward: '$6/h (R$ 30/h)' },
-      { req: '1h', reward: 'Bônus de R$ 15' },
-      { req: '2h', reward: 'Bilhete de sorteio de R$ 2.500' },
-      { req: '5h', reward: 'Bônus de R$ 10' },
-      { req: '10h', reward: 'Bilhete de sorteio' },
-      { req: '20h', reward: 'Bilhete de sorteio de R$ 2.500' },
-      { req: '40h', reward: 'Status Premium Collector' },
-      { req: '50h', reward: 'Bônus de R$ 50' },
-      { req: '75h', reward: 'Bilhete mensal de sorteio de iPhone' },
-      { req: '100h', reward: 'Headstrap premium' },
-      { req: '200h', reward: 'Bilhete mensal de sorteio de iPhone' },
-    ],
-    referralInfo: 'Você ganha R$ 2,50 a cada hora do seu indicado e R$ 1,25 a cada hora do indicado do seu indicado.',
-    estReview: { highlight: 'velocidade e saque em Pix',
-      pros: [
-        'O vídeo aparece na plataforma mais rápido que nas outras',
-        'Suporte ativo no Telegram',
-        'Saque em Pix, mínimo baixo (R$ 25)',
-      ],
-      cons: [ 'Pagamento: o que paga menos ($5/h)' ],
-    },
-    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: [
-      'iPhone: 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). iPhone 11 não é compatível.',
-      'Pixel: 6, 7, 8 e 9 (e versões Pro).',
-      'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
-    ],
-    saqueMin: 'R$ 25', tempoPagamento: '1 a 2 dias', metodos: ['Pix'],
-    suporte: {
-      note: 'Atendimento pelo próprio site, além de canal ativo no Telegram e e-mail.',
-      channels: [
-        { type: 'Telegram', label: 'Grupo no Telegram', href: 'https://t.me/+vRh6XYI95vY5MDdk' },
-        { type: 'Email', label: 'support@hub.xyz', href: 'mailto:support@hub.xyz' },
-      ],
-    },
-    refLink: 'https://ai.hub.xyz/r/DOLETA', officialLink: 'https://hub.xyz', orgCode: 'JUK9YQWE' },
   { id: 2, name: 'Claru.ai', category: 'Vídeo doméstico', temRef: true, nota: 4.2, taxa: 6, taxaLabel: '$6', logo: 'public/logo-claru.png',
-    highlight: { label: 'MELHOR SUPORTE', type: 'accent' },
+    highlight: { label: 'O QUE ESTOU MAIS USANDO', type: 'accent' },
     calcRate: 6, calcCurrency: '$', calcBonuses: [
       { threshold: 0.1, amount: 5, milestone: '1º clipe enviado' },
       { threshold: 1, amount: 5, milestone: '1h' }, { threshold: 5, amount: 10, milestone: '5h' },
@@ -703,35 +660,49 @@ const data = [
       ],
     },
     refLink: 'https://app.claru.ai/signup?ref=2d1cs845', officialLink: 'https://claru.ai', orgCode: 'WSNEHSKC' },
-  { id: 3, name: 'Crowtado', category: 'Vídeo doméstico + comercial', temRef: true, nota: 4.0, taxa: 6.5, taxaLabel: '$6,50', logo: 'public/logo-crowtado.png',
-    highlight: { label: 'TAREFAS COMERCIAIS', type: 'accent' },
-    calcRate: 6.5, calcCurrency: '$', calcBonuses: [], bonus: [],
-    referralInfo: 'Você ganha $10 quando seu indicado faz $50.',
-    estReview: { highlight: 'tarefas comerciais + Pix',
+  { id: 1, name: 'Hub.xyz', category: 'Vídeo doméstico', temRef: true, nota: 4.4, taxa: 6, taxaLabel: '$5 a $6', logo: 'public/logo-hub.png',
+    highlight: { label: 'APROVAÇÃO MAIS RÁPIDA', type: 'accent' },
+    calcRate: 5, calcCurrency: '$', bonusCurrency: 'R$', calcBonuses: [
+      { threshold: 1, amount: 15, milestone: '1h' },
+      { threshold: 5, amount: 10, milestone: '5h' },
+      { threshold: 50, amount: 50, milestone: '50h' },
+    ],
+    bonus: [
+      { req: 'Tarefas turbinadas', reward: '$6/h (R$ 30/h)' },
+      { req: '1h', reward: 'Bônus de R$ 15' },
+      { req: '2h', reward: 'Bilhete de sorteio de R$ 2.500' },
+      { req: '5h', reward: 'Bônus de R$ 10' },
+      { req: '10h', reward: 'Bilhete de sorteio' },
+      { req: '20h', reward: 'Bilhete de sorteio de R$ 2.500' },
+      { req: '40h', reward: 'Status Premium Collector' },
+      { req: '50h', reward: 'Bônus de R$ 50' },
+      { req: '75h', reward: 'Bilhete mensal de sorteio de iPhone' },
+      { req: '100h', reward: 'Headstrap premium' },
+      { req: '200h', reward: 'Bilhete mensal de sorteio de iPhone' },
+    ],
+    referralInfo: 'Você ganha R$ 2,50 a cada hora do seu indicado e R$ 1,25 a cada hora do indicado do seu indicado.',
+    estReview: { highlight: 'velocidade e saque em Pix',
       pros: [
-        'Aceita tarefas comerciais (no trabalho) além das domésticas',
-        'Saque em Pix com mínimo baixo: $10 (≈ R$ 50)',
+        'O vídeo aparece na plataforma mais rápido que nas outras',
+        'Suporte ativo no Telegram',
+        'Saque em Pix, mínimo baixo (R$ 25)',
       ],
-      cons: [
-        'O vídeo demora pra aparecer na plataforma e ser avaliado',
-        'Suporte: o pior das quatro, não encontrei ninguém que tenha recebido um bom atendimento',
-      ],
+      cons: [ 'Pagamento: o que paga menos ($5/h)' ],
     },
     duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: [
       'iPhone: 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). iPhone 11 não é compatível.',
       'Pixel: 6, 7, 8 e 9 (e versões Pro).',
       'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
     ],
-    saqueMin: 'US$ 10', tempoPagamento: 'Variável', metodos: ['Pix', 'Transferência internacional'],
+    saqueMin: 'R$ 25', tempoPagamento: '1 a 2 dias', metodos: ['Pix'],
     suporte: {
-      note: 'Só via chat dentro do próprio site — é o suporte mais fraco entre as quatro. Não encontrei relatos de bom atendimento.',
-      channels: [],
+      note: 'Atendimento pelo próprio site, além de canal ativo no Telegram e e-mail.',
+      channels: [
+        { type: 'Telegram', label: 'Grupo no Telegram', href: 'https://t.me/+vRh6XYI95vY5MDdk' },
+        { type: 'Email', label: 'support@hub.xyz', href: 'mailto:support@hub.xyz' },
+      ],
     },
-    refLink: 'https://www.crowtado.com/sign-up?ref=4T2L4ATC', officialLink: 'https://crowtado.com',
-    orgCodes: [
-      { label: 'Residencial (em casa)', code: 'VZEAE7WC', examples: 'Ex: lavar louça, dobrar e guardar roupas, jardinagem, tirar o lixo, organizar a garagem.' },
-      { label: 'Comercial (no trabalho)', code: '4BYSAHUG', examples: 'Ex: lavar louça em restaurante, limpeza de hotel, separação de pedidos em armazém, reposição de prateleiras, troca de óleo.' },
-    ] },
+    refLink: 'https://ai.hub.xyz/r/DOLETA', officialLink: 'https://hub.xyz', orgCode: 'JUK9YQWE' },
   { id: 4, name: 'Invent Money', category: 'Vídeo doméstico + comercial', temRef: false, nota: 4.3, taxa: 7, taxaLabel: '$5 a $8', logo: 'public/logo-inventmoney.png',
     highlight: { label: 'MAIS TAREFAS', type: 'accent' },
     calcRate: 7, calcCurrency: '$', calcBonuses: [], bonus: [],
@@ -771,9 +742,38 @@ const data = [
       suffix: '(cobra 2,5% de taxa, mas é a mais fácil hoje). Existem outras opções, então fique à vontade pra pesquisar.',
     },
   },
+  { id: 3, name: 'Crowtado', category: 'Vídeo doméstico + comercial', temRef: true, nota: 4.0, taxa: 6.5, taxaLabel: '$6,50', logo: 'public/logo-crowtado.png',
+    highlight: { label: 'TAREFAS COMERCIAIS', type: 'accent' },
+    calcRate: 6.5, calcCurrency: '$', calcBonuses: [], bonus: [],
+    referralInfo: 'Você ganha $10 quando seu indicado faz $50.',
+    estReview: { highlight: 'tarefas comerciais + Pix',
+      pros: [
+        'Aceita tarefas comerciais (no trabalho) além das domésticas',
+        'Saque em Pix com mínimo baixo: $10 (≈ R$ 50)',
+      ],
+      cons: [
+        'O vídeo demora pra aparecer na plataforma e ser avaliado',
+        'Suporte: o pior das quatro, não encontrei ninguém que tenha recebido um bom atendimento',
+      ],
+    },
+    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: [
+      'iPhone: 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). iPhone 11 não é compatível.',
+      'Pixel: 6, 7, 8 e 9 (e versões Pro).',
+      'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
+    ],
+    saqueMin: 'US$ 10', tempoPagamento: 'Variável', metodos: ['Pix', 'Transferência internacional'],
+    suporte: {
+      note: 'Só via chat dentro do próprio site — é o suporte mais fraco entre as quatro. Não encontrei relatos de bom atendimento.',
+      channels: [],
+    },
+    refLink: 'https://www.crowtado.com/sign-up?ref=4T2L4ATC', officialLink: 'https://crowtado.com',
+    orgCodes: [
+      { label: 'Residencial (em casa)', code: 'VZEAE7WC', examples: 'Ex: lavar louça, dobrar e guardar roupas, jardinagem, tirar o lixo, organizar a garagem.' },
+      { label: 'Comercial (no trabalho)', code: '4BYSAHUG', examples: 'Ex: lavar louça em restaurante, limpeza de hotel, separação de pedidos em armazém, reposição de prateleiras, troca de óleo.' },
+    ] },
 ];
 
-let state = { openId: null, estimatorPlatformId: 1, estimatorHoursPerDay: 3, currencyMode: 'USD' };
+let state = { openId: null, estimatorPlatformId: 2, estimatorHoursPerDay: 3, currencyMode: 'USD' };
 
 function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 function fmt(n) { return Math.round(n).toLocaleString('pt-BR'); }
