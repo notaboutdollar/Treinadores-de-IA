@@ -451,10 +451,10 @@
         <a class="btn btn-ghost" href="https://app.claru.ai/signup?ref=2d1cs845" target="_blank">Cadastrar →</a>
       </div>
       <div class="which-card">
-        <div class="which-eye" style="color: #6B6B6B;">PAGA MAIS POR HORA</div>
+        <div class="which-eye" style="color: #6B6B6B;">TAREFAS COMERCIAIS</div>
         <h3 class="which-title">Vá de Crowtado se…</h3>
-        <div class="which-sub">Você quer o maior $/h</div>
-        <p class="which-body">Paga $8/h, a maior taxa entre as quatro, e tem saque mínimo baixo ($10). O suporte é o ponto fraco, então se você é mais autônomo, ela funciona como uma boa opção complementar.</p>
+        <div class="which-sub">Você quer gravar também no trabalho</div>
+        <p class="which-body">Aceita tarefas comerciais (no seu trabalho) além das domésticas, paga $6,50/h e tem saque em Pix com mínimo baixo ($10). O suporte é o ponto fraco, então funciona bem como opção complementar.</p>
         <a class="btn btn-ghost" href="https://www.crowtado.com/sign-up?ref=4T2L4ATC" target="_blank">Cadastrar →</a>
       </div>
       <div class="which-card">
@@ -703,14 +703,14 @@ const data = [
       ],
     },
     refLink: 'https://app.claru.ai/signup?ref=2d1cs845', officialLink: 'https://claru.ai', orgCode: 'WSNEHSKC' },
-  { id: 3, name: 'Crowtado', category: 'Vídeo doméstico + comercial', temRef: true, nota: 4.0, taxa: 8, taxaLabel: '$8', logo: 'public/logo-crowtado.png',
-    highlight: { label: 'PAGA MAIS', type: 'accent' },
-    calcRate: 8, calcCurrency: '$', calcBonuses: [], bonus: [],
+  { id: 3, name: 'Crowtado', category: 'Vídeo doméstico + comercial', temRef: true, nota: 4.0, taxa: 6.5, taxaLabel: '$6,50', logo: 'public/logo-crowtado.png',
+    highlight: { label: 'TAREFAS COMERCIAIS', type: 'accent' },
+    calcRate: 6.5, calcCurrency: '$', calcBonuses: [], bonus: [],
     referralInfo: 'Você ganha $10 quando seu indicado faz $50.',
-    estReview: { highlight: 'pagamento',
+    estReview: { highlight: 'tarefas comerciais + Pix',
       pros: [
-        'Pagamento: o que paga mais ($8/h)',
-        'Saque mínimo baixo: $10 (≈ R$ 50)',
+        'Aceita tarefas comerciais (no trabalho) além das domésticas',
+        'Saque em Pix com mínimo baixo: $10 (≈ R$ 50)',
       ],
       cons: [
         'O vídeo demora pra aparecer na plataforma e ser avaliado',
@@ -739,8 +739,9 @@ const data = [
     estReview: { highlight: 'variedade de tarefas',
       pros: [
         'Grava direto no app da Invent Money, não precisa do Minute',
-        'É a que mais aceita tipos diferentes de tarefa (doméstica e comercial)',
+        'A que mais aceita tarefas do dia a dia (doméstica e comercial), enquanto as outras vêm reduzindo o catálogo',
         'Paga entre $5 e $8 por hora, dependendo da tarefa',
+        'Tem tradutor da comunidade pra facilitar as tarefas em inglês',
       ],
       cons: [
         'Só paga em cripto (USDC na rede Base), precisa de um app pra converter em reais',
@@ -762,6 +763,7 @@ const data = [
     },
     refLink: 'https://nido.global/eSWVI7', officialLink: 'https://app.inventmoney.com/submissions',
     usesMinute: false,
+    translationLink: 'https://invent-money-translate.vercel.app/',
     cryptoNote: {
       intro: 'Como a Invent Money paga em cripto (USDC na rede Base), você vai precisar de um app pra converter em reais. A comunidade aprovou a',
       linkText: 'Conta.vc',
@@ -930,6 +932,10 @@ function buildSignupSteps(p, mkCodeChip) {
       <div style="margin-bottom: 10px;">Escolha o código de organização de acordo com o tipo de tarefa que você vai gravar.</div>
       <div style="display: flex; flex-direction: column; gap: 14px;">${cards}</div>
     </div>`);
+  }
+
+  if (p.translationLink) {
+    steps.push(`<div class="step-body step-inline"><span style="flex: 1; min-width: 140px;">As tarefas na ${esc(p.name)} são em inglês. Use o tradutor da comunidade pra facilitar.</span><a class="btn btn-ghost" style="padding: 8px 14px; font-size: 12.5px;" href="${p.translationLink}" target="_blank">Abrir tradutor →</a></div>`);
   }
 
   if (p.cryptoNote) {
