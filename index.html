@@ -72,6 +72,38 @@
   .nav-links a:hover { color: var(--paper); text-decoration: none; }
   .nav-cta { padding: 8px 16px; font-size: 13px; }
 
+  /* Campanha em destaque */
+  .campaign-section { padding: 40px 0 20px; }
+  .campaign-card { background: linear-gradient(135deg, #0F0F0F 0%, #2a1810 100%); color: var(--paper); border-radius: 24px; padding: 40px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; box-shadow: 0 12px 40px -8px rgba(217,89,31,0.28); border: 1.5px solid var(--accent); position: relative; overflow: hidden; }
+  .campaign-card::before { content: ''; position: absolute; top: -40%; right: -20%; width: 380px; height: 380px; background: radial-gradient(circle, rgba(217,89,31,0.35) 0%, transparent 65%); pointer-events: none; }
+  .campaign-eye { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 14px; display: inline-flex; align-items: center; gap: 8px; }
+  .campaign-eye::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,0.2); animation: pulse-dot 2s ease-in-out infinite; }
+  @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .campaign-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.6vw, 40px); font-weight: 700; line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 14px; color: var(--paper); }
+  .campaign-desc { font-size: 15px; line-height: 1.55; color: rgba(255,255,255,0.78); margin: 0 0 26px; max-width: 480px; }
+  .campaign-timer { display: flex; gap: 12px; margin-bottom: 26px; flex-wrap: wrap; }
+  .campaign-timer > div { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px 16px; min-width: 68px; text-align: center; }
+  .campaign-timer span { font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; display: block; line-height: 1; color: var(--paper); }
+  .campaign-timer small { font-size: 10.5px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px; display: block; }
+  .campaign-cta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .campaign-cta .btn-accent { background: var(--accent); color: #fff; }
+  .campaign-cta .btn-accent:hover { background: #b74615; }
+  .campaign-end { font-size: 12.5px; color: rgba(255,255,255,0.55); }
+  .campaign-visual { position: relative; z-index: 1; text-align: center; }
+  .campaign-visual .prize-count { font-family: 'Fraunces', serif; font-size: clamp(72px, 10vw, 120px); font-weight: 800; line-height: 1; color: var(--accent); letter-spacing: -0.03em; }
+  .campaign-visual .prize-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 8px; }
+  @media (max-width: 900px) {
+    .campaign-card { grid-template-columns: 1fr; gap: 20px; padding: 28px; }
+    .campaign-visual { display: none; }
+    .campaign-card::before { top: -30%; right: -40%; }
+  }
+  @media (max-width: 520px) {
+    .campaign-timer { gap: 8px; }
+    .campaign-timer > div { padding: 10px 12px; min-width: 56px; }
+    .campaign-timer span { font-size: 22px; }
+    .campaign-cta { flex-direction: column; align-items: flex-start; gap: 12px; }
+  }
+
   /* Results marquee */
   .results-marquee-wrap { overflow: hidden; padding: 12px 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
   .results-marquee { display: flex; gap: 20px; width: max-content; animation: results-scroll 110s linear infinite; }
@@ -363,6 +395,33 @@
       <div>
         <div class="stat-num">Zero</div>
         <div class="stat-lbl">experiência necessária</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPANHA EM DESTAQUE -->
+<section id="campanha" class="campaign-section">
+  <div class="wrap">
+    <div class="campaign-card">
+      <div>
+        <div class="campaign-eye">Campanha ativa · Hub.xyz</div>
+        <h2 class="campaign-title">Sorteio de 5x iPhone 16</h2>
+        <p class="campaign-desc">Cada 1 hora de tarefa turbinada aprovada na Hub vale 1 bilhete no sorteio. Quanto mais horas turbinadas você bater, mais chances de levar um iPhone 16.</p>
+        <div class="campaign-timer" aria-label="Contagem regressiva">
+          <div><span id="cDays">00</span><small>dias</small></div>
+          <div><span id="cHours">00</span><small>horas</small></div>
+          <div><span id="cMinutes">00</span><small>min</small></div>
+          <div><span id="cSeconds">00</span><small>seg</small></div>
+        </div>
+        <div class="campaign-cta">
+          <a class="btn btn-accent" href="https://ai.hub.xyz/r/DOLETA" target="_blank">Participar na Hub →</a>
+          <span class="campaign-end">Termina 4 de setembro, 00:00 (BRT)</span>
+        </div>
+      </div>
+      <div class="campaign-visual">
+        <div class="prize-count">5×</div>
+        <div class="prize-label">iPhone 16</div>
       </div>
     </div>
   </div>
@@ -1015,6 +1074,33 @@ document.getElementById('currencyToggle').addEventListener('click', () => { stat
 
 renderPlatforms();
 renderEstimator();
+
+// Campanha em destaque — countdown
+(function () {
+  const section = document.getElementById('campanha');
+  if (!section) return;
+  const endTime = new Date('2026-09-04T00:00:00-03:00').getTime();
+  const dEl = document.getElementById('cDays');
+  const hEl = document.getElementById('cHours');
+  const mEl = document.getElementById('cMinutes');
+  const sEl = document.getElementById('cSeconds');
+  const pad = n => String(n).padStart(2, '0');
+  let iv;
+  function tick() {
+    const diff = endTime - Date.now();
+    if (diff <= 0) {
+      section.style.display = 'none';
+      if (iv) clearInterval(iv);
+      return;
+    }
+    dEl.textContent = pad(Math.floor(diff / 86400000));
+    hEl.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+    mEl.textContent = pad(Math.floor((diff % 3600000) / 60000));
+    sEl.textContent = pad(Math.floor((diff % 60000) / 1000));
+  }
+  tick();
+  iv = setInterval(tick, 1000);
+})();
 </script>
 </body>
 </html>
