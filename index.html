@@ -90,11 +90,12 @@
   .campaign-cta .btn-accent:hover { background: #b74615; }
   .campaign-end { font-size: 12.5px; color: rgba(255,255,255,0.55); }
   .campaign-visual { position: relative; z-index: 1; text-align: center; }
-  .campaign-visual .prize-count { font-family: 'Fraunces', serif; font-size: clamp(72px, 10vw, 120px); font-weight: 800; line-height: 1; color: var(--accent); letter-spacing: -0.03em; }
-  .campaign-visual .prize-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 8px; }
+  .campaign-visual img { width: 100%; max-width: 340px; height: auto; border-radius: 16px; display: block; margin: 0 auto; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
   @media (max-width: 900px) {
-    .campaign-card { grid-template-columns: 1fr; gap: 20px; padding: 28px; }
-    .campaign-visual { display: none; }
+    .campaign-card { grid-template-columns: 1fr; gap: 24px; padding: 28px; }
+    .campaign-card > div:first-child { order: 2; }
+    .campaign-visual { order: 1; }
+    .campaign-visual img { max-width: 280px; }
     .campaign-card::before { top: -30%; right: -40%; }
   }
   @media (max-width: 520px) {
@@ -420,8 +421,7 @@
         </div>
       </div>
       <div class="campaign-visual">
-        <div class="prize-count">5×</div>
-        <div class="prize-label">iPhone 16</div>
+        <img src="public/iphone-16.png" alt="Sorteio de 5 iPhones 16 na Hub">
       </div>
     </div>
   </div>
