@@ -254,7 +254,7 @@
   .cur-toggle:hover { background: rgba(255,255,255,0.15); }
 
   /* Which one section */
-  .which-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .which-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .which-card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; }
   .which-eye { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 10px; }
   .which-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; letter-spacing: -0.015em; margin: 0 0 6px; }
@@ -450,7 +450,7 @@
     <div class="chap-head">
       <div class="chap-eyebrow">
         <span class="chap-num">01 · Plataformas</span>
-        <span class="chap-tag">4 opções testadas</span>
+        <span class="chap-tag">5 opções testadas</span>
       </div>
       <h2 class="h2">As plataformas que eu uso.</h2>
       <p class="lead">Testei, gravei e saquei em cada uma. Clique num card pra ver o review completo, os requisitos técnicos, os bônus e o passo a passo pra se cadastrar.</p>
@@ -527,6 +527,13 @@
         <div class="which-sub">Você quer sacar rápido e sem burocracia</div>
         <p class="which-body">Saque semanal em Pix com mínimo baixo (R$ 25) — é a mais fácil pra tirar o dinheiro. Também aprova o vídeo mais rápido que as outras e é a única que envia o suporte de cabeça de graça (via whitelist). Boa segunda opção pra combinar com a Claru.</p>
         <a class="btn btn-ghost" href="https://ai.hub.xyz/r/DOLETA" target="_blank">Cadastrar →</a>
+      </div>
+      <div class="which-card">
+        <div class="which-eye" style="color: #6B6B6B;">ÚNICA BRASILEIRA</div>
+        <h3 class="which-title">Vá de Flambra se…</h3>
+        <div class="which-sub">Você quer receber em reais, sem câmbio</div>
+        <p class="which-body">Única empresa brasileira da lista: paga R$ 25/h direto, sem conversão de moeda, saque toda sexta em Pix. Boa opção pra quem prefere não lidar com dólar. Em USD equivalente fica ~$5/h.</p>
+        <a class="btn btn-ghost" href="https://app.flambra.com/?ref=7026A90DCA&cadastro=1" target="_blank">Cadastrar →</a>
       </div>
       <div class="which-card">
         <div class="which-eye" style="color: #6B6B6B;">ACEITA MAIS CELULARES</div>
@@ -665,7 +672,7 @@
       </details>
       <details class="faq-item">
         <summary>Preciso aparecer no vídeo ou minha voz vai ser gravada?</summary>
-        <p>Não precisa aparecer o rosto. Nas quatro plataformas você grava só as mãos fazendo a tarefa, mas o áudio ambiente fica ligado normalmente durante a gravação.</p>
+        <p>Não precisa aparecer o rosto. Nas cinco plataformas você grava só as mãos fazendo a tarefa, mas o áudio ambiente fica ligado normalmente durante a gravação.</p>
       </details>
       <details class="faq-item">
         <summary>Qual celular funciona?</summary>
@@ -717,7 +724,7 @@ const data = [
       pros: [
         'Pagamento na média ($6/h), mas tem muitos bônus por meta batida',
         'Ganha $5 já no 1º clipe enviado (sem precisar bater hora)',
-        'Suporte rápido no Discord (o melhor entre as quatro)',
+        'Suporte rápido no Discord (o melhor entre as cinco)',
         'Saque semanal (toda terça)',
       ],
       cons: [
@@ -732,7 +739,7 @@ const data = [
     ],
     saqueMin: 'US$ 50', tempoPagamento: 'Semanal', metodos: ['Pix', 'PayPal'],
     suporte: {
-      note: 'Comunidade ativa no Discord com respostas rápidas. É o melhor suporte entre as quatro.',
+      note: 'Comunidade ativa no Discord com respostas rápidas. É o melhor suporte entre as cinco.',
       channels: [
         { type: 'Discord', label: 'Discord da Claru', href: 'https://discord.com/invite/sjWfecavQs' },
       ],
@@ -781,6 +788,33 @@ const data = [
       ],
     },
     refLink: 'https://ai.hub.xyz/r/DOLETA', officialLink: 'https://hub.xyz', orgCode: 'JUK9YQWE' },
+  { id: 5, name: 'Flambra', category: 'Vídeo doméstico', temRef: true, nota: 4.3, taxa: 25, taxaLabel: 'R$ 25', logo: 'public/logo-flambra.png',
+    highlight: { label: 'ÚNICA BRASILEIRA', type: 'accent' },
+    calcRate: 25, calcCurrency: 'R$', calcBonuses: [], bonus: [],
+    referralInfo: 'Você ganha R$ 2,50 por hora aprovada dos seus indicados.',
+    estReview: { highlight: 'empresa brasileira e pagamento em reais',
+      pros: [
+        'Única empresa brasileira da lista — sem risco de câmbio nem burocracia internacional',
+        'Paga R$ 25 direto por hora aprovada (sem conversão de moeda)',
+        'Saque toda sexta em Pix',
+      ],
+      cons: [
+        'Em USD equivalente (~$5/h), o pagamento fica na média baixa da lista',
+        'Plataforma mais nova, menos histórico da comunidade',
+      ],
+    },
+    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: [
+      'iPhone: 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). iPhone 11 não é compatível.',
+      'Pixel: 6, 7, 8 e 9 (e versões Pro).',
+      'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
+    ],
+    saqueMin: 'Sem mínimo declarado', tempoPagamento: 'Semanal (sexta)', metodos: ['Pix'],
+    suporte: {
+      note: 'Empresa brasileira, comunicação em português direto no site e no app.',
+      channels: [],
+    },
+    emailNote: 'A Flambra vai gerar um e-mail exclusivo pra você (algo tipo seunome@time.flambra.com). Use esse e-mail no Minute, nunca o seu e-mail pessoal.',
+    refLink: 'https://app.flambra.com/?ref=7026A90DCA&cadastro=1', officialLink: 'https://flambra.com', orgCode: 'MHT3TVKF' },
   { id: 4, name: 'Invent Money', category: 'Vídeo doméstico + comercial', temRef: true, nota: 4.3, taxa: 7, taxaLabel: '$5 a $8', logo: 'public/logo-inventmoney.png',
     highlight: { label: 'ACEITA MAIS CELULARES', type: 'accent' },
     calcRate: 5, calcCurrency: '$', calcBonuses: [], bonus: [],
@@ -833,7 +867,7 @@ const data = [
       ],
       cons: [
         'O vídeo demora pra aparecer na plataforma e ser avaliado',
-        'Suporte: o pior das quatro, não encontrei ninguém que tenha recebido um bom atendimento',
+        'Suporte: o pior das cinco, não encontrei ninguém que tenha recebido um bom atendimento',
       ],
     },
     duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: [
@@ -843,7 +877,7 @@ const data = [
     ],
     saqueMin: 'US$ 10', tempoPagamento: 'Variável', metodos: ['Pix', 'Transferência internacional'],
     suporte: {
-      note: 'Só via chat dentro do próprio site — é o suporte mais fraco entre as quatro. Não encontrei relatos de bom atendimento.',
+      note: 'Só via chat dentro do próprio site — é o suporte mais fraco entre as cinco. Não encontrei relatos de bom atendimento.',
       channels: [],
     },
     refLink: 'https://www.crowtado.com/sign-up?ref=4T2L4ATC', officialLink: 'https://crowtado.com',
@@ -898,7 +932,7 @@ function renderPlatforms() {
         </div>
         <div class="plat-price">
           <div class="plat-rate">${esc(p.taxaLabel)}</div>
-          <div class="plat-rate-lbl">USD por hora</div>
+          <div class="plat-rate-lbl">${p.calcCurrency === 'R$' ? 'BRL por hora' : 'USD por hora'}</div>
           <button class="expand-btn" style="margin-top: 12px;"><span>${open ? 'Fechar' : 'Ver detalhes'}</span><span class="expand-icon">+</span></button>
         </div>
       </div>
@@ -992,6 +1026,10 @@ function buildSignupSteps(p, mkCodeChip) {
 
   if (p.usesMinute !== false) {
     steps.push(`<div class="step-body">Baixe o <strong>Minute</strong>, o app que você vai usar pra gravar os vídeos (App Store e Play Store).</div>`);
+  }
+
+  if (p.emailNote) {
+    steps.push(`<div class="step-body">${esc(p.emailNote)}</div>`);
   }
 
   if (p.orgCode) {
