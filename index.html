@@ -231,6 +231,12 @@
   /* Estimator */
   .est-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
   .est-tab { display: inline-flex; align-items: center; gap: 8px; background: var(--paper); border: 1px solid var(--line); padding: 8px 16px 8px 8px; border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--ink); }
+  .est-modes { display: flex; gap: 6px; flex-wrap: wrap; margin: -8px 0 20px; }
+  .est-modes:empty { display: none; }
+  .est-mode-lbl { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 700; align-self: center; margin-right: 4px; }
+  .est-mode { display: inline-flex; align-items: center; background: var(--paper); border: 1px solid var(--line); padding: 6px 14px; border-radius: 999px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: var(--muted); transition: all .12s; }
+  .est-mode:hover { border-color: var(--line-strong); color: var(--ink); }
+  .est-mode.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
   .est-tab img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
   .est-tab.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
@@ -473,6 +479,7 @@
     </div>
 
     <div class="est-tabs" id="estTabs"></div>
+    <div class="est-modes" id="estModes"></div>
     <div id="estimatorReview" style="background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin-bottom: 24px;"></div>
 
     <div class="est-grid">
@@ -745,15 +752,21 @@ const data = [
       ],
     },
     refLink: 'https://app.claru.ai/signup?ref=2d1cs845', officialLink: 'https://claru.ai', orgCode: 'WSNEHSKC' },
-  { id: 1, name: 'Hub.xyz', category: 'Vídeo doméstico + comercial', temRef: true, nota: 4.4, taxa: 6, taxaLabel: '$5 a $6', logo: 'public/logo-hub.png',
+  { id: 1, name: 'Hub.xyz', category: 'Vídeo doméstico + comercial', temRef: true, nota: 4.4, taxa: 8, taxaLabel: '$5 a $8', logo: 'public/logo-hub.png',
     highlight: { label: 'MAIS FÁCIL DE SACAR', type: 'accent' },
-    calcRate: 5, calcCurrency: '$', bonusCurrency: 'R$', calcBonuses: [
+    calcRate: 5, calcCurrency: '$', bonusCurrency: 'R$',
+    modes: [
+      { key: 'residencial', label: 'Residencial (em casa)', calcRate: 5 },
+      { key: 'comercial', label: 'Comercial (no trabalho)', calcRate: 7 },
+    ],
+    calcBonuses: [
       { threshold: 1, amount: 15, milestone: '1h' },
       { threshold: 5, amount: 10, milestone: '5h' },
       { threshold: 50, amount: 50, milestone: '50h' },
     ],
     bonus: [
-      { req: 'Tarefas turbinadas', reward: '$7/h (R$ 35/h)' },
+      { req: 'Turbinadas residenciais', reward: '$7/h (R$ 35/h) · cap de 30h/mês' },
+      { req: 'Turbinadas comerciais', reward: '$8/h (R$ 40/h)' },
       { req: '1h', reward: 'Bônus de R$ 15' },
       { req: '2h', reward: 'Bilhete de sorteio de R$ 2.500' },
       { req: '5h', reward: 'Bônus de R$ 10' },
@@ -823,6 +836,10 @@ const data = [
   { id: 4, name: 'Invent Money', category: 'Vídeo doméstico + comercial', temRef: true, nota: 4.3, taxa: 7, taxaLabel: '$5 a $8', logo: 'public/logo-inventmoney.png',
     highlight: { label: 'ACEITA MAIS CELULARES', type: 'accent' },
     calcRate: 5, calcCurrency: '$', calcBonuses: [], bonus: [],
+    modes: [
+      { key: 'residencial', label: 'Residencial (em casa)', calcRate: 5 },
+      { key: 'comercial', label: 'Comercial (no trabalho)', calcRate: 8 },
+    ],
     referralInfo: 'A Invent Money agora tem sistema de indicação. Cadastre-se pelo meu link oficial.',
     estReview: { highlight: 'variedade de tarefas',
       pros: [
@@ -892,7 +909,7 @@ const data = [
     ] },
 ];
 
-let state = { openId: null, estimatorPlatformId: 2, estimatorHoursPerDay: 3, currencyMode: 'USD' };
+let state = { openId: null, estimatorPlatformId: 2, estimatorMode: 'residencial', estimatorHoursPerDay: 3, currencyMode: 'USD' };
 
 function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 function fmt(n) { return Math.round(n).toLocaleString('pt-BR'); }
@@ -904,10 +921,18 @@ function convertAmount(amount, fromCur, toCur) {
   if (fromCur === toCur) return amount;
   return fromCur === '$' ? Math.round(amount * EXCHANGE_RATE) : Math.round(amount / EXCHANGE_RATE);
 }
+function activeCalcRate(p) {
+  if (Array.isArray(p.modes) && p.modes.length) {
+    const m = p.modes.find(x => x.key === state.estimatorMode) || p.modes[0];
+    return m.calcRate;
+  }
+  return p.calcRate;
+}
 function getDisplayRate(p, mode) {
   const target = mode === 'USD' ? '$' : 'R$';
-  if (p.calcCurrency === target) return { rate: p.calcRate, currency: target };
-  return { rate: convertAmount(p.calcRate, p.calcCurrency, target), currency: target };
+  const src = activeCalcRate(p);
+  if (p.calcCurrency === target) return { rate: src, currency: target };
+  return { rate: convertAmount(src, p.calcCurrency, target), currency: target };
 }
 
 function renderPlatforms() {
@@ -1124,9 +1149,31 @@ function renderEstimator() {
     const btn = document.createElement('button');
     btn.className = 'est-tab' + (pl.id === state.estimatorPlatformId ? ' active' : '');
     btn.innerHTML = `<img src="${pl.logo}" alt=""><span>${esc(pl.name)}</span>`;
-    btn.addEventListener('click', () => { state.estimatorPlatformId = pl.id; renderEstimator(); });
+    btn.addEventListener('click', () => {
+      state.estimatorPlatformId = pl.id;
+      if (Array.isArray(pl.modes) && !pl.modes.find(m => m.key === state.estimatorMode)) {
+        state.estimatorMode = pl.modes[0].key;
+      }
+      renderEstimator();
+    });
     tabs.appendChild(btn);
   });
+
+  const modesEl = document.getElementById('estModes');
+  modesEl.innerHTML = '';
+  if (Array.isArray(p.modes) && p.modes.length > 1) {
+    const lbl = document.createElement('span');
+    lbl.className = 'est-mode-lbl';
+    lbl.textContent = 'Modo';
+    modesEl.appendChild(lbl);
+    p.modes.forEach(m => {
+      const btn = document.createElement('button');
+      btn.className = 'est-mode' + (m.key === state.estimatorMode ? ' active' : '');
+      btn.textContent = m.label;
+      btn.addEventListener('click', () => { state.estimatorMode = m.key; renderEstimator(); });
+      modesEl.appendChild(btn);
+    });
+  }
 }
 
 document.getElementById('hoursSlider').addEventListener('input', (e) => { state.estimatorHoursPerDay = parseFloat(e.target.value); renderEstimator(); });
