@@ -525,7 +525,7 @@
         <div class="which-eye" style="color: #6B6B6B;">MAIS FÁCIL DE SACAR</div>
         <h3 class="which-title">Vá de Hub.xyz se…</h3>
         <div class="which-sub">Você quer sacar rápido e sem burocracia</div>
-        <p class="which-body">Saque semanal em Pix com mínimo baixo (R$ 25) — é a mais fácil pra tirar o dinheiro. Também aprova o vídeo mais rápido que as outras e é a única que envia o suporte de cabeça de graça (via whitelist). Boa segunda opção pra combinar com a Claru.</p>
+        <p class="which-body">Saque semanal em Pix com mínimo baixo (R$ 25) — é a mais fácil pra tirar o dinheiro. Agora também aceita tarefas comerciais (trabalho), aprova o vídeo mais rápido que as outras e é a única que envia o suporte de cabeça de graça (via whitelist).</p>
         <a class="btn btn-ghost" href="https://ai.hub.xyz/r/DOLETA" target="_blank">Cadastrar →</a>
       </div>
       <div class="which-card">
@@ -745,7 +745,7 @@ const data = [
       ],
     },
     refLink: 'https://app.claru.ai/signup?ref=2d1cs845', officialLink: 'https://claru.ai', orgCode: 'WSNEHSKC' },
-  { id: 1, name: 'Hub.xyz', category: 'Vídeo doméstico', temRef: true, nota: 4.4, taxa: 6, taxaLabel: '$5 a $6', logo: 'public/logo-hub.png',
+  { id: 1, name: 'Hub.xyz', category: 'Vídeo doméstico + comercial', temRef: true, nota: 4.4, taxa: 6, taxaLabel: '$5 a $6', logo: 'public/logo-hub.png',
     highlight: { label: 'MAIS FÁCIL DE SACAR', type: 'accent' },
     calcRate: 5, calcCurrency: '$', bonusCurrency: 'R$', calcBonuses: [
       { threshold: 1, amount: 15, milestone: '1h' },
@@ -769,10 +769,11 @@ const data = [
     estReview: { highlight: 'saque semanal em Pix',
       pros: [
         'Saque semanal em Pix, mínimo baixo (R$ 25) — é a mais fácil pra tirar o dinheiro',
+        'Agora aceita tarefas comerciais (no trabalho) com dezenas de categorias novas: hotelaria, restaurantes, construção, indústria e mais',
         'O vídeo aparece na plataforma mais rápido que nas outras',
         'Suporte ativo no Telegram',
       ],
-      cons: [ 'Pagamento: o que paga menos ($5/h)' ],
+      cons: [ 'Pagamento base: o que paga menos ($5/h), mas sobe pra $7/h nas tarefas turbinadas' ],
     },
     duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: [
       'iPhone: 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). iPhone 11 não é compatível.',
@@ -787,7 +788,11 @@ const data = [
         { type: 'Email', label: 'support@hub.xyz', href: 'mailto:support@hub.xyz' },
       ],
     },
-    refLink: 'https://ai.hub.xyz/r/DOLETA', officialLink: 'https://hub.xyz', orgCode: 'JUK9YQWE' },
+    refLink: 'https://ai.hub.xyz/r/DOLETA', officialLink: 'https://hub.xyz',
+    orgCodes: [
+      { label: 'Residencial (em casa)', code: 'JUK9YQWE', examples: 'Ex: lavar louça, dobrar roupa, cozinhar, limpar, cuidar do pet, jardinagem.' },
+      { label: 'Comercial (no trabalho)', code: 'WM529RMG', examples: 'Ex: hotelaria, restaurantes, estoque e logística, construção, hidráulica, marcenaria, serviço automotivo, indústria, campo, eventos.' },
+    ] },
   { id: 5, name: 'Flambra', category: 'Vídeo doméstico', temRef: true, nota: 4.3, taxa: 25, taxaLabel: 'R$ 25', logo: 'public/logo-flambra.png',
     highlight: { label: 'ÚNICA BRASILEIRA', type: 'accent' },
     calcRate: 25, calcCurrency: 'R$', calcBonuses: [], bonus: [],
