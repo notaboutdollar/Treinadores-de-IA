@@ -260,7 +260,7 @@
   .cur-toggle:hover { background: rgba(255,255,255,0.15); }
 
   /* Which one section */
-  .which-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .which-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
   .which-card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; }
   .which-eye { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 10px; }
   .which-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; letter-spacing: -0.015em; margin: 0 0 6px; }
@@ -405,7 +405,7 @@
 
     <div class="hero-stats">
       <div>
-        <div class="stat-num">5</div>
+        <div class="stat-num">6</div>
         <div class="stat-lbl">plataformas testadas</div>
       </div>
       <div>
@@ -456,7 +456,7 @@
     <div class="chap-head">
       <div class="chap-eyebrow">
         <span class="chap-num">01 · Plataformas</span>
-        <span class="chap-tag">5 opções testadas</span>
+        <span class="chap-tag">6 opções testadas</span>
       </div>
       <h2 class="h2">As plataformas que eu uso.</h2>
       <p class="lead">Testei, gravei e saquei em cada uma. Clique num card pra ver o review completo, os requisitos técnicos, os bônus e o passo a passo pra se cadastrar.</p>
@@ -548,6 +548,13 @@
         <div class="which-sub">Você quer o melhor atendimento + bônus escalonado</div>
         <p class="which-body">Suporte rápido no Discord, $5 já no 1º clipe enviado e bônus escalonado por horas até $1.000. Base é $3,50/h com tarefas de valor adicional pagando até $7/h. Também paga $25 por indicado que bate 5h.</p>
         <a class="btn btn-ghost" href="https://app.claru.ai/signup?ref=2d1cs845" target="_blank">Cadastrar →</a>
+      </div>
+      <div class="which-card">
+        <div class="which-eye" style="color: #6B6B6B;">PAGA 2X POR MÊS</div>
+        <h3 class="which-title">Vá de Micro1 se…</h3>
+        <div class="which-sub">Você tem inglês e quer pagamento previsível</div>
+        <p class="which-body">$6/h fixo (sem sistema de turbinada), pagamento nos dias 5 e 20 do mês, sem código de organização pra configurar. Exige entrevista em inglês pra ser selecionado e tem cap de 25h por tarefa e 100h por local.</p>
+        <a class="btn btn-ghost" href="https://jobs.micro1.ai/post/a1ecbac3-a024-4732-bce7-7ac2e447571d?referralCode=997c7106-3fb6-44ce-b0b7-c2351ad6aedf&utm_source=referral&utm_medium=share&utm_campaign=job_referral" target="_blank">Cadastrar →</a>
       </div>
       <div class="which-card">
         <div class="which-eye" style="color: #6B6B6B;">TAREFAS COMERCIAIS</div>
@@ -679,7 +686,7 @@
       </details>
       <details class="faq-item">
         <summary>Preciso aparecer no vídeo ou minha voz vai ser gravada?</summary>
-        <p>Não precisa aparecer o rosto. Nas cinco plataformas você grava só as mãos fazendo a tarefa, mas o áudio ambiente fica ligado normalmente durante a gravação.</p>
+        <p>Não precisa aparecer o rosto. Nas seis plataformas você grava só as mãos fazendo a tarefa, mas o áudio ambiente fica ligado normalmente durante a gravação.</p>
       </details>
       <details class="faq-item">
         <summary>Qual celular funciona?</summary>
@@ -863,7 +870,7 @@ const data = [
     referralInfo: 'Você ganha $25 quando seu indicado bate 5 horas.',
     estReview: { highlight: 'suporte rápido + bônus escalonado',
       pros: [
-        'Suporte rápido no Discord (o melhor entre as cinco)',
+        'Suporte rápido no Discord (o melhor entre as seis)',
         'Ganha $5 já no 1º clipe enviado (sem precisar bater hora)',
         'Bônus escalonado por horas gravadas até 1.000h ($1.000 no marco máximo)',
         'Saque semanal (toda terça)',
@@ -882,12 +889,43 @@ const data = [
     ],
     saqueMin: 'US$ 50', tempoPagamento: 'Semanal', metodos: ['Pix', 'PayPal'],
     suporte: {
-      note: 'Comunidade ativa no Discord com respostas rápidas. É o melhor suporte entre as cinco.',
+      note: 'Comunidade ativa no Discord com respostas rápidas. É o melhor suporte entre as seis.',
       channels: [
         { type: 'Discord', label: 'Discord da Claru', href: 'https://discord.com/invite/sjWfecavQs' },
       ],
     },
     refLink: 'https://app.claru.ai/signup?ref=2d1cs845', officialLink: 'https://claru.ai', orgCode: 'WSNEHSKC' },
+  { id: 6, name: 'Micro1', category: 'Vídeo doméstico', temRef: true, nota: 4.2, taxa: 6, taxaLabel: '$6', logo: 'public/logo-micro1.png',
+    highlight: { label: 'PAGA 2X POR MÊS', type: 'accent' },
+    calcRate: 6, calcCurrency: '$', calcBonuses: [], bonus: [],
+    referralInfo: 'Você entra pelo meu link de indicação (bônus específico não divulgado pela plataforma).',
+    estReview: { highlight: 'pagamento quinzenal fixo',
+      pros: [
+        '$6/h fixo — sem sistema de turbinada nem tarefa base/adicional, o pagamento é previsível',
+        'Pagamento 2x por mês (dias 5 e 20) — mais frequente que semanal',
+        'Sem código de organização pra configurar',
+      ],
+      cons: [
+        'Precisa passar por entrevista em inglês pra ser selecionado — não é entrada livre',
+        'Cap de 25h por tarefa: ao bater 25h numa mesma tarefa (ex.: "passear com o cachorro"), precisa mudar de tarefa',
+        'Cap de 100h por local: ao bater 100h no mesmo lugar, precisa gravar em outro local (casa de amigo, familiar)',
+        'Só câmera fixada na cabeça — não aceita suporte de peito, pescoço ou uso manual',
+      ],
+    },
+    duracao: 'Varia por tarefa', formato: 'Horizontal, câmera fixada na cabeça', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)',
+    celulares: [
+      'iPhone: 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). iPhone 11 não é compatível.',
+      'Pixel: 6, 7, 8 e 9 (e versões Pro).',
+      'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
+    ],
+    saqueMin: 'Sem mínimo divulgado', tempoPagamento: 'Quinzenal (dias 5 e 20)', metodos: ['Não divulgado'],
+    suporte: {
+      note: 'Comunicação e onboarding em inglês. A entrevista inicial de seleção também é em inglês.',
+      channels: [],
+    },
+    refLink: 'https://jobs.micro1.ai/post/a1ecbac3-a024-4732-bce7-7ac2e447571d?referralCode=997c7106-3fb6-44ce-b0b7-c2351ad6aedf&utm_source=referral&utm_medium=share&utm_campaign=job_referral',
+    officialLink: 'https://jobs.micro1.ai',
+    usesMinute: false },
   { id: 3, name: 'Crowtado', category: 'Vídeo doméstico + comercial', temRef: true, nota: 4.0, taxa: 5.5, taxaLabel: '$5,50', logo: 'public/logo-crowtado.png',
     highlight: { label: 'TAREFAS COMERCIAIS', type: 'accent' },
     calcRate: 5.5, calcCurrency: '$', calcBonuses: [], bonus: [],
@@ -899,7 +937,7 @@ const data = [
       ],
       cons: [
         'O vídeo demora pra aparecer na plataforma e ser avaliado',
-        'Suporte: o pior das cinco, não encontrei ninguém que tenha recebido um bom atendimento',
+        'Suporte: o pior das seis, não encontrei ninguém que tenha recebido um bom atendimento',
       ],
     },
     duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: [
@@ -909,7 +947,7 @@ const data = [
     ],
     saqueMin: 'US$ 10', tempoPagamento: 'Variável', metodos: ['Pix', 'Transferência internacional'],
     suporte: {
-      note: 'Só via chat dentro do próprio site — é o suporte mais fraco entre as cinco. Não encontrei relatos de bom atendimento.',
+      note: 'Só via chat dentro do próprio site — é o suporte mais fraco entre as seis. Não encontrei relatos de bom atendimento.',
       channels: [],
     },
     refLink: 'https://www.crowtado.com/sign-up?ref=4T2L4ATC', officialLink: 'https://crowtado.com',
