@@ -525,7 +525,7 @@
         <div class="which-eye">O QUE ESTOU MAIS USANDO</div>
         <h3 class="which-title">Comece pela Claru.ai</h3>
         <div class="which-sub">Melhor suporte + bônus de sobra</div>
-        <p class="which-body">Comunidade ativa no Discord que responde rápido, $5 já no 1º clipe enviado e bônus escalonado até 1.000h ($1.000 no marco máximo). Também paga $25 por cada indicado que bate 5h. É o caminho mais completo pra quem tá começando.</p>
+        <p class="which-body">Suporte rápido no Discord, $5 já no 1º clipe enviado e bônus escalonado por horas até $1.000. Base é $3,50/h com tarefas de valor adicional pagando até $7/h. Também paga $25 por indicado que bate 5h.</p>
         <a class="btn btn-accent" href="https://app.claru.ai/signup?ref=2d1cs845" target="_blank">Cadastrar →</a>
       </div>
       <div class="which-card">
@@ -708,9 +708,14 @@ const DAYS_PER_MONTH = 30;
 const EXCHANGE_RATE = 5.08;
 
 const data = [
-  { id: 2, name: 'Claru.ai', category: 'Vídeo doméstico', temRef: true, nota: 4.2, taxa: 6, taxaLabel: '$6', logo: 'public/logo-claru.png',
+  { id: 2, name: 'Claru.ai', category: 'Vídeo doméstico', temRef: true, nota: 4.2, taxa: 7, taxaLabel: '$3,50 a $7', logo: 'public/logo-claru.png',
     highlight: { label: 'O QUE ESTOU MAIS USANDO', type: 'accent' },
-    calcRate: 6, calcCurrency: '$', calcBonuses: [
+    calcRate: 3.5, calcCurrency: '$',
+    modes: [
+      { key: 'base', label: 'Tarefa base', calcRate: 3.5 },
+      { key: 'adicional', label: 'Tarefa com valor adicional', calcRate: 7 },
+    ],
+    calcBonuses: [
       { threshold: 0.1, amount: 5, milestone: '1º clipe enviado' },
       { threshold: 1, amount: 5, milestone: '1h' }, { threshold: 5, amount: 10, milestone: '5h' },
       { threshold: 10, amount: 15, milestone: '10h' }, { threshold: 25, amount: 30, milestone: '25h' },
@@ -720,6 +725,8 @@ const data = [
       { threshold: 750, amount: 750, milestone: '750h' }, { threshold: 1000, amount: 1000, milestone: '1.000h' },
     ],
     bonus: [
+      { req: 'Tarefa base', reward: '$3,50/h' },
+      { req: 'Tarefas com valor adicional', reward: 'Até $7/h' },
       { req: '1º clipe enviado', reward: '$5' }, { req: '1h', reward: '$5' }, { req: '5h', reward: '$10' },
       { req: '10h', reward: '$15' }, { req: '25h', reward: '$30' }, { req: '50h', reward: '$75' },
       { req: '100h', reward: '$100' }, { req: '175h', reward: '$175' }, { req: '250h', reward: '$250' },
@@ -727,14 +734,16 @@ const data = [
       { req: '1.000h', reward: '$1.000' },
     ],
     referralInfo: 'Você ganha $25 quando seu indicado bate 5 horas.',
-    estReview: { highlight: 'bônus de horas',
+    estReview: { highlight: 'suporte rápido + bônus escalonado',
       pros: [
-        'Pagamento na média ($6/h), mas tem muitos bônus por meta batida',
-        'Ganha $5 já no 1º clipe enviado (sem precisar bater hora)',
         'Suporte rápido no Discord (o melhor entre as cinco)',
+        'Ganha $5 já no 1º clipe enviado (sem precisar bater hora)',
+        'Bônus escalonado por horas gravadas até 1.000h ($1.000 no marco máximo)',
         'Saque semanal (toda terça)',
+        'Além da base $3,50/h, tem tarefas com valor adicional pagando até $7/h',
       ],
       cons: [
+        'Rate base é o mais baixo da lista ($3,50/h) — depende de pegar tarefas com valor adicional pra ficar competitivo',
         'O vídeo demora pra aparecer na plataforma e ser avaliado',
         'Saque mínimo alto: $50 (≈ R$ 250)',
       ],
