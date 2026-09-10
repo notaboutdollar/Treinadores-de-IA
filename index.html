@@ -523,17 +523,10 @@
     <div class="which-grid">
       <div class="which-card">
         <div class="which-eye">O QUE ESTOU MAIS USANDO</div>
-        <h3 class="which-title">Comece pela Claru.ai</h3>
-        <div class="which-sub">Melhor suporte + bônus de sobra</div>
-        <p class="which-body">Suporte rápido no Discord, $5 já no 1º clipe enviado e bônus escalonado por horas até $1.000. Base é $3,50/h com tarefas de valor adicional pagando até $7/h. Também paga $25 por indicado que bate 5h.</p>
-        <a class="btn btn-accent" href="https://app.claru.ai/signup?ref=2d1cs845" target="_blank">Cadastrar →</a>
-      </div>
-      <div class="which-card">
-        <div class="which-eye" style="color: #6B6B6B;">A MAIS CONFIÁVEL</div>
-        <h3 class="which-title">Vá de Hub.xyz se…</h3>
-        <div class="which-sub">Você quer a plataforma mais consolidada</div>
+        <h3 class="which-title">Comece pela Hub.xyz</h3>
+        <div class="which-sub">A plataforma mais consolidada da lista</div>
         <p class="which-body">A mais estabelecida da lista: histórico de pagamento consistente, aprovação rápida, saque semanal em Pix (mínimo R$ 25) e é a única que envia o suporte de cabeça grátis via whitelist. Agora também aceita tarefas comerciais (trabalho).</p>
-        <a class="btn btn-ghost" href="https://ai.hub.xyz/r/DOLETA" target="_blank">Cadastrar →</a>
+        <a class="btn btn-accent" href="https://ai.hub.xyz/r/DOLETA" target="_blank">Cadastrar →</a>
       </div>
       <div class="which-card">
         <div class="which-eye" style="color: #6B6B6B;">ÚNICA BRASILEIRA</div>
@@ -548,6 +541,13 @@
         <div class="which-sub">Seu celular não passa nas outras plataformas</div>
         <p class="which-body">Aceita mais tipos de celular (inclui iPhone 11 e Redmi Note top de linha) e mais tipos de tarefa (doméstica e comercial). Grava direto no app, sem precisar do Minute. Só paga em cripto, então você precisa converter em reais depois.</p>
         <a class="btn btn-ghost" href="https://app.inventmoney.com/r/NVKBL7VV" target="_blank">Cadastrar →</a>
+      </div>
+      <div class="which-card">
+        <div class="which-eye" style="color: #6B6B6B;">MELHOR SUPORTE</div>
+        <h3 class="which-title">Vá de Claru.ai se…</h3>
+        <div class="which-sub">Você quer o melhor atendimento + bônus escalonado</div>
+        <p class="which-body">Suporte rápido no Discord, $5 já no 1º clipe enviado e bônus escalonado por horas até $1.000. Base é $3,50/h com tarefas de valor adicional pagando até $7/h. Também paga $25 por indicado que bate 5h.</p>
+        <a class="btn btn-ghost" href="https://app.claru.ai/signup?ref=2d1cs845" target="_blank">Cadastrar →</a>
       </div>
       <div class="which-card">
         <div class="which-eye" style="color: #6B6B6B;">TAREFAS COMERCIAIS</div>
@@ -708,61 +708,8 @@ const DAYS_PER_MONTH = 30;
 const EXCHANGE_RATE = 5.08;
 
 const data = [
-  { id: 2, name: 'Claru.ai', category: 'Vídeo doméstico', temRef: true, nota: 4.2, taxa: 7, taxaLabel: '$3,50 a $7', logo: 'public/logo-claru.png',
-    highlight: { label: 'O QUE ESTOU MAIS USANDO', type: 'accent' },
-    calcRate: 3.5, calcCurrency: '$',
-    modes: [
-      { key: 'base', label: 'Tarefa base', calcRate: 3.5 },
-      { key: 'adicional', label: 'Tarefa com valor adicional', calcRate: 7 },
-    ],
-    calcBonuses: [
-      { threshold: 0.1, amount: 5, milestone: '1º clipe enviado' },
-      { threshold: 1, amount: 5, milestone: '1h' }, { threshold: 5, amount: 10, milestone: '5h' },
-      { threshold: 10, amount: 15, milestone: '10h' }, { threshold: 25, amount: 30, milestone: '25h' },
-      { threshold: 50, amount: 75, milestone: '50h' }, { threshold: 100, amount: 100, milestone: '100h' },
-      { threshold: 175, amount: 175, milestone: '175h' }, { threshold: 250, amount: 250, milestone: '250h' },
-      { threshold: 375, amount: 375, milestone: '375h' }, { threshold: 500, amount: 500, milestone: '500h' },
-      { threshold: 750, amount: 750, milestone: '750h' }, { threshold: 1000, amount: 1000, milestone: '1.000h' },
-    ],
-    bonus: [
-      { req: 'Tarefa base', reward: '$3,50/h' },
-      { req: 'Tarefas com valor adicional', reward: 'Até $7/h' },
-      { req: '1º clipe enviado', reward: '$5' }, { req: '1h', reward: '$5' }, { req: '5h', reward: '$10' },
-      { req: '10h', reward: '$15' }, { req: '25h', reward: '$30' }, { req: '50h', reward: '$75' },
-      { req: '100h', reward: '$100' }, { req: '175h', reward: '$175' }, { req: '250h', reward: '$250' },
-      { req: '375h', reward: '$375' }, { req: '500h', reward: '$500' }, { req: '750h', reward: '$750' },
-      { req: '1.000h', reward: '$1.000' },
-    ],
-    referralInfo: 'Você ganha $25 quando seu indicado bate 5 horas.',
-    estReview: { highlight: 'suporte rápido + bônus escalonado',
-      pros: [
-        'Suporte rápido no Discord (o melhor entre as cinco)',
-        'Ganha $5 já no 1º clipe enviado (sem precisar bater hora)',
-        'Bônus escalonado por horas gravadas até 1.000h ($1.000 no marco máximo)',
-        'Saque semanal (toda terça)',
-        'Além da base $3,50/h, tem tarefas com valor adicional pagando até $7/h',
-      ],
-      cons: [
-        'Rate base é o mais baixo da lista ($3,50/h) — depende de pegar tarefas com valor adicional pra ficar competitivo',
-        'O vídeo demora pra aparecer na plataforma e ser avaliado',
-        'Saque mínimo alto: $50 (≈ R$ 250)',
-      ],
-    },
-    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: [
-      'iPhone: 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). iPhone 11 não é compatível.',
-      'Pixel: 6, 7, 8 e 9 (e versões Pro).',
-      'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
-    ],
-    saqueMin: 'US$ 50', tempoPagamento: 'Semanal', metodos: ['Pix', 'PayPal'],
-    suporte: {
-      note: 'Comunidade ativa no Discord com respostas rápidas. É o melhor suporte entre as cinco.',
-      channels: [
-        { type: 'Discord', label: 'Discord da Claru', href: 'https://discord.com/invite/sjWfecavQs' },
-      ],
-    },
-    refLink: 'https://app.claru.ai/signup?ref=2d1cs845', officialLink: 'https://claru.ai', orgCode: 'WSNEHSKC' },
   { id: 1, name: 'Hub.xyz', category: 'Vídeo doméstico + comercial', temRef: true, nota: 4.4, taxa: 8, taxaLabel: '$5 a $8', logo: 'public/logo-hub.png',
-    highlight: { label: 'A MAIS CONFIÁVEL', type: 'accent' },
+    highlight: { label: 'O QUE ESTOU MAIS USANDO', type: 'accent' },
     calcRate: 5, calcCurrency: '$', bonusCurrency: 'R$',
     modes: [
       { key: 'residencial', label: 'Residencial (em casa)', calcRate: 5 },
@@ -888,6 +835,59 @@ const data = [
       suffix: '(cobra 2,5% de taxa, mas é a mais fácil hoje). Existem outras opções, então fique à vontade pra pesquisar.',
     },
   },
+  { id: 2, name: 'Claru.ai', category: 'Vídeo doméstico', temRef: true, nota: 4.2, taxa: 7, taxaLabel: '$3,50 a $7', logo: 'public/logo-claru.png',
+    highlight: { label: 'MELHOR SUPORTE', type: 'accent' },
+    calcRate: 3.5, calcCurrency: '$',
+    modes: [
+      { key: 'base', label: 'Tarefa base', calcRate: 3.5 },
+      { key: 'adicional', label: 'Tarefa com valor adicional', calcRate: 7 },
+    ],
+    calcBonuses: [
+      { threshold: 0.1, amount: 5, milestone: '1º clipe enviado' },
+      { threshold: 1, amount: 5, milestone: '1h' }, { threshold: 5, amount: 10, milestone: '5h' },
+      { threshold: 10, amount: 15, milestone: '10h' }, { threshold: 25, amount: 30, milestone: '25h' },
+      { threshold: 50, amount: 75, milestone: '50h' }, { threshold: 100, amount: 100, milestone: '100h' },
+      { threshold: 175, amount: 175, milestone: '175h' }, { threshold: 250, amount: 250, milestone: '250h' },
+      { threshold: 375, amount: 375, milestone: '375h' }, { threshold: 500, amount: 500, milestone: '500h' },
+      { threshold: 750, amount: 750, milestone: '750h' }, { threshold: 1000, amount: 1000, milestone: '1.000h' },
+    ],
+    bonus: [
+      { req: 'Tarefa base', reward: '$3,50/h' },
+      { req: 'Tarefas com valor adicional', reward: 'Até $7/h' },
+      { req: '1º clipe enviado', reward: '$5' }, { req: '1h', reward: '$5' }, { req: '5h', reward: '$10' },
+      { req: '10h', reward: '$15' }, { req: '25h', reward: '$30' }, { req: '50h', reward: '$75' },
+      { req: '100h', reward: '$100' }, { req: '175h', reward: '$175' }, { req: '250h', reward: '$250' },
+      { req: '375h', reward: '$375' }, { req: '500h', reward: '$500' }, { req: '750h', reward: '$750' },
+      { req: '1.000h', reward: '$1.000' },
+    ],
+    referralInfo: 'Você ganha $25 quando seu indicado bate 5 horas.',
+    estReview: { highlight: 'suporte rápido + bônus escalonado',
+      pros: [
+        'Suporte rápido no Discord (o melhor entre as cinco)',
+        'Ganha $5 já no 1º clipe enviado (sem precisar bater hora)',
+        'Bônus escalonado por horas gravadas até 1.000h ($1.000 no marco máximo)',
+        'Saque semanal (toda terça)',
+        'Além da base $3,50/h, tem tarefas com valor adicional pagando até $7/h',
+      ],
+      cons: [
+        'Rate base é o mais baixo da lista ($3,50/h) — depende de pegar tarefas com valor adicional pra ficar competitivo',
+        'O vídeo demora pra aparecer na plataforma e ser avaliado',
+        'Saque mínimo alto: $50 (≈ R$ 250)',
+      ],
+    },
+    duracao: 'Até 30 min', formato: 'Horizontal, 1080p', maos: 'As duas mãos visíveis', zoom: '0,5 (grande angular)', celulares: [
+      'iPhone: 12 a 15 (todas as variantes), linha 16 (exceto 16e) e linha 17 (exceto 17e). iPhone 11 não é compatível.',
+      'Pixel: 6, 7, 8 e 9 (e versões Pro).',
+      'Galaxy S: S21 a S24 (e variantes Plus/Ultra), além de S25+ e S26+.',
+    ],
+    saqueMin: 'US$ 50', tempoPagamento: 'Semanal', metodos: ['Pix', 'PayPal'],
+    suporte: {
+      note: 'Comunidade ativa no Discord com respostas rápidas. É o melhor suporte entre as cinco.',
+      channels: [
+        { type: 'Discord', label: 'Discord da Claru', href: 'https://discord.com/invite/sjWfecavQs' },
+      ],
+    },
+    refLink: 'https://app.claru.ai/signup?ref=2d1cs845', officialLink: 'https://claru.ai', orgCode: 'WSNEHSKC' },
   { id: 3, name: 'Crowtado', category: 'Vídeo doméstico + comercial', temRef: true, nota: 4.0, taxa: 5.5, taxaLabel: '$5,50', logo: 'public/logo-crowtado.png',
     highlight: { label: 'TAREFAS COMERCIAIS', type: 'accent' },
     calcRate: 5.5, calcCurrency: '$', calcBonuses: [], bonus: [],
@@ -919,7 +919,7 @@ const data = [
     ] },
 ];
 
-let state = { openId: null, estimatorPlatformId: 2, estimatorMode: 'residencial', estimatorHoursPerDay: 3, currencyMode: 'USD' };
+let state = { openId: null, estimatorPlatformId: 1, estimatorMode: 'residencial', estimatorHoursPerDay: 3, currencyMode: 'USD' };
 
 function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 function fmt(n) { return Math.round(n).toLocaleString('pt-BR'); }
