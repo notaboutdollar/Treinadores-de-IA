@@ -79,7 +79,7 @@
   .btn-wa { background: #25D366; color: #fff; }
   .btn-wa:hover { background: #1EBE5D; text-decoration: none; color: #fff; }
 
-  nav.top { position: sticky; top: 44px; z-index: 30; background: rgba(20,18,16,0.62); -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%); border-bottom: 1px solid rgba(255,255,255,0.06); box-shadow: 0 4px 24px rgba(0,0,0,0.12); }
+  nav.top { position: sticky; top: 0; z-index: 40; background: rgba(20,18,16,0.62); -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%); border-bottom: 1px solid rgba(255,255,255,0.06); box-shadow: 0 4px 24px rgba(0,0,0,0.12); }
   nav.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; }
   .brand { display: flex; align-items: center; gap: 10px; color: var(--paper); }
   .brand img { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; }
@@ -351,7 +351,7 @@
   }
 
   /* Barra promocional: tarefas pagando agora */
-  .promo-bar { position: sticky; top: 0; z-index: 40; background: #0a0a0a; border-bottom: 1px solid rgba(255,255,255,0.06); color: #fff; overflow: hidden; height: 44px; }
+  .promo-bar { position: sticky; top: 60px; z-index: 30; background: #0a0a0a; border-bottom: 1px solid rgba(255,255,255,0.06); color: #fff; overflow: hidden; height: 44px; }
   .promo-inner { display: flex; align-items: center; gap: 20px; max-width: 1400px; margin: 0 auto; padding: 6px 20px; height: 100%; }
   .promo-left { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
   .promo-avatar { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; background: #1a1a1a; flex-shrink: 0; }
@@ -367,8 +367,7 @@
   .promo-cta:hover { background: rgba(255,255,255,0.12); }
   @keyframes promo-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @media (max-width: 720px) {
-    .promo-bar { height: 40px; }
-    nav.top { top: 40px; }
+    .promo-bar { height: 40px; top: 56px; }
     .promo-msg, .promo-price { display: none; }
     .promo-avatar { width: 24px; height: 24px; }
     .promo-inner { gap: 10px; padding: 4px 12px; }
@@ -380,11 +379,31 @@
 </head>
 <body>
 
+<nav class="top">
+  <div class="wrap">
+    <div class="brand">
+      <img src="public/pfp-dollar.png" alt="">
+      <div class="brand-name">TREINADORES DE IA</div>
+    </div>
+    <div class="nav-links">
+      <a href="#plataformas">Plataformas</a>
+      <a href="#ganhar">Estimativa</a>
+      <a href="#qual">Qual escolher</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#faq">Dúvidas</a>
+    </div>
+    <a class="btn btn-wa nav-cta" href="https://chat.whatsapp.com/CprZgQbSO9NAmwlXt272jO" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 32 32"><path fill="#fff" d="M16.004 3.2c-7.076 0-12.8 5.724-12.8 12.8 0 2.263.596 4.484 1.727 6.437L3.2 28.8l6.552-1.696c1.867 1.02 3.98 1.555 6.132 1.555h.005c7.075 0 12.8-5.724 12.8-12.8s-5.724-12.66-12.685-12.66zm7.475 18.09c-.313.883-1.55 1.62-2.146 1.706-.549.08-1.24.114-1.998-.126-.462-.147-1.058-.343-1.822-.671-3.207-1.385-5.298-4.596-5.457-4.808-.16-.212-1.303-1.735-1.303-3.309 0-1.574.826-2.35 1.117-2.671.29-.32.635-.4.847-.4.212 0 .424.002.61.011.196.01.457-.074.716.546.264.635.898 2.187.978 2.346.08.16.133.347.026.559-.107.212-.16.346-.32.532-.16.187-.336.417-.48.56-.16.16-.327.334-.14.653.186.32.828 1.363 1.777 2.208 1.222 1.09 2.253 1.427 2.63 1.585.283.117.62.1.827-.126.267-.29.601-.771.943-1.244.243-.339.55-.383.923-.246.373.137 2.359 1.112 2.762 1.315.402.202.67.303.767.472.098.169.098.981-.215 1.864z"/></svg>
+      Entrar no grupo
+    </a>
+  </div>
+</nav>
+
 <!-- Barra promocional: tarefas pagando agora -->
 <div class="promo-bar">
   <div class="promo-inner">
     <div class="promo-left">
-      <img src="public/pfp-dollar.png" class="promo-avatar" alt="">
+      <img src="public/logo-hub.png" class="promo-avatar" alt="Hub">
       <span class="promo-msg">Agora você pode gravar no trabalho</span>
       <span class="promo-price">Pagando<b>$7/h</b></span>
     </div>
@@ -430,26 +449,6 @@
     </a>
   </div>
 </div>
-
-<nav class="top">
-  <div class="wrap">
-    <div class="brand">
-      <img src="public/pfp-dollar.png" alt="">
-      <div class="brand-name">TREINADORES DE IA</div>
-    </div>
-    <div class="nav-links">
-      <a href="#plataformas">Plataformas</a>
-      <a href="#ganhar">Estimativa</a>
-      <a href="#qual">Qual escolher</a>
-      <a href="#resultados">Resultados</a>
-      <a href="#faq">Dúvidas</a>
-    </div>
-    <a class="btn btn-wa nav-cta" href="https://chat.whatsapp.com/CprZgQbSO9NAmwlXt272jO" target="_blank">
-      <svg width="16" height="16" viewBox="0 0 32 32"><path fill="#fff" d="M16.004 3.2c-7.076 0-12.8 5.724-12.8 12.8 0 2.263.596 4.484 1.727 6.437L3.2 28.8l6.552-1.696c1.867 1.02 3.98 1.555 6.132 1.555h.005c7.075 0 12.8-5.724 12.8-12.8s-5.724-12.66-12.685-12.66zm7.475 18.09c-.313.883-1.55 1.62-2.146 1.706-.549.08-1.24.114-1.998-.126-.462-.147-1.058-.343-1.822-.671-3.207-1.385-5.298-4.596-5.457-4.808-.16-.212-1.303-1.735-1.303-3.309 0-1.574.826-2.35 1.117-2.671.29-.32.635-.4.847-.4.212 0 .424.002.61.011.196.01.457-.074.716.546.264.635.898 2.187.978 2.346.08.16.133.347.026.559-.107.212-.16.346-.32.532-.16.187-.336.417-.48.56-.16.16-.327.334-.14.653.186.32.828 1.363 1.777 2.208 1.222 1.09 2.253 1.427 2.63 1.585.283.117.62.1.827-.126.267-.29.601-.771.943-1.244.243-.339.55-.383.923-.246.373.137 2.359 1.112 2.762 1.315.402.202.67.303.767.472.098.169.098.981-.215 1.864z"/></svg>
-      Entrar no grupo
-    </a>
-  </div>
-</nav>
 
 <!-- HERO -->
 <section class="hero">
