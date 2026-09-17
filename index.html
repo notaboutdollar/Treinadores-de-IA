@@ -541,7 +541,7 @@
 
     <div class="hero-stats">
       <div>
-        <div class="stat-num">6</div>
+        <div class="stat-num">7</div>
         <div class="stat-lbl">plataformas testadas</div>
       </div>
       <div>
@@ -699,6 +699,13 @@
         <p class="which-body">Aceita tarefas comerciais (no seu trabalho) além das domésticas, paga $5,50/h e tem saque em Pix com mínimo baixo ($10). O suporte é o ponto fraco, então funciona bem como opção complementar.</p>
         <a class="btn btn-ghost" href="https://www.crowtado.com/sign-up?ref=4T2L4ATC" target="_blank">Cadastrar →</a>
       </div>
+      <div class="which-card">
+        <div class="which-eye" style="color: #6B6B6B;">NOVA PLATAFORMA</div>
+        <h3 class="which-title">Vá de Mimix se…</h3>
+        <div class="which-sub">Você prefere pagamento por vídeo + saque em USDT ou Pix</div>
+        <p class="which-body">Plataforma nova pagando $5 por vídeo aprovado (não é por hora). Saque nos dias 05 e 20 do mês, em USDT (BNB) ou Pix, com mínimo R$ 25. Tem programa de indicação multinível com 7 ranks (V0 Bronze → V6 Lendário) que sobem o quanto você recebe da equipe.</p>
+        <a class="btn btn-ghost" href="https://mimix-ai.xyz/register?ref=MIMIXD04E1716F41F4E9E" target="_blank">Cadastrar →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -822,7 +829,7 @@
       </details>
       <details class="faq-item">
         <summary>Preciso aparecer no vídeo ou minha voz vai ser gravada?</summary>
-        <p>Não precisa aparecer o rosto. Nas seis plataformas você grava só as mãos fazendo a tarefa, mas o áudio ambiente fica ligado normalmente durante a gravação.</p>
+        <p>Não precisa aparecer o rosto. Nas sete plataformas você grava só as mãos fazendo a tarefa, mas o áudio ambiente fica ligado normalmente durante a gravação.</p>
       </details>
       <details class="faq-item">
         <summary>Qual celular funciona?</summary>
@@ -1091,6 +1098,36 @@ const data = [
       { label: 'Residencial (em casa)', code: 'PE8EAR5V', examples: 'Ex: lavar louça, dobrar e guardar roupas, jardinagem, tirar o lixo, organizar a garagem.' },
       { label: 'Comercial (no trabalho)', code: '4BYSAHUG', examples: 'Ex: lavar louça em restaurante, limpeza de hotel, separação de pedidos em armazém, reposição de prateleiras, troca de óleo.' },
     ] },
+  { id: 7, name: 'Mimix', category: 'Vídeo doméstico', temRef: true, nota: 4.0, taxa: 5, taxaLabel: '$5/vídeo', logo: 'public/logo-mimix.png',
+    highlight: { label: 'NOVA PLATAFORMA', type: 'accent' },
+    calcRate: 5, calcCurrency: '$', calcBonuses: [], bonus: [],
+    referralInfo: 'Sistema multinível com 7 ranks (V0 Bronze → V6 Lendário). Você ganha uma taxa por hora que sua equipe grava, e essa taxa sobe conforme você e sua equipe evoluem: V0 Bronze $0,50/h · V1 Prata $0,75/h · V2 Ouro $1,00/h · V3 Platina $1,25/h · V4 Esmeralda $1,50/h · V5 Diamante $1,75/h · V6 Lendário $2,00/h. Cada rank exige mais indicados diretos válidos, mais horas acumuladas da equipe e certas pessoas qualificadas em ranks abaixo.',
+    estReview: { highlight: 'nova plataforma pagando por vídeo',
+      pros: [
+        'Modelo diferente das outras: paga $5 por vídeo aprovado (não é por hora)',
+        'Saque flexível em USDT na rede BNB ou em Pix',
+        'Duas datas de saque por mês (dias 05 e 20) — mais frequente que quinzenal normal',
+        'Programa de indicação multinível com 7 ranks progressivos',
+      ],
+      cons: [
+        'Plataforma recém-lançada — ainda em fase inicial, sem histórico consolidado da comunidade',
+        'Cadastro não envia e-mail de confirmação',
+        'Pagamento por vídeo pode ser menos previsível que por hora dependendo da tarefa',
+      ],
+    },
+    duracao: 'Varia por tarefa', formato: 'Horizontal, suporte de cabeça', maos: 'As duas mãos e a atividade sempre visíveis', zoom: '0,5 (grande angular)',
+    celulares: [
+      'iPhone: 12 a 17 (sem os modelos "e" ou FE).',
+      'Pixel: 6 a 9.',
+      'Galaxy S: S21 a S26 (sem os modelos "e" ou FE).',
+    ],
+    saqueMin: 'R$ 25', tempoPagamento: 'Quinzenal (dias 05 e 20)', metodos: ['Pix', 'USDT (BNB)'],
+    suporte: {
+      note: 'Suporte pelos canais oficiais da MIMIX. O cadastro não envia e-mail de confirmação — a caixa de entrada exclusiva da MIMIX serve apenas pra recuperar a senha da Minute quando necessário.',
+      channels: [],
+    },
+    emailNote: 'A MIMIX exibe um e-mail exclusivo pra você usar no cadastro do Minute (nunca o seu e-mail pessoal). Use esse e-mail junto com o código da organização pra entrar no projeto dentro do Minute.',
+    refLink: 'https://mimix-ai.xyz/register?ref=MIMIXD04E1716F41F4E9E', officialLink: 'https://mimix-ai.xyz', orgCode: 'PE8EAR5V' },
 ];
 
 let state = { openId: null, estimatorPlatformId: 1, estimatorMode: 'residencial', estimatorHoursPerDay: 3, currencyMode: 'USD' };
