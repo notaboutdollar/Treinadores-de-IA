@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" href="public/pfp-dollar.png">
-<link rel="apple-touch-icon" href="public/pfp-dollar.png">
+<link rel="icon" type="image/png" href="public/tia-symbol.png">
+<link rel="apple-touch-icon" href="public/tia-symbol.png">
 <title>Ganhe em dólar treinando IA · Treinadores de IA</title>
 <meta name="description" content="Grave tarefas domésticas simples e receba em dólar por hora gravada. Curadoria pessoal das 4 plataformas que mais pagam no Brasil.">
 <link rel="canonical" href="https://treinadoresdeia.com.br/">
@@ -35,8 +35,9 @@
     --muted: #6B6B6B;
     --line: #E4DDD0;
     --line-strong: #C9BFA9;
-    --accent: #D9591F;
-    --accent-soft: #F8E7DA;
+    --accent: #16A34A;
+    --accent-soft: #D1FAE5;
+    --accent-strong: #15803D;
     --ok: #2F7A3D;
     --ok-soft: #E4F1E4;
     --warn: #B33A16;
@@ -73,7 +74,7 @@
   .btn-primary { background: var(--ink); color: var(--paper); }
   .btn-primary:hover { background: #2a2a2a; text-decoration: none; color: var(--paper); }
   .btn-accent { background: var(--accent); color: #fff; }
-  .btn-accent:hover { background: #b74615; text-decoration: none; color: #fff; }
+  .btn-accent:hover { background: var(--accent-strong); text-decoration: none; color: #fff; }
   .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
   .btn-ghost:hover { background: var(--paper); text-decoration: none; color: var(--ink); }
   .btn-wa { background: #25D366; color: #fff; }
@@ -82,8 +83,8 @@
   nav.top { position: sticky; top: 0; z-index: 40; background: rgba(20,18,16,0.62); -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%); border-bottom: 1px solid rgba(255,255,255,0.06); box-shadow: 0 4px 24px rgba(0,0,0,0.12); }
   nav.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; }
   .brand { display: flex; align-items: center; gap: 10px; color: var(--paper); }
-  .brand img { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; }
-  .brand-name { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.06em; font-weight: 600; color: var(--paper); }
+  .brand img { height: 28px; width: auto; max-width: 160px; object-fit: contain; display: block; }
+  @media (max-width: 720px) { .brand img { height: 24px; max-width: 130px; } }
   .nav-links { display: flex; gap: 24px; font-size: 14px; margin-left: auto; margin-right: 20px; }
   .nav-links a { color: rgba(255,255,255,0.75); transition: color .15s; }
   .nav-links a:hover { color: var(--paper); text-decoration: none; }
@@ -91,8 +92,8 @@
 
   /* Campanha em destaque */
   .campaign-section { padding: 40px 0 20px; }
-  .campaign-card { background: linear-gradient(135deg, #0F0F0F 0%, #2a1810 100%); color: var(--paper); border-radius: 24px; padding: 40px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; box-shadow: 0 12px 40px -8px rgba(217,89,31,0.28); border: 1.5px solid var(--accent); position: relative; overflow: hidden; }
-  .campaign-card::before { content: ''; position: absolute; top: -40%; right: -20%; width: 380px; height: 380px; background: radial-gradient(circle, rgba(217,89,31,0.35) 0%, transparent 65%); pointer-events: none; }
+  .campaign-card { background: linear-gradient(135deg, #0F0F0F 0%, #2a1810 100%); color: var(--paper); border-radius: 24px; padding: 40px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; box-shadow: 0 12px 40px -8px rgba(22,163,74,0.28); border: 1.5px solid var(--accent); position: relative; overflow: hidden; }
+  .campaign-card::before { content: ''; position: absolute; top: -40%; right: -20%; width: 380px; height: 380px; background: radial-gradient(circle, rgba(22,163,74,0.35) 0%, transparent 65%); pointer-events: none; }
   .campaign-eye { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 14px; display: inline-flex; align-items: center; gap: 8px; }
   .campaign-eye::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,0.2); animation: pulse-dot 2s ease-in-out infinite; }
   @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
@@ -104,7 +105,7 @@
   .campaign-timer small { font-size: 10.5px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px; display: block; }
   .campaign-cta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
   .campaign-cta .btn-accent { background: var(--accent); color: #fff; }
-  .campaign-cta .btn-accent:hover { background: #b74615; }
+  .campaign-cta .btn-accent:hover { background: var(--accent-strong); }
   .campaign-end { font-size: 12.5px; color: rgba(255,255,255,0.55); }
   .campaign-visual { position: relative; z-index: 1; text-align: center; }
   .campaign-visual img { width: 100%; max-width: 340px; height: auto; border-radius: 16px; display: block; margin: 0 auto; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
@@ -143,6 +144,9 @@
   .hero { padding: 72px 0 40px; }
   .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: end; }
   .hero-right { position: relative; }
+  .hero-mascot { display: inline-flex; padding: 10px; margin-bottom: 20px; border-radius: 22px; background: #0F0F0F; box-shadow: 0 10px 30px -10px rgba(15,15,15,0.35); }
+  .hero-mascot img { width: 96px; height: 96px; display: block; object-fit: contain; }
+  @media (max-width: 720px) { .hero-mascot img { width: 80px; height: 80px; } }
   .hero-card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 22px; box-shadow: 0 1px 0 rgba(0,0,0,.03); }
   .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 48px; }
   .hero-stats > div { padding: 22px 20px; border-right: 1px solid var(--line); }
@@ -161,7 +165,7 @@
   /* Platforms */
   .plat-list { display: flex; flex-direction: column; gap: 20px; }
   .plat { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; transition: border-color .15s; position: relative; }
-  .plat.tag-accent { border: 1.5px solid var(--accent); box-shadow: 0 4px 24px -8px rgba(217,89,31,.2); }
+  .plat.tag-accent { border: 1.5px solid var(--accent); box-shadow: 0 4px 24px -8px rgba(22,163,74,.2); }
   .plat.tag-warn { border: 1.5px solid var(--warn); box-shadow: 0 4px 24px -8px rgba(179,58,22,.18); }
   .plat-head { display: grid; grid-template-columns: 56px 1fr auto; gap: 18px; padding: 24px; align-items: center; cursor: pointer; }
   .plat-logo { width: 56px; height: 56px; border-radius: 12px; overflow: hidden; background: #f4f0e8; display: flex; align-items: center; justify-content: center; }
@@ -408,10 +412,9 @@
 
 <nav class="top">
   <div class="wrap">
-    <div class="brand">
-      <img src="public/pfp-dollar.png" alt="">
-      <div class="brand-name">TREINADORES DE IA</div>
-    </div>
+    <a href="/" class="brand" aria-label="TIA · Treinadores de IA">
+      <img src="public/tia-logo-horizontal.png" alt="TIA · Treinadores de IA">
+    </a>
     <div class="nav-links">
       <a href="#plataformas">Plataformas</a>
       <a href="#ganhar">Estimativa</a>
@@ -501,6 +504,9 @@
   <div class="wrap">
     <div class="hero-grid">
       <div>
+        <div class="hero-mascot" aria-hidden="true">
+          <img src="public/tia-mascote.png" alt="">
+        </div>
         <div class="eyebrow-accent" style="margin-bottom: 20px;">CURADORIA PESSOAL</div>
         <h1 class="h1">Ganhe em dólar<br/>treinando IA.</h1>
         <p class="lead" style="margin: 0 0 32px;">Acabou de chegar no Brasil esse mercado onde você grava tarefas domésticas simples (como lavar louça, dobrar roupa ou cuidar do pet) e recebe em dólar por hora gravada. Os vídeos servem pra treinar a próxima geração de IA e robôs domésticos.</p>
