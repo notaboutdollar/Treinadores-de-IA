@@ -883,7 +883,7 @@
       </details>
       <details class="faq-item">
         <summary>Posso usar mais de uma plataforma ao mesmo tempo?</summary>
-        <p>Pode, e é o que eu recomendo. Cada uma paga por hora gravada, então quanto mais plataformas ativas, mais você fatura. Só uma regra importante: use um e-mail diferente em cada plataforma. Cadastro duplicado com o mesmo e-mail pode travar sua conta.</p>
+        <p>Pode, e é o que eu recomendo. Cada uma paga por hora gravada, então quanto mais plataformas ativas, mais você fatura. Sobre e-mail: na Hub, Kgen e Crowtado, use um e-mail pessoal diferente em cada (o do cadastro é o mesmo que vai no Minute, e cadastro duplicado pode travar sua conta). Já Flambra, Claru e Mimix geram um e-mail exclusivo pra usar no Minute, então dá pra reutilizar o seu e-mail pessoal no cadastro delas.</p>
       </details>
       <details class="faq-item">
         <summary>Preciso declarar imposto sobre esse ganho?</summary>
@@ -1004,7 +1004,8 @@ const data = [
       note: 'Empresa brasileira, comunicação em português direto no site e no app.',
       channels: [],
     },
-    emailNote: 'A Flambra vai gerar um e-mail exclusivo pra você (algo tipo seunome@time.flambra.com). Use esse e-mail no Minute, nunca o seu e-mail pessoal.',
+    emailNote: 'No cadastro da Flambra você pode usar qualquer e-mail (inclusive um que já usa em outras plataformas). A Flambra gera um e-mail exclusivo pra você (algo tipo seunome@time.flambra.com). Use esse e-mail dentro do app Minute, nunca o seu pessoal.',
+    generatesMinuteEmail: true,
     refLink: 'https://app.flambra.com/?ref=7026A90DCA&cadastro=1', officialLink: 'https://flambra.com', orgCode: 'MHT3TVKF' },
   { id: 4, name: 'Invent Money', category: 'Vídeo doméstico + comercial', temRef: true, nota: 4.3, taxa: 7, taxaLabel: '$5 a $8', logo: 'public/logo-inventmoney.png',
     highlight: { label: 'ACEITA MAIS CELULARES', type: 'accent' },
@@ -1138,6 +1139,7 @@ const data = [
       channels: [],
     },
     emailNote: 'No cadastro da MIMIX você pode usar qualquer e-mail (inclusive um que você já usa em outras plataformas). A própria MIMIX gera um e-mail exclusivo pra você usar dentro do app Minute. É esse e-mail (junto com o código da organização) que você digita no Minute pra entrar no projeto.',
+    generatesMinuteEmail: true,
     refLink: 'https://mimix-ai.xyz/register?ref=MIMIXD04E1716F41F4E9E', officialLink: 'https://mimix-ai.xyz', orgCode: 'PE8EAR5V' },
   { id: 8, name: 'Kgen', category: 'Vídeo doméstico', temRef: true, nota: 4.0, taxa: 4, taxaLabel: '$4', logo: 'public/logo-kgen.png',
     highlight: { label: 'NOVA PLATAFORMA', type: 'accent' },
@@ -1200,6 +1202,8 @@ const data = [
         { type: 'Discord', label: 'Discord da Claru', href: 'https://discord.com/invite/sjWfecavQs' },
       ],
     },
+    emailNote: 'No cadastro da Claru você pode usar qualquer e-mail (inclusive um que já usa em outras plataformas). A Claru gera um e-mail exclusivo pra você usar dentro do app Minute.',
+    generatesMinuteEmail: true,
     refLink: 'https://app.claru.ai/signup', officialLink: 'https://claru.ai', orgCode: 'WSNEHSKC' },
 ];
 
@@ -1338,10 +1342,12 @@ function renderPlatBody(p, hasBonus) {
 function buildSignupSteps(p, mkCodeChip) {
   const steps = [];
 
-  if (p.usesMinute !== false) {
-    steps.push(`<div class="step-body">Use um e-mail <strong>novo</strong> (diferente do que você usa em outra plataforma).<div class="warn-note">Cadastro duplicado pode travar sua conta.</div></div>`);
-  } else {
+  if (p.usesMinute === false) {
     steps.push(`<div class="step-body">Use um e-mail seu pra fazer o cadastro. Como o vídeo é gravado dentro do próprio app da ${esc(p.name)}, não tem problema usar o mesmo e-mail de outra plataforma.</div>`);
+  } else if (p.generatesMinuteEmail) {
+    steps.push(`<div class="step-body">Pode usar seu e-mail pessoal, mesmo que ele já esteja em outra plataforma. A ${esc(p.name)} gera um e-mail exclusivo dela pra você usar dentro do Minute.</div>`);
+  } else {
+    steps.push(`<div class="step-body">Use um e-mail <strong>novo</strong> (diferente do que você usa em outra plataforma). Aqui o e-mail do cadastro é o mesmo que vai no Minute.<div class="warn-note">Cadastro duplicado pode travar sua conta.</div></div>`);
   }
 
   const signupLabel = p.temRef ? 'Cadastre pelo meu link de indicação.' : 'Cadastre-se pelo site oficial.';
