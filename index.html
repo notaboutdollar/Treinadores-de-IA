@@ -286,6 +286,7 @@
   .hiw-list li { display: flex; gap: 10px; font-size: 14px; line-height: 1.5; color: #3a3a3a; }
   .hiw-list li::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 7px; }
   .hiw-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--line); }
+  .hiw-ctas { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .hiw-nav { display: flex; align-items: center; gap: 8px; }
   .hiw-navbtn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--paper); cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--ink); transition: background .15s, border-color .15s; }
   .hiw-navbtn:hover:not(:disabled) { background: var(--bg); border-color: var(--ink); }
@@ -811,11 +812,10 @@
       <img src="public/head-strap.png" alt="Suporte de cabeça pra celular">
       <div>
         <h3>O suporte de cabeça</h3>
-        <p class="body" style="margin: 0 0 18px;">A Hub envia grátis pra quem entra na whitelist, mas a fila demora. Se quiser começar hoje, comprei o meu no Mercado Livre (mais caro, mas chega em 1 dia). A Shopee é o caminho barato, e a comunidade aprovou.</p>
+        <p class="body" style="margin: 0 0 18px;">A Hub envia grátis pra quem entra na whitelist, mas a fila demora. Se quiser começar hoje, o caminho mais rápido é a Shopee (aprovado pela comunidade, chega em poucos dias).</p>
         <div class="cta-row" style="margin-top: 0;">
-          <a class="btn btn-accent" href="https://ai.hub.xyz/" target="_blank">Grátis na Hub →</a>
-          <a class="btn btn-ghost" href="https://meli.la/2FhJMgR" target="_blank">Mercado Livre →</a>
-          <a class="btn btn-ghost" href="https://s.shopee.com.br/20uYfjsybN" target="_blank">Shopee →</a>
+          <a class="btn btn-accent" href="https://s.shopee.com.br/20uYfjsybN" target="_blank">Comprar na Shopee →</a>
+          <a class="btn btn-ghost" href="https://ai.hub.xyz/" target="_blank">Pedir grátis na Hub →</a>
         </div>
       </div>
     </div>
@@ -1527,7 +1527,7 @@ const HIW = [
       'Galaxy S: S21 a S26 (sem os FE)',
       'Celular fora da lista? A Invent Money aceita iPhone 11 e Redmi Note top de linha',
     ],
-    cta: { label: 'Ver requisitos completos', href: '#requisitos' },
+    ctas: [{ label: 'Ver requisitos completos', href: '#requisitos' }],
   },
   {
     nav: 'Escolha sua plataforma',
@@ -1535,12 +1535,12 @@ const HIW = [
     title: 'Cada plataforma paga e funciona de um jeito.',
     body: 'É exatamente pra isso que esse site existe. Testei 8 plataformas, gravei e saquei em cada uma. Antes de decidir, compare valor por hora, forma de saque, suporte e requisitos. E lembra que você pode usar várias ao mesmo tempo, só precisa de um e-mail diferente em cada.',
     list: [
-      'Quer a mais consolidada, com saque semanal em Pix? Hub.xyz',
-      'Quer receber em reais sem lidar com câmbio? Flambra',
+      'Quer a mais consolidada? Hub.xyz',
+      'Quer uma brasileira com fácil comunicação? Flambra',
       'Seu celular não passou nas outras? Invent Money',
       'Prefere saque duas vezes por mês? Micro1 ou Mimix',
     ],
-    cta: { label: 'Comparar as 8 plataformas', href: '#plataformas' },
+    ctas: [{ label: 'Comparar as 8 plataformas', href: '#plataformas' }],
   },
   {
     nav: 'Compre o suporte de cabeça',
@@ -1548,9 +1548,13 @@ const HIW = [
     title: 'O headstrap é obrigatório em quase todas.',
     body: 'É um suporte que prende o celular na testa e deixa suas duas mãos livres pra fazer a tarefa. Gravar sem ele significa vídeo reprovado. E em algumas plataformas, conta banida.',
     list: [
-      'Custa entre R$ 30 e R$ 80 nos marketplaces',
+      'Custa entre R$ 30 e R$ 80 na Shopee',
       'A Hub.xyz envia o suporte grátis via whitelist',
       'Você compra uma vez só: o mesmo suporte serve pra todas as plataformas',
+    ],
+    ctas: [
+      { label: 'Comprar na Shopee', href: 'https://s.shopee.com.br/20uYfjsybN', target: '_blank' },
+      { label: 'Pedir grátis na Hub', href: 'https://ai.hub.xyz/', target: '_blank', variant: 'ghost' },
     ],
   },
   {
@@ -1559,7 +1563,7 @@ const HIW = [
     title: 'Cadastro na plataforma, gravação no app.',
     body: 'Na maioria delas você se cadastra no site da plataforma e grava pelo app Minute. A plataforma te entrega um e-mail exclusivo e um código de organização. É com esses dois dados que você entra no projeto dentro do Minute.',
     list: [
-      'Use sempre o e-mail que a plataforma gerou, nunca o seu pessoal',
+      'Use o e-mail que está indicando na plataforma',
       'Cada plataforma tem o seu próprio código de organização',
       'Invent Money e Micro1 não usam o Minute, a gravação é no app próprio delas',
     ],
@@ -1574,7 +1578,7 @@ const HIW = [
       'Micro1 e Mimix: pagamento nos dias 05 e 20 do mês',
       'Invent Money: cripto (USDC na rede Base), com conversão em reais depois',
     ],
-    cta: { label: 'Simular quanto dá pra ganhar', href: '#ganhar' },
+    ctas: [{ label: 'Simular quanto dá pra ganhar', href: '#ganhar' }],
   },
 ];
 
@@ -1610,7 +1614,11 @@ function renderHiw() {
     <p class="hiw-body">${esc(s.body)}</p>
     <ul class="hiw-list">${s.list.map(li => `<li>${esc(li)}</li>`).join('')}</ul>
     <div class="hiw-foot">
-      ${s.cta ? `<a class="btn btn-accent" href="${esc(s.cta.href)}">${esc(s.cta.label)} →</a>` : '<span></span>'}
+      ${Array.isArray(s.ctas) && s.ctas.length ? `<div class="hiw-ctas">${s.ctas.map(c => {
+        const cls = c.variant === 'ghost' ? 'btn-ghost' : 'btn-accent';
+        const tgt = c.target ? ` target="${esc(c.target)}" rel="noopener"` : '';
+        return `<a class="btn ${cls}" href="${esc(c.href)}"${tgt}>${esc(c.label)} →</a>`;
+      }).join('')}</div>` : '<span></span>'}
       <div class="hiw-nav">
         <button type="button" class="hiw-navbtn" id="hiwPrev" ${hiwIdx === 0 ? 'disabled' : ''} aria-label="Passo anterior">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"/></svg>
