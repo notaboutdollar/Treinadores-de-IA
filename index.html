@@ -264,6 +264,34 @@
   .cur-toggle { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: var(--paper); padding: 7px 14px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 600; cursor: pointer; }
   .cur-toggle:hover { background: rgba(255,255,255,0.15); }
 
+  /* 00 · Como funciona (stepper interativo) */
+  .hiw-grid { display: grid; grid-template-columns: 290px 1fr; gap: 28px; align-items: start; }
+  .hiw-steps { display: flex; flex-direction: column; gap: 4px; position: sticky; top: 120px; }
+  .hiw-step { display: flex; align-items: center; gap: 12px; padding: 13px 15px; border-radius: 14px; border: 1px solid transparent; background: transparent; cursor: pointer; text-align: left; font-family: inherit; width: 100%; transition: background .15s, border-color .15s; }
+  .hiw-step:hover { background: var(--paper); border-color: var(--line); }
+  .hiw-step.is-active { background: var(--paper); border-color: var(--accent); box-shadow: 0 4px 20px -10px rgba(22,163,74,.35); }
+  .hiw-step-num { flex-shrink: 0; width: 27px; height: 27px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; background: var(--line); color: var(--muted); transition: background .15s, color .15s; }
+  .hiw-step.is-done .hiw-step-num { background: var(--accent-soft); color: var(--accent); }
+  .hiw-step.is-active .hiw-step-num { background: var(--accent); color: #fff; }
+  .hiw-step-label { font-size: 14px; font-weight: 600; color: var(--muted); line-height: 1.3; }
+  .hiw-step.is-active .hiw-step-label { color: var(--ink); }
+
+  .hiw-panel { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; padding: 30px; min-height: 400px; display: flex; flex-direction: column; }
+  .hiw-bar { height: 3px; background: var(--line); border-radius: 2px; overflow: hidden; margin-bottom: 24px; }
+  .hiw-bar span { display: block; height: 100%; background: var(--accent); border-radius: 2px; transition: width .35s ease; }
+  .hiw-eye { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 12px; }
+  .hiw-title { font-family: 'Fraunces', serif; font-size: clamp(22px, 2.5vw, 29px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 14px; }
+  .hiw-body { font-size: 15px; line-height: 1.65; color: #333; margin: 0 0 20px; }
+  .hiw-list { list-style: none; padding: 0; margin: 0 0 24px; display: flex; flex-direction: column; gap: 9px; }
+  .hiw-list li { display: flex; gap: 10px; font-size: 14px; line-height: 1.5; color: #3a3a3a; }
+  .hiw-list li::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 7px; }
+  .hiw-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--line); }
+  .hiw-nav { display: flex; align-items: center; gap: 8px; }
+  .hiw-navbtn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--paper); cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--ink); transition: background .15s, border-color .15s; }
+  .hiw-navbtn:hover:not(:disabled) { background: var(--bg); border-color: var(--ink); }
+  .hiw-navbtn:disabled { opacity: .3; cursor: default; }
+  .hiw-count { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); margin-left: 4px; }
+
   /* Which one section */
   .which-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
   .which-card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; }
@@ -305,6 +333,12 @@
   @media (max-width: 900px) {
     .hero-grid { grid-template-columns: 1fr; gap: 32px; }
     .chap-head { margin-bottom: 32px; }
+    .hiw-grid { grid-template-columns: 1fr; gap: 18px; }
+    .hiw-steps { position: static; flex-direction: row; overflow-x: auto; gap: 8px; padding-bottom: 4px; scrollbar-width: none; }
+    .hiw-steps::-webkit-scrollbar { display: none; }
+    .hiw-step { width: auto; flex-shrink: 0; padding: 10px 14px; background: var(--paper); border-color: var(--line); }
+    .hiw-step-label { white-space: nowrap; font-size: 13px; }
+    .hiw-panel { padding: 24px; min-height: 0; }
     .kv-grid { grid-template-columns: repeat(2, 1fr); }
     .est-grid { grid-template-columns: 1fr; }
     .total-card { position: static; padding: 28px; }
@@ -566,6 +600,25 @@
   </div>
 </section>
 
+<!-- 00 · COMO FUNCIONA (stepper interativo) -->
+<section id="como-funciona" class="chapter">
+  <div class="wrap">
+    <div class="chap-head">
+      <div class="chap-eyebrow">
+        <span class="chap-num">00 · Comece por aqui</span>
+        <span class="chap-tag">6 passos</span>
+      </div>
+      <h2 class="h2">Do zero até o primeiro saque.</h2>
+      <p class="lead">O caminho é o mesmo em todas as plataformas — o que muda é quanto cada uma paga e como você recebe. Clique em cada passo pra entender a etapa.</p>
+    </div>
+
+    <div class="hiw-grid">
+      <div class="hiw-steps" id="hiwSteps" role="tablist" aria-label="Passos"></div>
+      <div class="hiw-panel" id="hiwPanel"></div>
+    </div>
+  </div>
+</section>
+
 <!-- CAMPANHA EM DESTAQUE -->
 <section id="campanha" class="campaign-section">
   <div class="wrap">
@@ -598,7 +651,7 @@
     <div class="chap-head">
       <div class="chap-eyebrow">
         <span class="chap-num">01 · Plataformas</span>
-        <span class="chap-tag">6 opções testadas</span>
+        <span class="chap-tag">8 opções testadas</span>
       </div>
       <h2 class="h2">As plataformas que eu uso.</h2>
       <p class="lead">Testei, gravei e saquei em cada uma. Clique num card pra ver o review completo, os requisitos técnicos, os bônus e o passo a passo pra se cadastrar.</p>
@@ -1449,6 +1502,142 @@ renderEstimator();
   tick();
   iv = setInterval(tick, 1000);
 })();
+
+// 00 · Como funciona — stepper interativo
+const HIW = [
+  {
+    nav: 'Entenda o modelo',
+    eye: 'O que é',
+    title: 'Você grava tarefas comuns. A IA aprende com elas.',
+    body: 'Empresas de inteligência artificial precisam de vídeos em primeira pessoa pra ensinar robôs a fazer tarefas do dia a dia. Você prende o celular na cabeça, grava lavando louça, dobrando roupa ou organizando o armário, e envia. Cada hora aprovada vira dinheiro na sua conta.',
+    list: [
+      'Não precisa aparecer o rosto — só as mãos fazendo a tarefa',
+      'Não precisa experiência nenhuma nem entrevista (com exceção da Micro1)',
+      'Você grava quando quiser, no seu ritmo, sem meta obrigatória',
+    ],
+  },
+  {
+    nav: 'Veja se seu celular serve',
+    eye: 'Pré-requisito',
+    title: 'Seu celular precisa de câmera grande angular.',
+    body: 'Quase todas exigem o modo 0,5x (ultra wide) pra capturar a cena inteira. A régua geral é iPhone 12 ou superior, Pixel 6 ou superior e Galaxy S21 ou superior — mas tem exceção que amplia a lista.',
+    list: [
+      'iPhone: 12 a 17 (os modelos "e" ficam de fora)',
+      'Pixel: 6 a 9, incluindo as versões Pro',
+      'Galaxy S: S21 a S26 (sem os FE)',
+      'Celular fora da lista? A Invent Money aceita iPhone 11 e Redmi Note top de linha',
+    ],
+    cta: { label: 'Ver requisitos completos', href: '#requisitos' },
+  },
+  {
+    nav: 'Escolha sua plataforma',
+    eye: 'Aqui entra o TIA',
+    title: 'Cada plataforma paga e funciona de um jeito.',
+    body: 'É exatamente pra isso que esse site existe. Testei 8 plataformas, gravei e saquei em cada uma. Antes de decidir, compare valor por hora, forma de saque, suporte e requisitos — e lembra que você pode usar várias ao mesmo tempo, só precisa de um e-mail diferente em cada.',
+    list: [
+      'Quer a mais consolidada, com saque semanal em Pix? Hub.xyz',
+      'Quer receber em reais sem lidar com câmbio? Flambra',
+      'Seu celular não passou nas outras? Invent Money',
+      'Prefere saque duas vezes por mês? Micro1 ou Mimix',
+    ],
+    cta: { label: 'Comparar as 8 plataformas', href: '#plataformas' },
+  },
+  {
+    nav: 'Compre o suporte de cabeça',
+    eye: 'Equipamento',
+    title: 'O headstrap é obrigatório em quase todas.',
+    body: 'É um suporte que prende o celular na testa e deixa suas duas mãos livres pra fazer a tarefa. Gravar sem ele significa vídeo reprovado — e em algumas plataformas, conta banida.',
+    list: [
+      'Custa entre R$ 30 e R$ 80 nos marketplaces',
+      'A Hub.xyz envia o suporte grátis via whitelist',
+      'Você compra uma vez só: o mesmo suporte serve pra todas as plataformas',
+    ],
+  },
+  {
+    nav: 'Cadastre e configure',
+    eye: 'Configuração',
+    title: 'Cadastro na plataforma, gravação no app.',
+    body: 'Na maioria delas você se cadastra no site da plataforma e grava pelo app Minute. A plataforma te entrega um e-mail exclusivo e um código de organização — é com esses dois dados que você entra no projeto dentro do Minute.',
+    list: [
+      'Use sempre o e-mail que a plataforma gerou, nunca o seu pessoal',
+      'Cada plataforma tem o seu próprio código de organização',
+      'Invent Money e Micro1 não usam o Minute — a gravação é no app próprio delas',
+    ],
+  },
+  {
+    nav: 'Grave, envie e receba',
+    eye: 'Pagamento',
+    title: 'Horas aprovadas viram Pix ou cripto.',
+    body: 'Grave na horizontal, com as duas mãos visíveis e boa iluminação, sem cortes nem edição. Envie pelo app, espere a aprovação e saque. O prazo e o método mudam de uma plataforma pra outra.',
+    list: [
+      'Hub.xyz e Flambra: saque semanal em Pix',
+      'Micro1 e Mimix: pagamento nos dias 05 e 20 do mês',
+      'Invent Money: cripto (USDC na rede Base), com conversão em reais depois',
+    ],
+    cta: { label: 'Simular quanto dá pra ganhar', href: '#ganhar' },
+  },
+];
+
+let hiwIdx = 0;
+let hiwFirstRender = true;
+
+function hiwScrollActiveIntoView() {
+  if (hiwFirstRender) { hiwFirstRender = false; return; }
+  if (!window.matchMedia('(max-width: 900px)').matches) return;
+  const active = document.querySelector('.hiw-step.is-active');
+  if (active) active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+}
+
+function renderHiw() {
+  const stepsEl = document.getElementById('hiwSteps');
+  const panelEl = document.getElementById('hiwPanel');
+  if (!stepsEl || !panelEl) return;
+
+  stepsEl.innerHTML = HIW.map((s, i) => {
+    const cls = i === hiwIdx ? ' is-active' : (i < hiwIdx ? ' is-done' : '');
+    return `<button type="button" class="hiw-step${cls}" role="tab" aria-selected="${i === hiwIdx}" data-hiw="${i}">
+      <span class="hiw-step-num">${i < hiwIdx ? '✓' : i + 1}</span>
+      <span class="hiw-step-label">${esc(s.nav)}</span>
+    </button>`;
+  }).join('');
+
+  const s = HIW[hiwIdx];
+  const pct = ((hiwIdx + 1) / HIW.length) * 100;
+  panelEl.innerHTML = `
+    <div class="hiw-bar"><span style="width: ${pct}%"></span></div>
+    <div class="hiw-eye">${esc(s.eye)}</div>
+    <h3 class="hiw-title">${esc(s.title)}</h3>
+    <p class="hiw-body">${esc(s.body)}</p>
+    <ul class="hiw-list">${s.list.map(li => `<li>${esc(li)}</li>`).join('')}</ul>
+    <div class="hiw-foot">
+      ${s.cta ? `<a class="btn btn-accent" href="${esc(s.cta.href)}">${esc(s.cta.label)} →</a>` : '<span></span>'}
+      <div class="hiw-nav">
+        <button type="button" class="hiw-navbtn" id="hiwPrev" ${hiwIdx === 0 ? 'disabled' : ''} aria-label="Passo anterior">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"/></svg>
+        </button>
+        <button type="button" class="hiw-navbtn" id="hiwNext" ${hiwIdx === HIW.length - 1 ? 'disabled' : ''} aria-label="Próximo passo">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <span class="hiw-count">${hiwIdx + 1} / ${HIW.length}</span>
+      </div>
+    </div>`;
+
+  const prev = document.getElementById('hiwPrev');
+  const next = document.getElementById('hiwNext');
+  if (prev) prev.addEventListener('click', () => { if (hiwIdx > 0) { hiwIdx--; renderHiw(); } });
+  if (next) next.addEventListener('click', () => { if (hiwIdx < HIW.length - 1) { hiwIdx++; renderHiw(); } });
+
+  stepsEl.querySelectorAll('[data-hiw]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      hiwIdx = parseInt(btn.dataset.hiw, 10);
+      renderHiw();
+    });
+  });
+
+  hiwScrollActiveIntoView();
+}
+
+renderHiw();
 
 // Rotação do slot promocional (Hub $7 ↔ Blitz +30%) — auto a cada 10s + setinhas manuais
 (function() {
