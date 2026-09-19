@@ -234,7 +234,8 @@
   .method-chip { display: inline-block; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); color: var(--ink); }
 
   /* Estimator */
-  .est-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .est-tabs-wrap { position: relative; margin-bottom: 20px; }
+  .est-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
   .est-tab { display: inline-flex; align-items: center; gap: 8px; background: var(--paper); border: 1px solid var(--line); padding: 8px 16px 8px 8px; border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--ink); }
   .est-modes { display: flex; gap: 6px; flex-wrap: wrap; margin: -8px 0 20px; }
   .est-modes:empty { display: none; }
@@ -334,15 +335,36 @@
   @media (max-width: 900px) {
     .hero-grid { grid-template-columns: 1fr; gap: 32px; }
     .chap-head { margin-bottom: 32px; }
-    .hiw-grid { grid-template-columns: 1fr; gap: 18px; }
-    .hiw-steps { position: static; flex-direction: row; overflow-x: auto; gap: 8px; padding-bottom: 4px; scrollbar-width: none; }
+    .hiw-grid { grid-template-columns: 1fr; gap: 14px; }
+    .hiw-grid > * { min-width: 0; }
+    .hiw-steps-wrap { position: relative; overflow: hidden; }
+    .hiw-steps-wrap::before, .hiw-steps-wrap::after { content: ''; position: absolute; top: 0; bottom: 4px; width: 24px; pointer-events: none; z-index: 2; }
+    .hiw-steps-wrap::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+    .hiw-steps-wrap::after { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+    .hiw-steps { position: static; flex-direction: row; overflow-x: auto; gap: 8px; padding: 0 4px 4px; scrollbar-width: none; scroll-snap-type: x proximity; }
     .hiw-steps::-webkit-scrollbar { display: none; }
-    .hiw-step { width: auto; flex-shrink: 0; padding: 10px 14px; background: var(--paper); border-color: var(--line); }
+    .hiw-step { width: auto; flex-shrink: 0; padding: 10px 14px; background: var(--paper); border-color: var(--line); scroll-snap-align: center; }
     .hiw-step-label { white-space: nowrap; font-size: 13px; }
-    .hiw-panel { padding: 24px; min-height: 0; }
+    .hiw-panel { padding: 22px; min-height: 0; }
+    .hiw-title { font-size: 22px; }
+    .hiw-body { font-size: 14.5px; margin-bottom: 16px; }
+    .hiw-list { margin-bottom: 18px; }
+    .hiw-foot { flex-direction: column; align-items: stretch; gap: 12px; padding-top: 16px; }
+    .hiw-ctas { flex-direction: column; align-items: stretch; gap: 8px; width: 100%; }
+    .hiw-ctas .btn { justify-content: center; padding: 11px 18px; }
+    .hiw-nav { align-self: flex-end; }
     .kv-grid { grid-template-columns: repeat(2, 1fr); }
-    .est-grid { grid-template-columns: 1fr; }
-    .total-card { position: static; padding: 28px; }
+    .est-grid { grid-template-columns: 1fr; gap: 16px; }
+    .total-card { position: static; padding: 24px; order: -1; }
+    .est-grid > .total-card { order: -1; }
+    .total-card .total-amount { font-size: 40px; }
+    .est-tabs-wrap { overflow: hidden; margin-left: -24px; margin-right: -24px; padding: 0 24px; }
+    .est-tabs-wrap::before, .est-tabs-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 24px; pointer-events: none; z-index: 2; }
+    .est-tabs-wrap::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+    .est-tabs-wrap::after { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+    .est-tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding: 4px 0 6px; scroll-snap-type: x proximity; }
+    .est-tabs::-webkit-scrollbar { display: none; }
+    .est-tab { flex-shrink: 0; scroll-snap-align: start; }
     .which-grid { grid-template-columns: repeat(2, 1fr); }
     .req-grid { grid-template-columns: repeat(2, 1fr); }
     .support { grid-template-columns: 1fr; }
@@ -400,7 +422,7 @@
   .promo-nav svg { width: 12px; height: 12px; }
   .promo-nav-prev { left: 12px; }
   .promo-nav-next { right: 12px; }
-  @media (max-width: 720px) { .promo-nav { display: none; } }
+  @media (max-width: 720px) { .promo-nav { width: 20px; height: 20px; background: rgba(255,255,255,0.85); box-shadow: 0 1px 4px rgba(0,0,0,0.25); } .promo-nav svg { width: 10px; height: 10px; } .promo-nav-prev { left: 4px; } .promo-nav-next { right: 4px; } }
   .promo-inner { display: flex; align-items: center; gap: 20px; max-width: 1120px; margin: 0 auto; padding: 6px 24px; height: 100%; }
   .promo-left { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
   .promo-avatar { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; background: #1a1a1a; flex-shrink: 0; }
@@ -429,6 +451,7 @@
   .blitz-right { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; margin-left: auto; }
   .blitz-timer { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #064E3B; background: rgba(255,255,255,0.65); border: 1px solid rgba(22,163,74,0.25); border-radius: 999px; padding: 4px 12px; white-space: nowrap; font-weight: 600; }
   .blitz-cta { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 10px; background: #16A34A; color: #fff !important; font-size: 13px; font-weight: 700; text-decoration: none !important; flex-shrink: 0; transition: background .15s, transform .1s; box-shadow: 0 2px 8px rgba(22,163,74,0.3); }
+  .blitz-cta-short { display: none; }
   .blitz-cta:hover { background: #15803D; }
   .blitz-cta:active { transform: translateY(1px); }
 
@@ -444,9 +467,12 @@
     .blitz-badge { font-size: 12.5px; padding: 3px 8px; height: 22px; }
     .blitz-timer { font-size: 11px; padding: 3px 10px; }
     .blitz-cta { padding: 5px 10px; font-size: 12px; }
-    .blitz-cta svg { display: none; }
+    .blitz-cta svg { width: 10px; height: 10px; }
+    .blitz-cta-full { display: none; }
+    .blitz-cta-short { display: inline; }
     .blitz-right { gap: 8px; }
-    .promo-bar-blitz .promo-inner { gap: 8px; }
+    .promo-bar-blitz .promo-inner { gap: 8px; padding-left: 30px; padding-right: 30px; }
+    .promo-inner { padding-left: 30px; padding-right: 30px; }
   }
   @media (max-width: 1024px) {
     .blitz-desc { display: none; }
@@ -542,7 +568,7 @@
     <div class="blitz-right">
       <span class="blitz-timer" id="blitz-countdown" data-target="2026-09-23T03:00:00Z">termina em ...</span>
       <a class="blitz-cta" href="https://ai.hub.xyz/r/RENNDA" target="_blank" rel="noopener">
-        Grave tarefas no trabalho
+        <span class="blitz-cta-full">Grave tarefas no trabalho</span><span class="blitz-cta-short">Grave $9/h</span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
       </a>
     </div>
@@ -614,7 +640,9 @@
     </div>
 
     <div class="hiw-grid">
-      <div class="hiw-steps" id="hiwSteps" role="tablist" aria-label="Passos"></div>
+      <div class="hiw-steps-wrap">
+        <div class="hiw-steps" id="hiwSteps" role="tablist" aria-label="Passos"></div>
+      </div>
       <div class="hiw-panel" id="hiwPanel"></div>
     </div>
   </div>
@@ -674,7 +702,7 @@
       <p class="lead">Você ganha pelas horas gravadas, mais os bônus quando bate os marcos. Escolha a plataforma e arraste o slider de horas.</p>
     </div>
 
-    <div class="est-tabs" id="estTabs"></div>
+    <div class="est-tabs-wrap"><div class="est-tabs" id="estTabs"></div></div>
     <div class="est-modes" id="estModes"></div>
     <div id="estimatorReview" style="background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin-bottom: 24px;"></div>
 
